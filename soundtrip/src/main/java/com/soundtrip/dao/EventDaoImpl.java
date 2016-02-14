@@ -1,4 +1,4 @@
-package com.soundtrip.dao.impl;
+package com.soundtrip.dao;
 
 import java.io.Serializable;
 
@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.soundtrip.dao.EventDao;
 import com.soundtrip.dto.Event;
 
 /**

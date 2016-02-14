@@ -1,9 +1,9 @@
 package com.soundtrip.service.impl;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.soundtrip.dao.EventDao;
 import com.soundtrip.dto.Event;

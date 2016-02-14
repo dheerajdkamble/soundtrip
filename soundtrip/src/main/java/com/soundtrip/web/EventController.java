@@ -3,6 +3,7 @@ package com.soundtrip.web;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +24,7 @@ public class EventController {
 	
     @RequestMapping(value = "/event", method = RequestMethod.POST)
     @ResponseBody
+    @Transactional
     public ResponseMessage addPerson(@RequestBody String event) {
 //        if (event.getName() == nul|| person.getLastName().length() <= 3) {
 //            throw new IllegalArgumentException("moreThan3Chars");
