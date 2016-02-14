@@ -1,0 +1,73 @@
+<form>
+    <fieldset>
+        <legend>
+            <msg key="newEvent"></msg>
+        </legend>
+        <h1></h1>
+
+        <label>
+            <msg key="eventName"></msg>
+        </label>
+        <input type="text" ng-model="event.name"/>
+
+        <label>
+            <msg key="eventDescription"></msg>
+        </label>
+        <input type="text" ng-model="event.description"/>
+        
+        <label>
+            <msg key="eventAdd1"></msg>
+        </label>
+        <input type="text" ng-model="event.addressLine1"/>
+
+        <label>
+            <msg key="eventAdd2"></msg>
+        </label>
+        <input type="text" ng-model="event.addressLine2"/>
+
+        <label>
+            <msg key="eventArea"></msg>
+        </label>
+        <input type="text" ng-model="event.area"/>
+
+        <label>
+            <msg key="eventCity"></msg>
+        </label>
+        <input type="text" ng-model="event.city"/>
+        
+        <label>
+            <msg key="eventState"></msg>
+        </label>
+        <input type="text" ng-model="event.state"/>
+        
+        <label>
+            <msg key="eventPincode"></msg>
+        </label>
+        <input type="text" ng-model="event.pinCode"/>
+
+        <label>
+            <msg key="eventGenre"></msg>
+        </label>
+        <input type="text" ng-model="event.genre"/>
+        
+        <label>
+            <msg key="eventImage"></msg>
+        </label>
+        <input type="text" ng-model="event.image"/>                
+
+        <label></label>
+        <button type="submit" class="btn" ng-click="save()">
+            <msg key="saveButton"></msg>
+        </button>
+        
+        <label></label>
+        <button type="submit" class="btn" ng-click="cancel()">
+            <msg key="cancelButton"></msg>
+        </button>
+        
+        <label></label>
+        <button type="submit" class="btn" ng-click="reset()">
+            <msg key="resetButton"></msg>
+        </button>
+    </fieldset>
+</form>
