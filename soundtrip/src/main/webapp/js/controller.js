@@ -68,14 +68,36 @@
     });
     
     as.controller('EventMasterController', function($scope, $http, i18n) {
-    	console.log(">>>>>>>>>>>>>>> Event master controller");
-    	$scope.event = {};
-    	
-    	$scope.save = function() {
-    		console.log(">>>>>>>>>>>>>>> Event master controller" + $scope.event.name);
-    		$http.post('action/event', $scope.event).success(function () {
-    			console.log(">>>>>>>>>>>>>>> Saved successfully");
+    	var actionUrlEvents = 'action/eventmaster/',
+        loadEvents = function () {
+            $http.get(actionUrlEvents).success(function (data) {
+                $scope.eventmasters = data;
+                console.log("eventsmaster >>> " + $scope.eventmasters);
             });
-    	}
+        };
+
+        loadEvents();
+
+	    $scope.delete = function (eventmaster) {
+	        $http.delete(actionUrlEvents + eventmaster.id).success(function () {
+	        	loadEvents();
+	        });
+	    };
+	
+	    $scope.save = function () {
+	        $http.post(actionUrlEvents, $scope.eventmaster).success(function () {
+	        	loadEvents();
+	        });
+	    };
+	
+	    $scope.order = '+name';
+	
+	    $scope.order = function (property) {
+	        $scope.order = ($scope.order[0] === '+' ? '-' : '+') + property;
+	    };
+	
+	    $scope.orderIcon = function (property) {
+	        return property === $scope.order.substring(1) ? $scope.order[0] === '+' ? 'icon-chevron-up' : 'icon-chevron-down' : '';
+	    };
     });
 }());

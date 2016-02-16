@@ -15,8 +15,8 @@
     as.config(function ($routeProvider, $httpProvider) {
         //configure the rounting of ng-view
         $routeProvider.when('/person', { controller: 'PersonController', templateUrl: 'person.html'});
+        $routeProvider.when('/eventmaster', { controller: 'EventMasterController', templateUrl: 'eventmaster.html'});
         $routeProvider.when('/admin', { controller: 'AdminController', templateUrl: 'admin/admin.html'});
-        $routeProvider.when('/eventsmaster', { controller: 'EventMasterController', templateUrl: 'eventsmaster.html'});
 
         //configure $http to catch message responses and show them
         $httpProvider.responseInterceptors.push(function ($q) {
