@@ -85,8 +85,9 @@
 	    };
 	
 	    $scope.save = function () {
-	        $http.post(actionUrlEvents, $scope.eventmaster).success(function () {
+	        $http.post(actionUrlEvents, $scope.neweventmaster).success(function () {
 	        	loadEvents();
+	        	$scope.neweventmaster = {};
 	        });
 	    };
 	
