@@ -1,124 +1,100 @@
-<table class="table table-striped">
-    <tr>
-        <th ng-click="orderBy('name')">
-            <msg key="eventName"></msg>
-            <i ng-class="orderIcon('name')"></i></th>
-        <th ng-click="orderBy('description')">
-            <msg key="eventDescription"></msg>
-            <i ng-class="orderIcon('description')"></i></th>
-        <th ng-click="orderBy('addressLine1')">
-            <msg key="eventAdd1"></msg>
-            <i ng-class="orderIcon('addressLine1')"></i></th>
-        <th ng-click="orderBy('addressLine2')">
-            <msg key="eventAdd2"></msg>
-            <i ng-class="orderIcon('addressLine2')"></i></th>
-        <th ng-click="orderBy('area')">
-            <msg key="eventArea"></msg>
-            <i ng-class="orderIcon('area')"></i></th>
-        <th ng-click="orderBy('city')">
-            <msg key="eventCity"></msg>
-            <i ng-class="orderIcon('city')"></i></th>
-        <th ng-click="orderBy('state')">
-            <msg key="eventState"></msg>
-            <i ng-class="orderIcon('state')"></i></th>
-        <th ng-click="orderBy('pinCode')">
-            <msg key="eventPincode"></msg>
-            <i ng-class="orderIcon('pinCode')"></i></th>
-        <th ng-click="orderBy('genre')">
-            <msg key="eventGenre"></msg>
-            <i ng-class="orderIcon('genre')"></i></th>
-        <th ng-click="orderBy('image')">
-            <msg key="eventImage"></msg>
-            <i ng-class="orderIcon('image')"></i></th>
-        <th>
-            <msg key="delete"></msg>
-        </th>
-    </tr>
-    <tr ng-repeat="eventmaster in eventmasters|orderBy:eventmaster">
-        <td>{{eventmaster.name}}</td>
-        <td>{{eventmaster.description}}</td>
-        <td>{{eventmaster.addressLine1}}</td>
-        <td>{{eventmaster.addressLine2}}</td>
-        <td>{{eventmaster.area}}</td>
-        <td>{{eventmaster.city}}</td>
-        <td>{{eventmaster.state}}</td>
-        <td>{{eventmaster.pinCode}}</td>
-        <td>{{eventmaster.genre}}</td>
-        <td>{{eventmasterimage}}</td>        
-        <td><a ng-click="delete(eventmaster)"><i class="icon-trash"></i></a></td>
-    </tr>
-</table>
-
-<form>
-    <fieldset>
-        <legend>
-            <msg key="newEvent"></msg>
-        </legend>
-        <h1></h1>
-
-        <label>
-            <msg key="eventName"></msg>
-        </label>
-        <input type="text" ng-model="neweventmaster.name"/>
-
-        <label>
-            <msg key="eventDescription"></msg>
-        </label>
-        <input type="text" ng-model="neweventmaster.description"/>
-        
-        <label>
-            <msg key="eventAdd1"></msg>
-        </label>
-        <input type="text" ng-model="neweventmaster.addressLine1"/>
-
-        <label>
-            <msg key="eventAdd2"></msg>
-        </label>
-        <input type="text" ng-model="neweventmaster.addressLine2"/>
-
-        <label>
-            <msg key="eventArea"></msg>
-        </label>
-        <input type="text" ng-model="neweventmaster.area"/>
-
-        <label>
-            <msg key="eventCity"></msg>
-        </label>
-        <input type="text" ng-model="neweventmaster.city"/>
-        
-        <label>
-            <msg key="eventState"></msg>
-        </label>
-        <input type="text" ng-model="neweventmaster.state"/>
-        
-        <label>
-            <msg key="eventPincode"></msg>
-        </label>
-        <input type="text" ng-model="neweventmaster.pinCode"/>
-
-        <label>
-            <msg key="eventGenre"></msg>
-        </label>
-        <input type="text" ng-model="neweventmaster.genre"/>
-        
-        <label>
-            <msg key="eventImage"></msg>
-        </label>
-        <input type="text" ng-model="neweventmaster.image"/>                
-
-        <label></label>
-        <button type="submit" class="btn" ng-click="save()">
-            <msg key="saveButton"></msg>
-        </button>
-        
-        <label></label>
-        <button type="submit" class="btn" ng-click="cancel()">
-            <msg key="cancelButton"></msg>
-        </button>
-        
-        <label></label>
-        <button type="submit" class="btn" ng-click="reset()">
-            <msg key="resetButton"></msg>
-        </button>
-    </fieldset>
+<form id="newEventForm">
+	<div class="table-responsive">
+		<table class="table">
+			<caption style="font-weight: bold; font-size: 14px;">
+				<msg key="newEvent" />
+			</caption>
+			<tr>
+				<td><label> <msg key="eventName"></msg></label></td>
+				<td><input type="text" ng-model="neweventmaster.name" /></td>
+				<td><label> <msg key="eventDescription"></msg></label></td>
+				<td><input type="text" ng-model="neweventmaster.description" /></td>
+			</tr>
+			<tr>
+				<td><label> <msg key="eventAdd1"></msg></label></td>
+				<td><input type="text" ng-model="neweventmaster.addressLine1" /></td>
+				<td><label> <msg key="eventAdd2"></msg></label></td>
+				<td><input type="text" ng-model="neweventmaster.addressLine2" /></td>
+			</tr>
+			<tr>
+				<td><label> <msg key="eventArea"></msg>
+				</label></td>
+				<td><input type="text" ng-model="neweventmaster.area" /></td>
+				<td><label> <msg key="eventAdd2"></msg></label></td>
+				<td><input type="text" ng-model="neweventmaster.addressLine2" /></td>
+			</tr>
+			<tr>
+				<td><label> <msg key="eventCity"></msg>
+				</label></td>
+				<td><input type="text" ng-model="neweventmaster.city" /></td>
+				<td><label> <msg key="eventState"></msg></label></td>
+				<td><input type="text" ng-model="neweventmaster.state" /></td>
+			</tr>
+			<tr>
+				<td><label> <msg key="eventPincode"></msg>
+				</label></td>
+				<td><input type="text" ng-model="neweventmaster.pinCode" /></td>
+				<td><label> <msg key="eventState"></msg></label></td>
+				<td><input type="text" ng-model="neweventmaster.state" /></td>
+			</tr>
+			<tr>
+				<td><label> <msg key="eventGenre"></msg></label></td>
+				<td><input type="text" ng-model="neweventmaster.genre" /></td>
+				<td><label> <msg key="eventImage"></msg></label></td>
+				<td><input type="text" ng-model="neweventmaster.image" /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td style="text-align: right"><button type="submit" class="btn"
+						ng-click="save()">
+						<msg key="saveButton"></msg>
+					</button></td>
+				<td><button type="submit" class="btn" ng-click="cancel()">
+						<msg key="cancelButton"></msg>
+					</button></td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
 </form>
+
+<table class="table table-striped">
+	<tr>
+		<th ng-click="orderBy('name')"><msg key="eventName"></msg> <i
+			ng-class="orderIcon('name')"></i></th>
+		<th ng-click="orderBy('description')"><msg key="eventDescription"></msg>
+			<i ng-class="orderIcon('description')"></i></th>
+		<th ng-click="orderBy('addressLine1')"><msg key="eventAdd1"></msg>
+			<i ng-class="orderIcon('addressLine1')"></i></th>
+		<th ng-click="orderBy('addressLine2')"><msg key="eventAdd2"></msg>
+			<i ng-class="orderIcon('addressLine2')"></i></th>
+		<th ng-click="orderBy('area')"><msg key="eventArea"></msg> <i
+			ng-class="orderIcon('area')"></i></th>
+		<th ng-click="orderBy('city')"><msg key="eventCity"></msg> <i
+			ng-class="orderIcon('city')"></i></th>
+		<th ng-click="orderBy('state')"><msg key="eventState"></msg> <i
+			ng-class="orderIcon('state')"></i></th>
+		<th ng-click="orderBy('pinCode')"><msg key="eventPincode"></msg>
+			<i ng-class="orderIcon('pinCode')"></i></th>
+		<th ng-click="orderBy('genre')"><msg key="eventGenre"></msg> <i
+			ng-class="orderIcon('genre')"></i></th>
+		<th ng-click="orderBy('image')"><msg key="eventImage"></msg> <i
+			ng-class="orderIcon('image')"></i></th>
+		<th><msg key="edit"></msg></th>
+		<th><msg key="delete"></msg></th>
+	</tr>
+	<tr ng-repeat="eventmaster in eventmasters|orderBy:eventmaster">
+		<td>{{eventmaster.name}}</td>
+		<td>{{eventmaster.description}}</td>
+		<td>{{eventmaster.addressLine1}}</td>
+		<td>{{eventmaster.addressLine2}}</td>
+		<td>{{eventmaster.area}}</td>
+		<td>{{eventmaster.city}}</td>
+		<td>{{eventmaster.state}}</td>
+		<td>{{eventmaster.pinCode}}</td>
+		<td>{{eventmaster.genre}}</td>
+		<td>{{eventmasterimage}}</td>
+		<td><a ng-click="edit($index)"><i class="icon-edit"></i></a></td>
+		<td><a ng-click="delete(eventmaster)"><i class="icon-trash"></i></a></td>
+	</tr>
+</table>

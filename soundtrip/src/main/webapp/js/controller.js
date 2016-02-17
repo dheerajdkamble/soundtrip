@@ -84,6 +84,10 @@
 	        });
 	    };
 	
+	    $scope.edit = function (index) {
+	        $scope.neweventmaster = angular.copy($scope.eventmasters[index]);
+	    };
+	    
 	    $scope.save = function () {
 	        $http.post(actionUrlEvents, $scope.neweventmaster).success(function () {
 	        	loadEvents();
