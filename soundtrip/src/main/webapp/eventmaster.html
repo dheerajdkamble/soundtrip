@@ -20,28 +20,27 @@
 				<td><label> <msg key="eventArea"></msg>
 				</label></td>
 				<td><input type="text" ng-model="neweventmaster.area" /></td>
-				<td><label> <msg key="eventAdd2"></msg></label></td>
-				<td><input type="text" ng-model="neweventmaster.addressLine2" /></td>
-			</tr>
-			<tr>
-				<td><label> <msg key="eventCity"></msg>
-				</label></td>
+				<td><label> <msg key="eventCity"></msg></label></td>
 				<td><input type="text" ng-model="neweventmaster.city" /></td>
-				<td><label> <msg key="eventState"></msg></label></td>
-				<td><input type="text" ng-model="neweventmaster.state" /></td>
 			</tr>
 			<tr>
-				<td><label> <msg key="eventPincode"></msg>
+				<td><label> <msg key="eventState"></msg>
 				</label></td>
-				<td><input type="text" ng-model="neweventmaster.pinCode" /></td>
-				<td><label> <msg key="eventState"></msg></label></td>
 				<td><input type="text" ng-model="neweventmaster.state" /></td>
+				<td><label> <msg key="eventPincode"></msg></label></td>
+				<td><input type="text" ng-model="neweventmaster.pinCode" /></td>
 			</tr>
 			<tr>
-				<td><label> <msg key="eventGenre"></msg></label></td>
+				<td><label> <msg key="eventGenre"></msg>
+				</label></td>
 				<td><input type="text" ng-model="neweventmaster.genre" /></td>
 				<td><label> <msg key="eventImage"></msg></label></td>
-				<td><input type="text" ng-model="neweventmaster.image" /></td>
+				<td>
+					<div ng-repeat="step in stepsModel" >
+						<img class="thumb" ng-src="{{step}}" width="100px" height="100px" />
+					</div> <input type='file' ng-model="neweventmaster.image"
+					onchange="angular.element(this).scope().imageUpload(this)" multiple />
+				</td>
 			</tr>
 			<tr>
 				<td></td>
@@ -60,30 +59,20 @@
 
 <table class="table table-striped">
 	<tr>
-		<th ng-click="orderBy('name')"><msg key="eventName"></msg> <i
-			ng-class="orderIcon('name')"></i></th>
-		<th ng-click="orderBy('description')"><msg key="eventDescription"></msg>
-			<i ng-class="orderIcon('description')"></i></th>
-		<th ng-click="orderBy('addressLine1')"><msg key="eventAdd1"></msg>
-			<i ng-class="orderIcon('addressLine1')"></i></th>
-		<th ng-click="orderBy('addressLine2')"><msg key="eventAdd2"></msg>
-			<i ng-class="orderIcon('addressLine2')"></i></th>
-		<th ng-click="orderBy('area')"><msg key="eventArea"></msg> <i
-			ng-class="orderIcon('area')"></i></th>
-		<th ng-click="orderBy('city')"><msg key="eventCity"></msg> <i
-			ng-class="orderIcon('city')"></i></th>
-		<th ng-click="orderBy('state')"><msg key="eventState"></msg> <i
-			ng-class="orderIcon('state')"></i></th>
-		<th ng-click="orderBy('pinCode')"><msg key="eventPincode"></msg>
-			<i ng-class="orderIcon('pinCode')"></i></th>
-		<th ng-click="orderBy('genre')"><msg key="eventGenre"></msg> <i
-			ng-class="orderIcon('genre')"></i></th>
-		<th ng-click="orderBy('image')"><msg key="eventImage"></msg> <i
-			ng-class="orderIcon('image')"></i></th>
+		<th><msg key="eventName"></msg></th>
+		<th><msg key="eventDescription"></msg></th>
+		<th><msg key="eventAdd1"></msg></th>
+		<th><msg key="eventAdd2"></msg></th>
+		<th><msg key="eventArea"></msg></th>
+		<th><msg key="eventCity"></msg></th>
+		<th><msg key="eventState"></msg></th>
+		<th><msg key="eventPincode"></msg></th>
+		<th><msg key="eventGenre"></msg></th>
+		<th><msg key="eventImage"></msg></th>
 		<th><msg key="edit"></msg></th>
 		<th><msg key="delete"></msg></th>
 	</tr>
-	<tr ng-repeat="eventmaster in eventmasters|orderBy:eventmaster">
+	<tr ng-repeat="eventmaster in eventmasters">
 		<td>{{eventmaster.name}}</td>
 		<td>{{eventmaster.description}}</td>
 		<td>{{eventmaster.addressLine1}}</td>

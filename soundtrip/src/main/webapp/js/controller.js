@@ -27,17 +27,81 @@
             $scope.$emit('event:logoutRequest');
             $location.url('/person');
         };
-
     });
 
-    as.controller('PersonController', function ($scope, $http, i18n) {
-        var actionUrl = 'action/person/',
-            load = function () {
-                $http.get(actionUrl).success(function (data) {
-                    $scope.persons = data;
-                });
-            };
+    as.controller('EventHomeController', function ($scope, $http, i18n) {
+    	var actionUrl = 'action/eventhome/';
+    	
+    	loadGeolocationCity = function() {
+    		/* Geolocation code starts */
+            
+        	var geocoder = new google.maps.Geocoder();
+        	if (navigator.geolocation) {
+        		navigator.geolocation
+        				.getCurrentPosition(successFunction, errorFunction);
+        	}
+        	//Get the latitude and the longitude;
+        	function successFunction(position) {
+        		var lat = position.coords.latitude;
+        		var lng = position.coords.longitude;
+        		codeLatLng(lat, lng)
+        	}
 
+        	function errorFunction() {
+        		/* alert("Geocoder failed"); */
+        	}
+
+        	function codeLatLng(lat, lng) {
+
+        		var latlng = new google.maps.LatLng(lat, lng);
+        		geocoder
+        				.geocode(
+        						{
+        							'latLng' : latlng
+        						},
+        						function(results, status) {
+        							alert("status : " + status);
+        							if (status == google.maps.GeocoderStatus.OK) {
+        								console.log("results :: " + JSON.stringify(results, 4, null));
+        								alert("city : " + results[0].address_components[2].short_name);
+        								
+        								
+        								if (results[1]) {
+        									//formatted address
+        									/* alert(results[0].formatted_address) */
+        									//find country name
+        									for (var i = 0; i < results[0].address_components.length; i++) {
+        										for (var b = 0; b < results[0].address_components[i].types.length; b++) {
+
+        											//there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
+        											if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
+        												//this is the object you are looking for
+        												console.log("address component at " + i + " " + JSON.stringify(results[0].address_components[i], 4, null));
+        												city = results[0].address_components[i];
+        												break;
+        											}
+        										}
+        									}
+        									
+        									return city.long_name;
+
+        								} else {
+        									/* alert("No results found"); */
+        								}
+        							} else {
+        								/* alert("Geocoder failed due to: " + status); */
+        							}
+        						});
+        	}
+        /* Geolocation code ends */
+    	};
+    	loadGeolocationCity();
+    	
+        load = function () {
+        	$http.get(actionUrl).success(function (data) {
+        		$scope.persons = data;
+            });
+        };
         load();
 
         $scope.delete = function (person) {
@@ -52,30 +116,46 @@
             });
         };
 
-        $scope.order = '+firstName';
-
-        $scope.orderBy = function (property) {
-            $scope.order = ($scope.order[0] === '+' ? '-' : '+') + property;
-        };
-
-        $scope.orderIcon = function (property) {
-            return property === $scope.order.substring(1) ? $scope.order[0] === '+' ? 'icon-chevron-up' : 'icon-chevron-down' : '';
-        };
+        /*
+		 * $scope.order = '+firstName';
+		 * 
+		 * $scope.orderBy = function (property) { $scope.order =
+		 * ($scope.order[0] === '+' ? '-' : '+') + property; };
+		 * 
+		 * $scope.orderIcon = function (property) { return property ===
+		 * $scope.order.substring(1) ? $scope.order[0] === '+' ?
+		 * 'icon-chevron-up' : 'icon-chevron-down' : ''; };
+		 */
     });
 
     as.controller('AdminController', function ($scope, $http) {
         $http.get('action/user');
     });
     
-    as.controller('EventMasterController', function($scope, $http, i18n) {
+    as.controller('EventMasterController', function($scope, $http, i18n, $rootScope) {
+    	$scope.stepsModel = [];
+
+    	$scope.imageUpload = function(element){
+    	    var reader = new FileReader();
+    	    reader.onload = $scope.imageIsLoaded;
+    	    reader.readAsDataURL(element.files[0]);
+    	}
+
+    	$scope.imageIsLoaded = function(e){
+    	    $scope.$apply(function() {
+    	    	$scope.stepsModel = [];
+    	        $scope.stepsModel.push(e.target.result);
+    	    });
+    	}
+    		
     	var actionUrlEvents = 'action/eventmaster/',
+    	
+    	
         loadEvents = function () {
             $http.get(actionUrlEvents).success(function (data) {
                 $scope.eventmasters = data;
-                console.log("eventsmaster >>> " + $scope.eventmasters);
             });
         };
-
         loadEvents();
 
 	    $scope.delete = function (eventmaster) {

@@ -14,8 +14,8 @@
 
     as.config(function ($routeProvider, $httpProvider) {
         //configure the rounting of ng-view
-        $routeProvider.when('/person', { controller: 'PersonController', templateUrl: 'person.html'});
-        $routeProvider.when('/eventmaster', { controller: 'EventMasterController', templateUrl: 'eventmaster.html'});
+    	$routeProvider.when('/eventhome', { controller: 'EventHomeController', templateUrl: 'eventhome.html'});
+    	$routeProvider.when('/eventmaster', { controller: 'EventMasterController', templateUrl: 'eventmaster.html'});
         $routeProvider.when('/admin', { controller: 'AdminController', templateUrl: 'admin/admin.html'});
 
         //configure $http to catch message responses and show them
@@ -124,7 +124,8 @@
          */
         $rootScope.$on('event:logoutRequest', function () {
             httpHeaders.common['Authorization'] = null;
-        });
+        });  
+      
     });
 
 }());
