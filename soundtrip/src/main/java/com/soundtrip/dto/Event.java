@@ -13,57 +13,58 @@ public class Event {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-	
-	@Column
-    private String name;
-	
-	@Column
-    private String description;
-	
-	@Column
-    private String addressLine1;
-	
-	@Column
-    private String addressLine2;
-	
-	@Column
-    private String area;
-	
-	@Column
-    private String city;
-	
-	@Column
-    private String state;
-	
-	@Column
-    private String pinCode;
-	
-	@Column
-    private String genre;
-	
-	@Column
-    private String image;
-	
-    /**
-     * Deparameterized constructor
-     */
-    public Event() {
-    }
+	private int id;
 
-    /**
-     * Parameterized constructor
-     * @param id
-     * @param name
-     * @param description
-     * @param addressLine1
-     * @param addressLine2
-     * @param area
-     * @param city
-     * @param state
-     * @param pinCode
-     */
-    public Event(int id, String name, String description, String addressLine1, String addressLine2, String area,
+	@Column
+	private String name;
+
+	@Column
+	private String description;
+
+	@Column
+	private String addressLine1;
+
+	@Column
+	private String addressLine2;
+
+	@Column
+	private String area;
+
+	@Column
+	private String city;
+
+	@Column
+	private String state;
+
+	@Column
+	private String pinCode;
+
+	@Column
+	private String genre;
+
+	@Column
+	private String image;
+
+	/**
+	 * Deparameterized constructor
+	 */
+	public Event() {
+	}
+
+	/**
+	 * Parameterized constructor
+	 * 
+	 * @param id
+	 * @param name
+	 * @param description
+	 * @param addressLine1
+	 * @param addressLine2
+	 * @param area
+	 * @param city
+	 * @param state
+	 * @param pinCode
+	 */
+	public Event(int id, String name, String description, String addressLine1, String addressLine2, String area,
 			String city, String state, String pinCode) {
 		this.id = id;
 		this.name = name;
@@ -80,15 +81,14 @@ public class Event {
 	 * @return id
 	 */
 	public int getId() {
-        return id;
-    }
+		return id;
+	}
 
-    /**
-     * @param id
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
+	/**
+	 * @param id
+	 *//*
+		 * public void setId(int id) { this.id = id; }
+		 */
 
 	/**
 	 * @return the name
@@ -98,7 +98,8 @@ public class Event {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -112,7 +113,8 @@ public class Event {
 	}
 
 	/**
-	 * @param description the description to set
+	 * @param description
+	 *            the description to set
 	 */
 	public void setDescription(String description) {
 		this.description = description;
@@ -126,7 +128,8 @@ public class Event {
 	}
 
 	/**
-	 * @param addressLine1 the addressLine1 to set
+	 * @param addressLine1
+	 *            the addressLine1 to set
 	 */
 	public void setAddressLine1(String addressLine1) {
 		this.addressLine1 = addressLine1;
@@ -140,7 +143,8 @@ public class Event {
 	}
 
 	/**
-	 * @param addressLine2 the addressLine2 to set
+	 * @param addressLine2
+	 *            the addressLine2 to set
 	 */
 	public void setAddressLine2(String addressLine2) {
 		this.addressLine2 = addressLine2;
@@ -154,7 +158,8 @@ public class Event {
 	}
 
 	/**
-	 * @param area the area to set
+	 * @param area
+	 *            the area to set
 	 */
 	public void setArea(String area) {
 		this.area = area;
@@ -168,7 +173,8 @@ public class Event {
 	}
 
 	/**
-	 * @param city the city to set
+	 * @param city
+	 *            the city to set
 	 */
 	public void setCity(String city) {
 		this.city = city;
@@ -182,7 +188,8 @@ public class Event {
 	}
 
 	/**
-	 * @param state the state to set
+	 * @param state
+	 *            the state to set
 	 */
 	public void setState(String state) {
 		this.state = state;
@@ -196,12 +203,13 @@ public class Event {
 	}
 
 	/**
-	 * @param pinCode the pinCode to set
+	 * @param pinCode
+	 *            the pinCode to set
 	 */
 	public void setPinCode(String pinCode) {
 		this.pinCode = pinCode;
 	}
-	
+
 	/**
 	 * @return the genre
 	 */
@@ -210,7 +218,8 @@ public class Event {
 	}
 
 	/**
-	 * @param genre the genre to set
+	 * @param genre
+	 *            the genre to set
 	 */
 	public void setGenre(String genre) {
 		this.genre = genre;
@@ -224,7 +233,8 @@ public class Event {
 	}
 
 	/**
-	 * @param image the image to set
+	 * @param image
+	 *            the image to set
 	 */
 	public void setImage(String image) {
 		this.image = image;
