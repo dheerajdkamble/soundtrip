@@ -49,6 +49,7 @@
 
         	function errorFunction() {
         		/* alert("Geocoder failed"); */
+        		//TODO : here you need to select all cities as default
         	}
 
         	function codeLatLng(lat, lng) {
@@ -60,36 +61,32 @@
         							'latLng' : latlng
         						},
         						function(results, status) {
-        							alert("status : " + status);
+        							/*alert("status : " + status);*/
         							if (status == google.maps.GeocoderStatus.OK) {
         								console.log("results :: " + JSON.stringify(results, 4, null));
-        								alert("city : " + results[0].address_components[2].short_name);
+        								/*alert("city : " + results[0].address_components[2].short_name);*/
         								
         								
         								if (results[1]) {
-        									//formatted address
-        									/* alert(results[0].formatted_address) */
-        									//find country name
         									for (var i = 0; i < results[0].address_components.length; i++) {
         										for (var b = 0; b < results[0].address_components[i].types.length; b++) {
 
         											//there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
-        											if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
+        											if (results[0].address_components[i].types[b] == "locality") {
         												//this is the object you are looking for
-        												console.log("address component at " + i + " " + JSON.stringify(results[0].address_components[i], 4, null));
         												city = results[0].address_components[i];
         												break;
         											}
         										}
         									}
-        									
+        									alert("City long name : " + city.long_name + " short name : " + city.short_name);
         									return city.long_name;
 
         								} else {
-        									/* alert("No results found"); */
+        									//TODO : here you need to select all cities as default
         								}
         							} else {
-        								/* alert("Geocoder failed due to: " + status); */
+        								//TODO : here you need to select all cities as default
         							}
         						});
         	}
@@ -97,12 +94,13 @@
     	};
     	loadGeolocationCity();
     	
-        load = function () {
+        loadRollingImages = function () {
         	$http.get(actionUrl).success(function (data) {
-        		$scope.persons = data;
+        		$scope.eventRollingImages = data;
+        		console.log("rollingImages :: " + JSON.stringify($scope.eventRollingImages, 4, null));
             });
         };
-        load();
+        loadRollingImages();
 
         $scope.delete = function (person) {
             $http.delete(actionUrl + person.id).success(function () {
