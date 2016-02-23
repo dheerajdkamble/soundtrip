@@ -27,8 +27,8 @@ public class EventDaoImpl implements EventDao, Serializable {
 	SessionFactory sessionFactory;
 
 	@Override
-	public void saveEvent(Event event) {
-		sessionFactory.getCurrentSession().merge(event);
+	public Event saveEvent(Event event) {
+		return (Event) sessionFactory.getCurrentSession().merge(event);
 	}
 
 	/*
@@ -36,6 +36,7 @@ public class EventDaoImpl implements EventDao, Serializable {
 	 * 
 	 * @see com.soundtrip.dao.EventDao#getAllPersons()
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Event> getAllEvents() {
 		return (List<Event>) sessionFactory.getCurrentSession().createCriteria(Event.class).list();
@@ -43,7 +44,6 @@ public class EventDaoImpl implements EventDao, Serializable {
 
 	@Override
 	public void deleteEvent(int id) {
-		System.out.println(">>>>>>>>>>>>>>>id" + id);
 		Event event = (Event) sessionFactory.getCurrentSession().get(Event.class, id);
 		if (event != null) {
 			sessionFactory.getCurrentSession().delete(event);

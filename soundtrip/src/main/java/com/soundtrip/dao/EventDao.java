@@ -6,7 +6,7 @@ import com.soundtrip.dto.Event;
 
 public interface EventDao {
 
-	void saveEvent(Event event);
+	Event saveEvent(Event event);
 
 	List<Event> getAllEvents();
 

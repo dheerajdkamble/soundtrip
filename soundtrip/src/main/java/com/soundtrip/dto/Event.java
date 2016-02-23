@@ -63,9 +63,10 @@ public class Event {
 	 * @param city
 	 * @param state
 	 * @param pinCode
+	 * @param image
 	 */
 	public Event(int id, String name, String description, String addressLine1, String addressLine2, String area,
-			String city, String state, String pinCode) {
+			String city, String state, String pinCode, String image) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
@@ -75,6 +76,7 @@ public class Event {
 		this.city = city;
 		this.state = state;
 		this.pinCode = pinCode;
+		this.image = image;
 	}
 
 	/**
@@ -239,4 +241,16 @@ public class Event {
 	public void setImage(String image) {
 		this.image = image;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Event [id=" + id + ", name=" + name + ", description=" + description + ", addressLine1=" + addressLine1
+				+ ", addressLine2=" + addressLine2 + ", area=" + area + ", city=" + city + ", state=" + state
+				+ ", pinCode=" + pinCode + ", genre=" + genre + ", image=" + image + ", image=" + image + "]";
+	}
+	
+	
 }

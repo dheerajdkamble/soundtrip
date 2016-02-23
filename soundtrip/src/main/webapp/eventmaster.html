@@ -82,7 +82,7 @@
 		<td>{{eventmaster.state}}</td>
 		<td>{{eventmaster.pinCode}}</td>
 		<td>{{eventmaster.genre}}</td>
-		<td>{{eventmasterimage}}</td>
+		<td><img ng-src="data:image/JPEG;base64,{{eventmaster.image}}" height="100px" width="100px" ></td>
 		<td><a ng-click="edit($index)"><i class="icon-edit"></i></a></td>
 		<td><a ng-click="delete(eventmaster)"><i class="icon-trash"></i></a></td>
 	</tr>

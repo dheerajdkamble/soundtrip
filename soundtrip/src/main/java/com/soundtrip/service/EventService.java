@@ -10,7 +10,7 @@ import com.soundtrip.dto.Event;
  */
 public interface EventService {
 
-	void addEvent(Event event);
+	Event saveEvent(Event event);
 
 	List<Event> getAllEvents();
 
