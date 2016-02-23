@@ -63,7 +63,6 @@
         						function(results, status) {
         							/*alert("status : " + status);*/
         							if (status == google.maps.GeocoderStatus.OK) {
-        								console.log("results :: " + JSON.stringify(results, 4, null));
         								/*alert("city : " + results[0].address_components[2].short_name);*/
         								
         								
@@ -79,7 +78,6 @@
         											}
         										}
         									}
-        									alert("City long name : " + city.long_name + " short name : " + city.short_name);
         									return city.long_name;
 
         								} else {
@@ -94,12 +92,13 @@
     	};
     	loadGeolocationCity();
     	
-        load = function () {
+        loadRollingImages = function () {
         	$http.get(actionUrl).success(function (data) {
-        		$scope.persons = data;
+        		$scope.eventRollingImages = data;
+        		console.log("rollingImages :: " + JSON.stringify($scope.eventRollingImages, 4, null));
             });
         };
-        load();
+        loadRollingImages();
 
         $scope.delete = function (person) {
             $http.delete(actionUrl + person.id).success(function () {
