@@ -31,6 +31,7 @@
 
     as.controller('EventHomeController', function ($scope, $http, i18n) {
     	var actionUrl = 'action/eventhome/';
+    	var actionUrlEventList = 'action/eventlisthome/';
     	
     	loadGeolocationCity = function() {
     		/* Geolocation code starts */
@@ -99,6 +100,14 @@
             });
         };
         loadRollingImages();
+        
+        loadAllEvents = function () {
+        	$http.get(actionUrlEventList).success(function (data) {
+        		$scope.allEventsListHome = data;
+        		console.log("allEvents :: " + JSON.stringify($scope.allEventsListHome, 4, null));
+            });
+        };
+        loadAllEvents();
 
         $scope.delete = function (person) {
             $http.delete(actionUrl + person.id).success(function () {
