@@ -174,6 +174,9 @@
 	    };
 	    
 	    $scope.save = function () {
+	    	if($scope.stepsModel[0] != null) {
+	    		$scope.neweventmaster['image'] =  $scope.stepsModel[0];
+	    	}
 	        $http.post(actionUrlEvents, $scope.neweventmaster).success(function () {
 	        	loadEvents();
 	        	$scope.neweventmaster = {};
