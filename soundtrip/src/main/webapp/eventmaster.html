@@ -21,7 +21,13 @@
 				</label></td>
 				<td><input type="text" ng-model="neweventmaster.area" /></td>
 				<td><label> <msg key="eventCity"></msg></label></td>
-				<td><input type="text" ng-model="neweventmaster.city" /></td>
+				<td><!-- <input type="text" ng-model="neweventmaster.city" /> -->
+					<div style="width: 50%; display: inline-block;">
+						<select name="citySelect" id="citySelect" ng-options="city as city.name for city in cityOptions" ng-model="cityOption" ng-change="citySelectedForEventMaster()">
+							<!-- <option ng-repeat="option in cityOptions">{{option.name}}</option> -->
+						</select>
+					</div>
+				</td>
 			</tr>
 			<tr>
 				<td><label> <msg key="eventState"></msg>
@@ -78,7 +84,7 @@
 		<td>{{eventmaster.addressLine1}}</td>
 		<td>{{eventmaster.addressLine2}}</td>
 		<td>{{eventmaster.area}}</td>
-		<td>{{eventmaster.city}}</td>
+		<td>{{eventmaster.city.name}}</td>
 		<td>{{eventmaster.state}}</td>
 		<td>{{eventmaster.pinCode}}</td>
 		<td>{{eventmaster.genre}}</td>

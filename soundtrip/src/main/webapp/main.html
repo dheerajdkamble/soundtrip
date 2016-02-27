@@ -3,32 +3,25 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"
+	media="screen">
 </head>
 
 <body ng-controller="MainController">
+<style>
+.navbar-header, .navbar-brand {
+	text-align: center;
+	float: none;
+	margin-top: 1%;
+}
+</style>
 
-	<div class="navbar navbar-fixed">
+	<!-- <div class="navbar navbar-fixed">
 		<div class="navbar-inner" style="text-align: center;">
 			<a class="brand" href="#" style="margin: 0 auto; float: inherit;">
 				<msg key="title"></msg>
 			</a>
-			<!-- <ul class="nav">
-            <li ng-class="activeWhen(path()=='/person')">
-                <a href="#/person">Personen</a>
-            </li>
-            <li ng-class="activeWhen(path()=='/admin')">
-                <a href="#/admin">Administration</a>
-            </li>
-        </ul> -->
-			<!-- <ul class="nav nav-pills pull-right">
-            <li ng-class="activeWhen(language()=='de')">
-                <a ng-click="setLanguage('de')">Deutsch</a>
-            </li>
-            <li ng-class="activeWhen(language()=='en')">
-                <a ng-click="setLanguage('en')">English</a>
-            </li>
-        </ul> -->
+			
 			<p class="navbar-text pull-right" style="margin-right: 5em"
 				ng-show="user.name">
 				<a ng-click="logout()">Logout</a>
@@ -37,25 +30,15 @@
 			<p class="navbar-text pull-right" style="margin-right: 5em"
 				ng-show="user.name">Welcome {{user.name}}</p>
 		</div>
-		<div style="margin-left: 6%;margin-right: 18%;">
-			<div style="width: 50%; display: inline-block;">
-				<select name="repeatSelect" id="repeatSelect" style="width: 100%;">
-					<option>All Cities</option>
-					<option ng-repeat="option in cityOptions">{{option.name}}</option>
-				</select>
-			</div>
-			<div style="width: 50%; display: inline-block; position: absolute;">
-				<div class="input-group" style="display: inline-flex; width: 100%;">
-					<input type="text" class="form-control" placeholder="Search for..."
-						style="width: 87%;"> <span class="input-group-btn">
-						<button class="btn btn-default" type="button"
-							style="width: 100%; margin-top: 0px;">Go!</button>
-					</span>
-				</div>
+	</div> -->
 
-			</div>
+	<nav class="navbar navbar-inverse" role="navigation"
+		style="border-radius: 0px;">
+
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Events</a>
 		</div>
-	</div>
+	</nav>
 
 	<div class="container">
 		<div ng-class="'alert alert-'+message().type" ng-show="message().show">
@@ -97,8 +80,7 @@
 	</div>
 
 
-	<script type="text/javascript"
-		src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="jquery/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="js/jquery.i18n.properties-min-1.0.9.js"></script>
 	<script type="text/javascript"
@@ -110,7 +92,8 @@
 	<script type="text/javascript" src="js/i18n.js"></script>
 	<script type="text/javascript" src="js/base64.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
+	<script type="text/javascript"
+		src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 </body>
 
 </html>

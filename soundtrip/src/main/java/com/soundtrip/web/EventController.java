@@ -28,8 +28,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.soundtrip.common.CommonConstants;
+import com.soundtrip.dto.City;
+import com.soundtrip.dto.Country;
 import com.soundtrip.dto.Event;
 import com.soundtrip.dto.ResponseMessage;
+import com.soundtrip.service.CityService;
+import com.soundtrip.service.CountryService;
 import com.soundtrip.service.EventService;
 
 @Controller
@@ -37,6 +41,12 @@ public class EventController {
 
 	@Inject
 	EventService eventService;
+	
+	@Inject
+	CountryService countryService;
+	
+	@Inject
+	CityService cityService;
 
 	Gson gson = new Gson();
 
@@ -50,7 +60,7 @@ public class EventController {
 			
 			ByteArrayOutputStream baos=new ByteArrayOutputStream(1000);
 			try {
-				BufferedImage img=ImageIO.read(new File(event.getImage()));
+				BufferedImage img=ImageIO.read(new File(CommonConstants.IMAGE_DIRECTORY_LOCAL_PATH.concat(event.getImage())));
 				ImageIO.write(img, "jpg", baos);
 				baos.flush();
 				
@@ -76,15 +86,15 @@ public class EventController {
 		eventToSave.setImage("");
 		eventToSave = eventService.saveEvent(eventToSave);
 		
-		StringBuffer stringBuffer = new StringBuffer(CommonConstants.IMAGE_DIRECTORY_LOCAL_PATH);
-		stringBuffer.append(eventToSave.getId());
-		stringBuffer.append("_");
-		stringBuffer.append(eventToSave.getName());
-		stringBuffer.append("_");
-		stringBuffer.append(eventToSave.getGenre());
-		stringBuffer.append("_");
-		stringBuffer.append(eventToSave.getCity());
-		stringBuffer.append(".jpg");
+//		StringBuffer imageName = new StringBuffer(CommonConstants.IMAGE_DIRECTORY_LOCAL_PATH);
+		StringBuffer imageName = new StringBuffer(eventToSave.getId());
+		imageName.append("_");
+		imageName.append(eventToSave.getName());
+		imageName.append("_");
+		imageName.append(eventToSave.getGenre());
+		imageName.append("_");
+		imageName.append(eventToSave.getCity());
+		imageName.append(".jpg");
 
 		String base64Image = data.split(",")[1];
 		byte[] imageBytes = javax.xml.bind.DatatypeConverter.parseBase64Binary(base64Image);
@@ -103,14 +113,14 @@ public class EventController {
 			BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
 			Graphics2D g2 = bufferedImage.createGraphics();
 	        g2.drawImage(image, null, null);
-	        File imageFile = new File(stringBuffer.toString());
+	        File imageFile = new File(CommonConstants.IMAGE_DIRECTORY_LOCAL_PATH.concat(imageName.toString()));
 	        ImageIO.write(bufferedImage, "jpg", imageFile);
 		} catch (IOException e1) {
 			e1.printStackTrace();
 			return new ResponseMessage(ResponseMessage.Type.error, "technicalProblem");
 		} 
 		
-		eventToSave.setImage(stringBuffer.toString());
+		eventToSave.setImage(imageName.toString());
 		eventService.saveEvent(eventToSave);
 		
 		return new ResponseMessage(ResponseMessage.Type.success, "eventAdded");
@@ -123,4 +133,11 @@ public class EventController {
 		eventService.deleteEvent(id);
 		return new ResponseMessage(ResponseMessage.Type.success, "eventDeleted");
 	}
+	
+	@RequestMapping(value = "/eventmaster/countries", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Country> getCountries() {
+		return countryService.getAllCountries();
+	}
+	
 }

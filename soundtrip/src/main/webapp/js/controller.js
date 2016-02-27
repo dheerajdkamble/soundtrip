@@ -2,6 +2,17 @@
     var as = angular.module('angularspring');
 
     as.controller('MainController', function ($scope, $rootScope, $http, i18n, $location) {
+    	$scope.selectedHomeCity;
+    	$scope.cityOptions = [];
+
+    	getCityOptions = function() {
+    		alert('calling getcityOptions');
+    		$http.get("action/getallcities").success(function (data) {
+        		$scope.cityOptions = data;
+        		console.log("Cities :: " + JSON.stringify($scope.cityOptions, 4, null));
+            });
+    	};
+    	getCityOptions();
     	
         $scope.language = function () {
             return i18n.language;
@@ -30,6 +41,7 @@
     });
 
     as.controller('EventHomeController', function ($scope, $http, i18n) {
+
     	var actionUrl = 'action/eventhome/';
     	var actionUrlEventList = 'action/eventlisthome/';
     	
@@ -108,7 +120,11 @@
             });
         };
         loadAllEvents();
-
+        
+    	$scope.citySelected = function() {
+    		console.log("inside city selected"+$scope.selectedHomeCity);
+    	}
+    	
         $scope.delete = function (person) {
             $http.delete(actionUrl + person.id).success(function () {
                 load();
@@ -137,8 +153,10 @@
         $http.get('action/user');
     });
     
-    as.controller('EventMasterController', function($scope, $http, i18n, $rootScope) {
+    as.controller('EventMasterController', function($scope, $http, i18n, $rootScope) {    	
+    
     	$scope.stepsModel = [];
+    	$scope.cityOption;
 
     	$scope.imageUpload = function(element){
     	    var reader = new FileReader();
@@ -154,8 +172,6 @@
     	}
     		
     	var actionUrlEvents = 'action/eventmaster/',
-    	
-    	
         loadEvents = function () {
             $http.get(actionUrlEvents).success(function (data) {
                 $scope.eventmasters = data;
@@ -176,6 +192,7 @@
 	    $scope.save = function () {
 	    	if($scope.stepsModel[0] != null) {
 	    		$scope.neweventmaster['image'] =  $scope.stepsModel[0];
+	    		console.log("Image :: " + JSON.stringify($scope.neweventmaster['image'], 4, null));
 	    	}
 	        $http.post(actionUrlEvents, $scope.neweventmaster).success(function () {
 	        	loadEvents();
@@ -183,6 +200,11 @@
 	        });
 	    };
 	
+	    $scope.citySelectedForEventMaster = function() {
+	    	console.log("rollingImages :: " + JSON.stringify($scope.cityOption, 4, null));
+	    	$scope.neweventmaster.city = $scope.cityOption;
+	    };
+	    
 	    $scope.order = '+name';
 	
 	    $scope.order = function (property) {

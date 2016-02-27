@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `countries` (
+CREATE TABLE IF NOT EXISTS `country` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sortname` varchar(3) NOT NULL,
   `name` varchar(150) NOT NULL,
@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `countries` (
 
 
 
-INSERT INTO `countries` (`id`, `sortname`, `name`) VALUES
+INSERT INTO `country` (`id`, `shortname`, `name`) VALUES
 (1, 'AF', 'Afghanistan'),
 (2, 'AL', 'Albania'),
 (3, 'DZ', 'Algeria'),

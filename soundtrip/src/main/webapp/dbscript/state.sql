@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `states` (
+CREATE TABLE IF NOT EXISTS `state` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `country_id` int(11) NOT NULL DEFAULT '1',
@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `states` (
 
 
 
-INSERT INTO `states` (`id`, `name`, `country_id`) VALUES
+INSERT INTO `state` (`id`, `name`, `country_id`) VALUES
 (1, 'Andaman and Nicobar Islands', 101),
 (2, 'Andhra Pradesh', 101),
 (3, 'Arunachal Pradesh', 101),
@@ -2189,7 +2189,7 @@ INSERT INTO `states` (`id`, `name`, `country_id`) VALUES
 (2179, 'Rivercess', 123),
 (2180, 'Sinoe', 123),
 (2181, 'Ajdabiya', 124);
-INSERT INTO `states` (`id`, `name`, `country_id`) VALUES
+INSERT INTO `state` (`id`, `name`, `country_id`) VALUES
 (2183, 'Banghazi', 124),
 (2184, 'Darnah', 124),
 (2185, 'Ghadamis', 124),

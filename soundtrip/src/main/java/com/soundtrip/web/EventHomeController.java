@@ -1,13 +1,8 @@
 package com.soundtrip.web;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.imageio.ImageIO;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
@@ -15,8 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.soundtrip.dto.City;
+import com.soundtrip.dto.CityDTO;
 import com.soundtrip.dto.Event;
 import com.soundtrip.dto.EventRollingImage;
+import com.soundtrip.service.CityService;
 import com.soundtrip.service.EventHomeService;
 import com.soundtrip.service.EventService;
 
@@ -27,6 +25,9 @@ public class EventHomeController {
 	EventHomeService eventHomeService;
 	@Inject
 	EventService eventService;
+	
+	@Inject
+	CityService cityService;
 	
 	@RequestMapping(value = "/eventhome", method = RequestMethod.GET)
 	@ResponseBody
@@ -63,5 +64,17 @@ public class EventHomeController {
 		}
 		
 		return eventsList;
+	}
+	
+	@RequestMapping(value = "/getallcities", method = RequestMethod.GET)
+	@ResponseBody
+	public List<CityDTO> getCities() {
+		System.out.println("Inside getCities::::::::::::::::");
+		List<City> cities = cityService.getCitiesForStateId(22);
+		List<CityDTO> cityDTOs = new ArrayList<CityDTO>();
+		for (City city : cities) {
+			cityDTOs.add(new CityDTO(city.getId(), city.getName()));
+		}
+		return cityDTOs;
 	}
 }

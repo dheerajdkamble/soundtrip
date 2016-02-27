@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,8 +32,9 @@ public class Event {
 	@Column
 	private String area;
 
-	@Column
-	private String city;
+	@OneToOne
+	@JoinColumn(name="city_id")
+	private City city;
 
 	@Column
 	private String state;
@@ -66,14 +69,13 @@ public class Event {
 	 * @param image
 	 */
 	public Event(int id, String name, String description, String addressLine1, String addressLine2, String area,
-			String city, String state, String pinCode, String image) {
+			String state, String pinCode, String image) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.addressLine1 = addressLine1;
 		this.addressLine2 = addressLine2;
 		this.area = area;
-		this.city = city;
 		this.state = state;
 		this.pinCode = pinCode;
 		this.image = image;
@@ -170,15 +172,14 @@ public class Event {
 	/**
 	 * @return the city
 	 */
-	public String getCity() {
+	public City getCity() {
 		return city;
 	}
 
 	/**
-	 * @param city
-	 *            the city to set
+	 * @param city the city to set
 	 */
-	public void setCity(String city) {
+	public void setCity(City city) {
 		this.city = city;
 	}
 
