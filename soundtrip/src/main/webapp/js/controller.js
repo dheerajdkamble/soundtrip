@@ -38,12 +38,17 @@
             $scope.$emit('event:logoutRequest');
             $location.url('/person');
         };
+        
+        $scope.citySelected = function() {
+    		console.log("inside city selected"+$scope.selectedHomeCity);
+    	}
     });
 
     as.controller('EventHomeController', function ($scope, $http, i18n) {
 
     	var actionUrl = 'action/eventhome/';
     	var actionUrlEventList = 'action/eventlisthome/';
+    	document.getElementById("homeHeader").style.display = 'block';
     	
     	loadGeolocationCity = function() {
     		/* Geolocation code starts */
@@ -121,9 +126,6 @@
         };
         loadAllEvents();
         
-    	$scope.citySelected = function() {
-    		console.log("inside city selected"+$scope.selectedHomeCity);
-    	}
     	
         $scope.delete = function (person) {
             $http.delete(actionUrl + person.id).success(function () {
@@ -157,6 +159,7 @@
     
     	$scope.stepsModel = [];
     	$scope.cityOption;
+    	document.getElementById("homeHeader").style.display = 'none';
 
     	$scope.imageUpload = function(element){
     	    var reader = new FileReader();

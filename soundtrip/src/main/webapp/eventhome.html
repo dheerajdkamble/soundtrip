@@ -1,5 +1,4 @@
 <style>
-
 .thumbnail {
 	display: inline-block;
 	width: 200px;
@@ -8,53 +7,111 @@
 .caption {
 	display: inline-block;
 	position: absolute;
+	margin-left: 1%;
 }
 
-.eventList, .carousel {
+.caption p {
+	width: 95%;
+}
+
+.carousel {
+	margin-left: 2%;
+	margin-right: 2%;
+	margin-top: 10%;
+}
+
+.eventList {
 	margin-left: 2%;
 	margin-right: 2%;
 	margin-top: 2%;
 }
 
-.carousel-control{
-	font-size: 40px!important;
-	color:#000000!important;
+.carousel-control {
+	font-size: 40px !important;
+	color: #000000 !important;
 }
 
-#rightArrow{
+#rightArrow {
 	padding-left: 55% !important;
-    padding-top: 300px !important;
-    position: absolute !important;
+	padding-top: 300px !important;
+	position: absolute !important;
 }
 
-#leftArrow{
+#leftArrow {
 	padding-right: 55% !important;
-    padding-top: 300px !important;
-    position: absolute !important;
-    left: -20px !important;
+	padding-top: 300px !important;
+	position: absolute !important;
+	left: -20px !important;
+}
+
+.homeHeader {
+	left: 0px;
+	width: 100%;
+	position: absolute;
+	background-color: gray;
+	z-index: 10;
+	margin-top: 5%;
+}
+
+/*following styles to make rolling images responsive  */
+@media ( max-width : 1021px) {
+	#rightArrow, #leftArrow {
+		padding-top: 280px !important;
+	}
+}
+
+@media ( max-width : 991px) {
+	.eventList, .carousel {
+		margin-top: 12%;
+	}
+	#rightArrow, #leftArrow {
+		padding-top: 200px !important;
+	}
+}
+
+@media ( max-width : 725px) {
+	.eventList, .carousel {
+		margin-top: 15%;
+	}
+}
+
+@media ( max-width : 580px) {
+	.eventList, .carousel {
+		margin-top: 18%;
+	}
+	#rightArrow, #leftArrow {
+		padding-top: 140px !important;
+	}
+}
+
+@media ( max-width : 495px) {
+	.eventList, .carousel {
+		margin-top: 21%;
+	}
+	#rightArrow, #leftArrow {
+		padding-top: 110px !important;
+	}
+}
+
+@media ( max-width : 430px) {
+	.eventList, .carousel {
+		margin-top: 25%;
+	}
+	#rightArrow, #leftArrow {
+		padding-top: 95px !important;
+	}
+}
+
+@media ( max-width : 370px) {
+	.eventList, .carousel {
+		margin-top: 28%;
+	}
+	#rightArrow, #leftArrow {
+		padding-top: 80px !important;
+	}
 }
 </style>
-<form>
-	<div style="margin-left: 6%; margin-right: 18%;">
-		<div style="width: 50%; display: inline-block;">
-			<select name="repeatSelect" id="repeatSelect" style="width: 100%;"
-				ng-model="selectedHomeCity" ng-change="citySelected()">
-				<option>All Cities</option>
-				<option ng-repeat="option in cityOptions">{{option.name}}</option>
-			</select>
-		</div>
-		<div style="width: 50%; display: inline-block; position: absolute;">
-			<div class="input-group" style="display: inline-flex; width: 100%;">
-				<input type="text" class="form-control" placeholder="Search for..."
-					style="width: 87%;"> <span class="input-group-btn">
-					<button class="btn btn-default" type="button"
-						style="width: 100%; margin-top: 0px;">Go!</button>
-				</span>
-			</div>
 
-		</div>
-	</div>
-</form>
 <div id="myCarousel" class="carousel slide">
 
 	<!-- Carousel indicators -->
@@ -80,29 +137,26 @@
 	</div>
 
 	<!-- Carousel nav -->
-	<a class="carousel-control left" href="#myCarousel" data-slide="prev"><span id="leftArrow">&lsaquo;</span></a>
-	<a class="carousel-control right" href="#myCarousel" data-slide="next"><span id="rightArrow">&rsaquo;</span></a>
+	<a class="carousel-control left" href="#myCarousel" data-slide="prev"><span id="leftArrow">&lsaquo;</span></a> <a
+		class="carousel-control right" href="#myCarousel" data-slide="next"><span id="rightArrow">&rsaquo;</span></a>
 
 </div>
-<br><br>
-<div
-	style="margin-left: 2%; margin-right: 2%; margin-top: 3%; border-bottom: 1px solid grey;">
+<br>
+<br>
+<div style="margin-left: 2%; margin-right: 2%; margin-top: 3%; border-bottom: 1px solid grey;">
 	<p>Upcoming Events</p>
 </div>
 
 <div class="eventList">
 	<div class="thumbnail">
-		<a href="#"> <img src="images/kittens.jpg"
-			alt="Generic placeholder thumbnail">
+		<a href="#"> <img src="images/kittens.jpg" alt="Generic placeholder thumbnail">
 		</a>
 	</div>
 	<div class="caption">
-		<h4 class="media-heading">{{eventsList.name}}</h4>
+		<h4 class="media-heading">Event Name {{eventsList.name}}</h4>
 
-		<p>This is some sample text. This is some sample text. This is
-			some sample text. This is some sample text. This is some sample text.
-			This is some sample text. This is some sample text. This is some
-			sample text.</p>
+		<p>This is some sample text. This is some sample text. This is some sample text. This is some sample text. This is
+			some sample text. This is some sample text. This is some sample text. This is some sample text.</p>
 	</div>
 </div>
 <!-- <div class="row">
@@ -123,7 +177,7 @@
 		</div>
 	</div> -->
 
-	<!-- <div style="margin-left: 4%; margin-right: 2%; margin-top: 3%;">
+<!-- <div style="margin-left: 4%; margin-right: 2%; margin-top: 3%;">
 		<div style="display: inline-block; width: 25%;">
 			<a href="#"> <img src="images/img_chania2.jpg"
 				alt="Generic placeholder thumbnail" style="width: 80%;">
@@ -241,5 +295,16 @@
 		$(window).bind("orientationchange", ScaleSlider);
 		//responsive code end
 	});
+
+	function searchActive(event) {
+		//alert("here:::"+event);
+		if (event == 'focus') {
+			document.getElementById("cityList").style.width = '0%';
+			document.getElementById("searchEvent").style.width = '95%';
+		} else if (event == 'blur') {
+			document.getElementById("cityList").style.width = '40%';
+			document.getElementById("searchEvent").style.width = '40%';
+		}
+	}
 </script>
 
