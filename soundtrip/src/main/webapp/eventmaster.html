@@ -37,6 +37,15 @@
 				<td><input type="text" ng-model="neweventmaster.pinCode" /></td>
 			</tr>
 			<tr>
+				<td><label> <msg key="eventDate"></msg>
+				</label></td>
+				<td>
+					<input type="datetime" /> 
+    			</td>
+				<td><label> <msg key="eventTime"></msg></label></td>
+				<td><input type="time"/></td>
+			</tr>			
+			<tr>
 				<td><label> <msg key="eventGenre"></msg>
 				</label></td>
 				<td><input type="text" ng-model="neweventmaster.genre" /></td>
@@ -88,8 +97,9 @@
 		<td>{{eventmaster.state}}</td>
 		<td>{{eventmaster.pinCode}}</td>
 		<td>{{eventmaster.genre}}</td>
-		<td><img ng-src="data:image/JPEG;base64,{{eventmaster.image}}" height="100px" width="100px" ></td>
-		<td><a ng-click="edit($index)"><i class="icon-edit"></i></a></td>
-		<td><a ng-click="delete(eventmaster)"><i class="icon-trash"></i></a></td>
+		<td><img
+				ng-src="http://localhost:8081/project/images/{{eventmaster.image}}" alt="Generic placeholder thumbnail" height="100px" width="100px"></td>
+		<td><a ng-click="edit($index)"><i class="glyphicon-edit"></i></a></td>
+		<td><a ng-click="delete(eventmaster)">d</a></td>
 	</tr>
 </table>
