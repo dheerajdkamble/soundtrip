@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.soundtrip.dto.City;
 import com.soundtrip.dto.CityDTO;
 import com.soundtrip.dto.Event;
+import com.soundtrip.dto.EventDTO;
 import com.soundtrip.dto.EventRollingImage;
 import com.soundtrip.service.CityService;
 import com.soundtrip.service.EventHomeService;
@@ -25,10 +26,10 @@ public class EventHomeController {
 	EventHomeService eventHomeService;
 	@Inject
 	EventService eventService;
-	
+
 	@Inject
 	CityService cityService;
-	
+
 	@RequestMapping(value = "/eventhome", method = RequestMethod.GET)
 	@ResponseBody
 	public List<EventRollingImage> getEventsRollingImages() {
@@ -36,40 +37,51 @@ public class EventHomeController {
 		eventsRollingImages = eventHomeService.getAllEventsRollingImages();
 		return eventsRollingImages;
 	}
-	
+
 	@RequestMapping(value = "/eventlisthome", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Event> getEvents() {
+	public List<EventDTO> getEvents() {
 		System.out.println("Inside getEvents");
 		List<Event> events = new ArrayList<Event>();
 		events = eventService.getAllEvents();
-		System.out.println("check the size:::"+events.size());
-		List<Event> eventsList = new ArrayList<Event>(events.size());
+
+		List<EventDTO> eventDTOs = new ArrayList<EventDTO>();
 		for (Event event : events) {
 			
-//			ByteArrayOutputStream baos=new ByteArrayOutputStream(1000);
-//			try {
-//				BufferedImage img=ImageIO.read(new File(event.getImage()));
-//				ImageIO.write(img, "jpg", baos);
-//				baos.flush();
-//				
-//				@SuppressWarnings("restriction")
-//				String base64String = com.sun.org.apache.xerces.internal.impl.dv.util.Base64.encode(baos.toByteArray());
-//				event.setImage(base64String);
-//				baos.close();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
+			System.out.println(">>>>>>>>>>>>>>>>>>>> Image ::::::::::::::::::::: " + event.getImage());
+			eventDTOs.add(new EventDTO(event.getId(), event.getName(), event.getDescription(), event.getAddressLine1(),
+					event.getAddressLine2(), event.getArea(),
+					new CityDTO(event.getCity().getId(), event.getCity().getName()), event.getState(),
+					event.getPinCode(), event.getGenre(), event.getImage()));
+		}
+
+		System.out.println("check the size:::" + events.size());
+		List<Event> eventsList = new ArrayList<Event>(events.size());
+		for (Event event : events) {
+
+			// ByteArrayOutputStream baos=new ByteArrayOutputStream(1000);
+			// try {
+			// BufferedImage img=ImageIO.read(new File(event.getImage()));
+			// ImageIO.write(img, "jpg", baos);
+			// baos.flush();
+			//
+			// @SuppressWarnings("restriction")
+			// String base64String =
+			// com.sun.org.apache.xerces.internal.impl.dv.util.Base64.encode(baos.toByteArray());
+			// event.setImage(base64String);
+			// baos.close();
+			// } catch (IOException e) {
+			// e.printStackTrace();
+			// }
 			eventsList.add(event);
 		}
-		
-		return eventsList;
+
+		return eventDTOs;
 	}
-	
+
 	@RequestMapping(value = "/getallcities", method = RequestMethod.GET)
 	@ResponseBody
 	public List<CityDTO> getCities() {
-		System.out.println("Inside getCities::::::::::::::::");
 		List<City> cities = cityService.getCitiesForStateId(22);
 		List<CityDTO> cityDTOs = new ArrayList<CityDTO>();
 		for (City city : cities) {
