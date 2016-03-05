@@ -68,11 +68,15 @@
 					</button></td>
 				<td></td>
 			</tr>
+			<tr>
+				<td>date</td>
+				<td><input  type="text" placeholder="click to show datepicker"  id="example1"></td>
+			</tr>
 		</table>
 	</div>
 </form>
 
-<table class="table table-striped">
+<table class="table table-stdriped">
 	<tr>
 		<th><msg key="eventName"></msg></th>
 		<th><msg key="eventDescription"></msg></th>
@@ -103,3 +107,13 @@
 		<td><a ng-click="delete(eventmaster)">d</a></td>
 	</tr>
 </table>
+<script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {
+                
+                $('#example1').datepicker({
+                    format: "dd/mm/yyyy"
+                });  
+            
+            });
+</script>
