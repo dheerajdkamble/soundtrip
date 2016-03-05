@@ -49,14 +49,31 @@
 	width: 100%;
 	position: absolute;
 	background-color: gray;
-	z-index: 10;
-	margin-top: 3%;
+	/* z-index: 10; */
+	margin-top: 3.3%;
 }
 
 /*following styles to make rolling images responsive  */
+@media ( max-width : 1400px) {
+	.homeHeader {
+		margin-top: 3.6%;
+	}
+}
 @media ( max-width : 1300px) {
 	.homeHeader {
 		margin-top: 4%;
+	}
+}
+
+@media ( max-width : 1200px) {
+	.homeHeader {
+		margin-top: 4.2%;
+	}
+}
+
+@media ( max-width : 1250px) {
+	.homeHeader {
+		margin-top: 5%;
 	}
 }
 
@@ -65,12 +82,12 @@
 		padding-top: 280px !important;
 	}
 	.homeHeader {
-		margin-top: 5%;
+		margin-top: 4.9%;
 	}
 }
 
 @media ( max-width : 991px) {
-	.eventList, .carousel {
+	.carousel {
 		margin-top: 12%;
 	}
 	#rightArrow, #leftArrow {
@@ -79,49 +96,52 @@
 }
 
 @media ( max-width : 725px) {
-	.eventList, .carousel {
+	.carousel {
 		margin-top: 15%;
 	}
 	.homeHeader {
-		margin-top: 6%;
+		margin-top: 6.9%;
 	}
 }
 
 @media ( max-width : 580px) {
-	.eventList, .carousel {
+	.carousel {
 		margin-top: 18%;
 	}
 	#rightArrow, #leftArrow {
 		padding-top: 140px !important;
 	}
 	.homeHeader {
-		margin-top: 8%;
+		margin-top: 8.7%;
 	}
 }
 
 @media ( max-width : 495px) {
-	.eventList, .carousel {
+	.carousel {
 		margin-top: 21%;
 	}
 	#rightArrow, #leftArrow {
 		padding-top: 110px !important;
 	}
+	.homeHeader {
+		margin-top: 10%;
+	}
 }
 
 @media ( max-width : 430px) {
-	.eventList, .carousel {
+	.carousel {
 		margin-top: 25%;
 	}
 	#rightArrow, #leftArrow {
 		padding-top: 95px !important;
 	}
 	.homeHeader {
-		margin-top: 11%;
+		margin-top: 11.7%;
 	}
 }
 
 @media ( max-width : 370px) {
-	.eventList, .carousel {
+	.carousel {
 		margin-top: 28%;
 	}
 	#rightArrow, #leftArrow {
@@ -131,7 +151,7 @@
 		margin-top: 13%;
 	}
 	.homeHeader {
-		margin-top: 13%;
+		margin-top: 13.5%;
 	}
 }
 </style>
@@ -326,10 +346,10 @@
 		//alert("here:::"+event);
 		if (event == 'focus') {
 			document.getElementById("cityList").style.width = '0%';
-			document.getElementById("searchEvent").style.width = '95%';
+			document.getElementById("searchEvent").style.width = '100%';
 		} else if (event == 'blur') {
-			document.getElementById("cityList").style.width = '40%';
-			document.getElementById("searchEvent").style.width = '40%';
+			document.getElementById("cityList").style.width = '48%';
+			document.getElementById("searchEvent").style.width = '50%';
 		}
 	}
 </script>
