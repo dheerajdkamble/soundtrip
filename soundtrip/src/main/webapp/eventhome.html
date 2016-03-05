@@ -50,13 +50,22 @@
 	position: absolute;
 	background-color: gray;
 	z-index: 10;
-	margin-top: 5%;
+	margin-top: 3%;
 }
 
 /*following styles to make rolling images responsive  */
+@media ( max-width : 1300px) {
+	.homeHeader {
+		margin-top: 4%;
+	}
+}
+
 @media ( max-width : 1021px) {
 	#rightArrow, #leftArrow {
 		padding-top: 280px !important;
+	}
+	.homeHeader {
+		margin-top: 5%;
 	}
 }
 
@@ -73,6 +82,9 @@
 	.eventList, .carousel {
 		margin-top: 15%;
 	}
+	.homeHeader {
+		margin-top: 6%;
+	}
 }
 
 @media ( max-width : 580px) {
@@ -81,6 +93,9 @@
 	}
 	#rightArrow, #leftArrow {
 		padding-top: 140px !important;
+	}
+	.homeHeader {
+		margin-top: 8%;
 	}
 }
 
@@ -100,6 +115,9 @@
 	#rightArrow, #leftArrow {
 		padding-top: 95px !important;
 	}
+	.homeHeader {
+		margin-top: 11%;
+	}
 }
 
 @media ( max-width : 370px) {
@@ -108,6 +126,9 @@
 	}
 	#rightArrow, #leftArrow {
 		padding-top: 80px !important;
+	}
+	.homeHeader {
+		margin-top: 13%;
 	}
 }
 </style>
