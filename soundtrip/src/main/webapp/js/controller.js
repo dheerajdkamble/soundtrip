@@ -160,6 +160,7 @@
     	$scope.stepsModel = [];
     	$scope.cityOption;
     	document.getElementById("homeHeader").style.display = 'none';
+       
 
     	$scope.imageUpload = function(element){
     	    var reader = new FileReader();
