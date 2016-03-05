@@ -69,7 +69,7 @@ public class Event {
 	 * @param image
 	 */
 	public Event(int id, String name, String description, String addressLine1, String addressLine2, String area,
-			String state, String pinCode, String image) {
+			City city, String state, String pinCode, String genre, String image) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
@@ -78,6 +78,35 @@ public class Event {
 		this.area = area;
 		this.state = state;
 		this.pinCode = pinCode;
+		this.genre = genre;
+		this.image = image;
+	}
+	
+	/**
+	 * Parameterized constructor
+	 * 
+	 * @param name
+	 * @param description
+	 * @param addressLine1
+	 * @param addressLine2
+	 * @param area
+	 * @param city
+	 * @param state
+	 * @param pinCode
+	 * @param genre
+	 * @param image
+	 */
+	public Event(String name, String description, String addressLine1, String addressLine2, String area,
+			City city, String state, String pinCode, String genre, String image) {
+		this.name = name;
+		this.description = description;
+		this.addressLine1 = addressLine1;
+		this.addressLine2 = addressLine2;
+		this.area = area;
+		this.city = city;
+		this.state = state;
+		this.pinCode = pinCode;
+		this.genre = genre;
 		this.image = image;
 	}
 

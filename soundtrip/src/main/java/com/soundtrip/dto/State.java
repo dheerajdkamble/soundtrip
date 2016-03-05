@@ -29,11 +29,7 @@ public class State {
     private String name;
 
     @ManyToOne(fetch=FetchType.LAZY, targetEntity=Country.class)
-    
     private Country country;
-    
-    @OneToMany(mappedBy="state", fetch=FetchType.LAZY)
-    private List<City> cities;
     
     public State() {
     }
@@ -69,23 +65,6 @@ public class State {
 	 */
 	public void setCountry(Country country) {
 		this.country = country;
-	}
-
-	/**
-	 * @return the cities
-	 */
-	public List<City> getCities() {
-		if(cities == null) {
-			cities = new ArrayList<City>();
-		}
-		return cities;
-	}
-
-	/**
-	 * @param cities the cities to set
-	 */
-	public void setCities(List<City> cities) {
-		this.cities = cities;
 	}
 
 	/* (non-Javadoc)

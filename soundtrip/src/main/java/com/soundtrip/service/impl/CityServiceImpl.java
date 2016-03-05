@@ -27,10 +27,16 @@ public class CityServiceImpl implements CityService {
 		return cityDao.getCitiesForStateId(id);
 	}
 
+	@Override
+	public City getCityForId(int id) {
+		return cityDao.getCityForId(id);
+	}
+	
 	/**
 	 * @param cityDao the cityDao to set
 	 */
 	public void setCityDao(CityDao cityDao) {
 		this.cityDao = cityDao;
-	}	
+	}
+
 }

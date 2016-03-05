@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.soundtrip.dto.City;
-import com.soundtrip.dto.Event;
 
 /**
  * @author Dheeraj Dao Implementaion class for Cities
@@ -43,6 +42,13 @@ public class CityDaoImpl implements CityDao, Serializable {
 			cr.add(Restrictions.eq("state.id", id));
 		}
 		return cr.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public City getCityForId(int id) {
+		City city = (City) sessionFactory.getCurrentSession().byId(City.class).load(id);
+		return city;
 	}
 
 }

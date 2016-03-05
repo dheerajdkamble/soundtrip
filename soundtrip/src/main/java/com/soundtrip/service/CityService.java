@@ -12,4 +12,5 @@ public interface CityService {
 
 	List<City> getCitiesForStateId(int id);
 
+	City getCityForId(int id);
 }

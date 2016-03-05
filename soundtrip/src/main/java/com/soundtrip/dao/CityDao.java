@@ -12,4 +12,6 @@ public interface CityDao {
 
 	List<City> getCitiesForStateId(int id);
 
+	City getCityForId(int id);
+
 }
