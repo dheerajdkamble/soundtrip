@@ -1,5 +1,11 @@
 package com.soundtrip.dto;
 
+import java.util.Date;
+
+/**
+ * @author Dheeraj
+ *
+ */
 public class EventDTO {
 
 	private int id;
@@ -24,11 +30,15 @@ public class EventDTO {
 	
 	private String image;
 	
+	private Date date;
+	
+	private String time;
+	
 	public EventDTO() {
 	}
 
 	public EventDTO(int id, String name, String description, String addressLine1, String addressLine2, String area,
-			CityDTO city, String state, String pinCode, String genre, String image) {
+			CityDTO city, String state, String pinCode, String genre, String image, Date date, String time) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -41,6 +51,8 @@ public class EventDTO {
 		this.pinCode = pinCode;
 		this.genre = genre;
 		this.image = image;
+		this.date = date;
+		this.time = time;
 	}
 
 	/**
@@ -189,6 +201,34 @@ public class EventDTO {
 	public int getId() {
 		return id;
 	}
+	
+	/**
+	 * @return the date
+	 */
+	public Date getDate() {
+		return date;
+	}
+
+	/**
+	 * @param date the date to set
+	 */
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
+	/**
+	 * @return the time
+	 */
+	public String getTime() {
+		return time;
+	}
+
+	/**
+	 * @param time the time to set
+	 */
+	public void setTime(String time) {
+		this.time = time;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -197,6 +237,7 @@ public class EventDTO {
 	public String toString() {
 		return "EventDTO [id=" + id + ", name=" + name + ", description=" + description + ", addressLine1="
 				+ addressLine1 + ", addressLine2=" + addressLine2 + ", area=" + area + ", city=" + city + ", state="
-				+ state + ", pinCode=" + pinCode + ", genre=" + genre + ", image=" + image + "]";
+				+ state + ", pinCode=" + pinCode + ", genre=" + genre + ", image=" + image + ", date=" + date
+				+ ", time=" + time + "]";
 	}
 }

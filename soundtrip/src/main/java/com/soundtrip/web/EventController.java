@@ -6,7 +6,11 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -26,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.soundtrip.common.CommonConstants;
 import com.soundtrip.dto.City;
 import com.soundtrip.dto.CityDTO;
@@ -56,13 +61,12 @@ public class EventController {
 	public List<EventDTO> getEvents() {
 		List<Event> events = new ArrayList<Event>();
 		events = eventService.getAllEvents();
-		System.out.println("Events size :::: " + events.size());
 		List<EventDTO> eventDTOs = new ArrayList<EventDTO>(events.size());
 		for (Event event : events) {
 
 			eventDTOs.add(new EventDTO(event.getId(), event.getName(), event.getDescription(), event.getAddressLine1(),
 					event.getAddressLine2(), event.getArea(), copyCity(event.getCity()), event.getState(),
-					event.getPinCode(), event.getGenre(), event.getImage()));
+					event.getPinCode(), event.getGenre(), event.getImage(), new Date(), null));
 
 			/*
 			 * ByteArrayOutputStream baos=new ByteArrayOutputStream(1000); try {
@@ -89,8 +93,15 @@ public class EventController {
 	@RequestMapping(value = "/eventmaster", method = RequestMethod.POST)
 	@ResponseBody
 	@Transactional(propagation = Propagation.REQUIRED)
-	public ResponseMessage addEvent(@RequestBody String eventJson) {
+	public ResponseMessage addEvent(@RequestBody String eventJson) throws ParseException {
+		gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm").create();
 		EventDTO eventToSave = gson.fromJson(eventJson, EventDTO.class);
+		System.out.println("Event Date :::::::::::: " + eventToSave.getDate());
+		DateFormat sdf = new SimpleDateFormat("hh:mm");
+		Date date1 = sdf.parse(eventToSave.getTime());
+		long onlyTime = date1.getTime();
+		eventToSave.setDate(new Date(eventToSave.getDate().getTime() + onlyTime));
+		
 		String data = eventToSave.getImage();
 		eventToSave.setImage("");
 
@@ -98,7 +109,7 @@ public class EventController {
 
 		Event event = new Event(eventToSave.getName(), eventToSave.getDescription(), eventToSave.getAddressLine1(),
 				eventToSave.getAddressLine2(), eventToSave.getArea(), city, eventToSave.getState(),
-				eventToSave.getPinCode(), eventToSave.getGenre(), eventToSave.getImage());
+				eventToSave.getPinCode(), eventToSave.getGenre(), eventToSave.getImage(), eventToSave.getDate());
 
 		event = eventService.saveEvent(event);
 

@@ -21,9 +21,12 @@
 				</label></td>
 				<td><input type="text" ng-model="neweventmaster.area" /></td>
 				<td><label> <msg key="eventCity"></msg></label></td>
-				<td><!-- <input type="text" ng-model="neweventmaster.city" /> -->
+				<td>
+					<!-- <input type="text" ng-model="neweventmaster.city" /> -->
 					<div style="width: 50%; display: inline-block;">
-						<select name="citySelect" id="citySelect" ng-options="city as city.name for city in cityOptions" ng-model="cityOption" ng-change="citySelectedForEventMaster()">
+						<select name="citySelect" id="citySelect"
+							ng-options="city as city.name for city in cityOptions"
+							ng-model="cityOption" ng-change="citySelectedForEventMaster()">
 							<!-- <option ng-repeat="option in cityOptions">{{option.name}}</option> -->
 						</select>
 					</div>
@@ -37,21 +40,59 @@
 				<td><input type="text" ng-model="neweventmaster.pinCode" /></td>
 			</tr>
 			<tr>
-				<td><label> <msg key="eventDate"></msg>
-				</label></td>
+				<td><label> <msg key="eventDate"></msg></label></td>
 				<td>
-					<input type="datetime" /> 
-    			</td>
+					<input id="selectEventDate" type="date" placeholder="click to show datepicker" ng-model="neweventmaster.datetime" />
+					
+					<!-- <div class="input-group date form_datetime col-md-5" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                    	<input class="form-control" size="16" type="text" value="" readonly> -->
+                    	<!-- <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span> -->
+                    <!-- </div> -->
+                    
+        				<!-- <script type="text/javascript">
+        					$('#selectEventDate').datepicker().on('changeDate', function(ev){
+        							$('#selectEventDate').datepicker('hide');
+          							var element = angular.element($('#selectEventDate'));
+          							var controller = element.controller();
+          							var scope = element.scope();
+          							scope.$apply(function(){
+            							scope.neweventmaster.date = ev.date;
+          						});
+        					});
+        				</script> -->
+        				<script type="text/javascript">
+    $('#selectEventDate').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 0,
+        showMeridian: 1
+    }).on('changeDate', function(ev){
+		$('#selectEventDate').datetimepicker('hide');
+			var element = angular.element($('#selectEventDate'));
+			var controller = element.controller();
+			var scope = element.scope();
+			scope.$apply(function(){
+			scope.neweventmaster.datetime = ev.date;
+			alert("new event master date time : " + scope.neweventmaster.datetime);
+		});
+	});
+</script>
+					</td>
 				<td><label> <msg key="eventTime"></msg></label></td>
-				<td><input type="time"/></td>
-			</tr>			
+				<td><input type="text" ng-model="neweventmaster.time"  /></td>
+			</tr>
 			<tr>
 				<td><label> <msg key="eventGenre"></msg>
 				</label></td>
 				<td><input type="text" ng-model="neweventmaster.genre" /></td>
 				<td><label> <msg key="eventImage"></msg></label></td>
 				<td>
-					<div ng-repeat="step in stepsModel" >
+					<div ng-repeat="step in stepsModel">
 						<img class="thumb" ng-src="{{step}}" width="100px" height="100px" />
 					</div> <input type='file' ng-model="neweventmaster.image"
 					onchange="angular.element(this).scope().imageUpload(this)" multiple />
@@ -67,10 +108,6 @@
 						<msg key="cancelButton"></msg>
 					</button></td>
 				<td></td>
-			</tr>
-			<tr>
-				<td>date</td>
-				<td><input  type="text" placeholder="click to show datepicker"  id="example1"></td>
 			</tr>
 		</table>
 	</div>
@@ -102,18 +139,9 @@
 		<td>{{eventmaster.pinCode}}</td>
 		<td>{{eventmaster.genre}}</td>
 		<td><img
-				ng-src="http://localhost:8081/project/images/{{eventmaster.image}}" alt="Generic placeholder thumbnail" height="100px" width="100px"></td>
+			ng-src="http://localhost:8081/project/images/{{eventmaster.image}}"
+			alt="Generic placeholder thumbnail" height="100px" width="100px"></td>
 		<td><a ng-click="edit($index)"><i class="glyphicon-edit"></i></a></td>
 		<td><a ng-click="delete(eventmaster)">d</a></td>
 	</tr>
 </table>
-<script type="text/javascript">
-            // When the document is ready
-            $(document).ready(function () {
-                
-                $('#example1').datepicker({
-                    format: "dd/mm/yyyy"
-                });  
-            
-            });
-</script>

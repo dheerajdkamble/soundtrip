@@ -1,5 +1,7 @@
 package com.soundtrip.dto;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -47,6 +49,9 @@ public class Event {
 
 	@Column
 	private String image;
+	
+	@Column
+	private Date date;
 
 	/**
 	 * Deparameterized constructor
@@ -95,9 +100,10 @@ public class Event {
 	 * @param pinCode
 	 * @param genre
 	 * @param image
+	 * @param date
 	 */
 	public Event(String name, String description, String addressLine1, String addressLine2, String area,
-			City city, String state, String pinCode, String genre, String image) {
+			City city, String state, String pinCode, String genre, String image, Date date) {
 		this.name = name;
 		this.description = description;
 		this.addressLine1 = addressLine1;
@@ -108,6 +114,7 @@ public class Event {
 		this.pinCode = pinCode;
 		this.genre = genre;
 		this.image = image;
+		this.date = date;
 	}
 
 	/**
@@ -270,6 +277,20 @@ public class Event {
 	 */
 	public void setImage(String image) {
 		this.image = image;
+	}
+	
+	/**
+	 * @return the date
+	 */
+	public Date getDate() {
+		return date;
+	}
+
+	/**
+	 * @param date the date to set
+	 */
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	/* (non-Javadoc)

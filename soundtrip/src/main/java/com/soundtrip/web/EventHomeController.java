@@ -1,6 +1,7 @@
 package com.soundtrip.web;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -41,21 +42,17 @@ public class EventHomeController {
 	@RequestMapping(value = "/eventlisthome", method = RequestMethod.GET)
 	@ResponseBody
 	public List<EventDTO> getEvents() {
-		System.out.println("Inside getEvents");
 		List<Event> events = new ArrayList<Event>();
 		events = eventService.getAllEvents();
 
 		List<EventDTO> eventDTOs = new ArrayList<EventDTO>();
 		for (Event event : events) {
-			
-			System.out.println(">>>>>>>>>>>>>>>>>>>> Image ::::::::::::::::::::: " + event.getImage());
 			eventDTOs.add(new EventDTO(event.getId(), event.getName(), event.getDescription(), event.getAddressLine1(),
 					event.getAddressLine2(), event.getArea(),
 					new CityDTO(event.getCity().getId(), event.getCity().getName()), event.getState(),
-					event.getPinCode(), event.getGenre(), event.getImage()));
+					event.getPinCode(), event.getGenre(), event.getImage(), new Date(), null));
 		}
 
-		System.out.println("check the size:::" + events.size());
 		List<Event> eventsList = new ArrayList<Event>(events.size());
 		for (Event event : events) {
 

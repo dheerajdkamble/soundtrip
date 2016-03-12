@@ -9,7 +9,6 @@
     		alert('calling getcityOptions');
     		$http.get("action/getallcities").success(function (data) {
         		$scope.cityOptions = data;
-        		console.log("Cities :: " + JSON.stringify($scope.cityOptions, 4, null));
             });
     	};
     	getCityOptions();
@@ -40,7 +39,7 @@
         };
         
         $scope.citySelected = function() {
-    		console.log("inside city selected"+$scope.selectedHomeCity);
+    		
     	}
     });
 
@@ -113,7 +112,6 @@
         loadRollingImages = function () {
         	$http.get(actionUrl).success(function (data) {
         		$scope.eventRollingImages = data;
-        		console.log("rollingImages :: " + JSON.stringify($scope.eventRollingImages, 4, null));
             });
         };
         loadRollingImages();
@@ -121,7 +119,6 @@
         loadAllEvents = function () {
         	$http.get(actionUrlEventList).success(function (data) {
         		$scope.allEventsListHome = data;
-        		console.log("allEvents :: " + JSON.stringify($scope.allEventsListHome, 4, null));
             });
         };
         loadAllEvents();
@@ -159,9 +156,13 @@
     
     	$scope.stepsModel = [];
     	$scope.cityOption;
+    	$scope.eventDate;
     	document.getElementById("homeHeader").style.display = 'none';
-       
 
+    	$scope.updateEventDate = function (date){
+//    		  $scope.eventDate = date;
+    	};
+    	
     	$scope.imageUpload = function(element){
     	    var reader = new FileReader();
     	    reader.onload = $scope.imageIsLoaded;
@@ -194,18 +195,18 @@
 	    };
 	    
 	    $scope.save = function () {
+	    	console.log("event date : " + $scope.neweventmaster.date);
 	    	if($scope.stepsModel[0] != null) {
 	    		$scope.neweventmaster['image'] =  $scope.stepsModel[0];
-	    		console.log("Image :: " + JSON.stringify($scope.neweventmaster['image'], 4, null));
 	    	}
 	        $http.post(actionUrlEvents, $scope.neweventmaster).success(function () {
 	        	loadEvents();
 	        	$scope.neweventmaster = {};
+	        	$scope.eventDate = '';
 	        });
 	    };
 	
 	    $scope.citySelectedForEventMaster = function() {
-	    	console.log("rollingImages :: " + JSON.stringify($scope.cityOption, 4, null));
 	    	$scope.neweventmaster.city = $scope.cityOption;
 	    };
 	    
