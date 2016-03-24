@@ -30,7 +30,7 @@ public class EventDTO {
 	
 	private String image;
 	
-	private Date date;
+	private String datetime;
 	
 	private String time;
 	
@@ -38,7 +38,7 @@ public class EventDTO {
 	}
 
 	public EventDTO(int id, String name, String description, String addressLine1, String addressLine2, String area,
-			CityDTO city, String state, String pinCode, String genre, String image, Date date, String time) {
+			CityDTO city, String state, String pinCode, String genre, String image, String datetime) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -51,8 +51,7 @@ public class EventDTO {
 		this.pinCode = pinCode;
 		this.genre = genre;
 		this.image = image;
-		this.date = date;
-		this.time = time;
+		this.datetime = datetime;
 	}
 
 	/**
@@ -203,20 +202,6 @@ public class EventDTO {
 	}
 	
 	/**
-	 * @return the date
-	 */
-	public Date getDate() {
-		return date;
-	}
-
-	/**
-	 * @param date the date to set
-	 */
-	public void setDate(Date date) {
-		this.date = date;
-	}
-	
-	/**
 	 * @return the time
 	 */
 	public String getTime() {
@@ -230,6 +215,20 @@ public class EventDTO {
 		this.time = time;
 	}
 
+	/**
+	 * @return the datetime
+	 */
+	public String getDatetime() {
+		return datetime;
+	}
+
+	/**
+	 * @param datetime the datetime to set
+	 */
+	public void setDatetime(String datetime) {
+		this.datetime = datetime;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -237,7 +236,6 @@ public class EventDTO {
 	public String toString() {
 		return "EventDTO [id=" + id + ", name=" + name + ", description=" + description + ", addressLine1="
 				+ addressLine1 + ", addressLine2=" + addressLine2 + ", area=" + area + ", city=" + city + ", state="
-				+ state + ", pinCode=" + pinCode + ", genre=" + genre + ", image=" + image + ", date=" + date
-				+ ", time=" + time + "]";
+				+ state + ", pinCode=" + pinCode + ", genre=" + genre + ", image=" + image + ", datetime=" + datetime + ", time=" + time + "]";
 	}
 }

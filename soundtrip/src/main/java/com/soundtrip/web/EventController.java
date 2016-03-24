@@ -45,6 +45,8 @@ import com.soundtrip.service.EventService;
 @Controller
 public class EventController {
 
+	private final DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
 	@Inject
 	EventService eventService;
 
@@ -62,12 +64,13 @@ public class EventController {
 		List<Event> events = new ArrayList<Event>();
 		events = eventService.getAllEvents();
 		List<EventDTO> eventDTOs = new ArrayList<EventDTO>(events.size());
-		for (Event event : events) {
 
+		for (Event event : events) {
+			System.out.println("Event date time ::::" + event.getDatetime());
 			eventDTOs.add(new EventDTO(event.getId(), event.getName(), event.getDescription(), event.getAddressLine1(),
 					event.getAddressLine2(), event.getArea(), copyCity(event.getCity()), event.getState(),
-					event.getPinCode(), event.getGenre(), event.getImage(), new Date(), null));
-
+					event.getPinCode(), event.getGenre(), event.getImage(), (event.getDatetime() == null
+							? formatter.format(new Date()) : formatter.format(event.getDatetime()))));
 			/*
 			 * ByteArrayOutputStream baos=new ByteArrayOutputStream(1000); try {
 			 * BufferedImage img=ImageIO.read(new
@@ -80,7 +83,6 @@ public class EventController {
 			 * } catch (IOException e) { e.printStackTrace(); }
 			 * eventsList.add(event);
 			 */
-
 		}
 
 		return eventDTOs;
@@ -94,14 +96,10 @@ public class EventController {
 	@ResponseBody
 	@Transactional(propagation = Propagation.REQUIRED)
 	public ResponseMessage addEvent(@RequestBody String eventJson) throws ParseException {
-		gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm").create();
+		System.out.println("Here... " + eventJson);
+		gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 		EventDTO eventToSave = gson.fromJson(eventJson, EventDTO.class);
-		System.out.println("Event Date :::::::::::: " + eventToSave.getDate());
-		DateFormat sdf = new SimpleDateFormat("hh:mm");
-		Date date1 = sdf.parse(eventToSave.getTime());
-		long onlyTime = date1.getTime();
-		eventToSave.setDate(new Date(eventToSave.getDate().getTime() + onlyTime));
-		
+
 		String data = eventToSave.getImage();
 		eventToSave.setImage("");
 
@@ -109,12 +107,11 @@ public class EventController {
 
 		Event event = new Event(eventToSave.getName(), eventToSave.getDescription(), eventToSave.getAddressLine1(),
 				eventToSave.getAddressLine2(), eventToSave.getArea(), city, eventToSave.getState(),
-				eventToSave.getPinCode(), eventToSave.getGenre(), eventToSave.getImage(), eventToSave.getDate());
+				eventToSave.getPinCode(), eventToSave.getGenre(), eventToSave.getImage(),
+				(Date) new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(eventToSave.getDatetime()));
 
 		event = eventService.saveEvent(event);
 
-		// StringBuffer imageName = new
-		// StringBuffer(CommonConstants.IMAGE_DIRECTORY_LOCAL_PATH);
 		StringBuffer imageName = new StringBuffer();
 		imageName.append(event.getId());
 		imageName.append("_");

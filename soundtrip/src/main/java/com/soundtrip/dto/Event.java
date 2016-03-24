@@ -51,7 +51,7 @@ public class Event {
 	private String image;
 	
 	@Column
-	private Date date;
+	private Date datetime;
 
 	/**
 	 * Deparameterized constructor
@@ -100,10 +100,10 @@ public class Event {
 	 * @param pinCode
 	 * @param genre
 	 * @param image
-	 * @param date
+	 * @param datetime
 	 */
 	public Event(String name, String description, String addressLine1, String addressLine2, String area,
-			City city, String state, String pinCode, String genre, String image, Date date) {
+			City city, String state, String pinCode, String genre, String image, Date datetime) {
 		this.name = name;
 		this.description = description;
 		this.addressLine1 = addressLine1;
@@ -114,7 +114,7 @@ public class Event {
 		this.pinCode = pinCode;
 		this.genre = genre;
 		this.image = image;
-		this.date = date;
+		this.datetime = datetime;
 	}
 
 	/**
@@ -278,19 +278,19 @@ public class Event {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
+
 	/**
-	 * @return the date
+	 * @return the datetime
 	 */
-	public Date getDate() {
-		return date;
+	public Date getDatetime() {
+		return datetime;
 	}
 
 	/**
-	 * @param date the date to set
+	 * @param datetime the datetime to set
 	 */
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDatetime(Date datetime) {
+		this.datetime = datetime;
 	}
 
 	/* (non-Javadoc)
@@ -300,8 +300,6 @@ public class Event {
 	public String toString() {
 		return "Event [id=" + id + ", name=" + name + ", description=" + description + ", addressLine1=" + addressLine1
 				+ ", addressLine2=" + addressLine2 + ", area=" + area + ", city=" + city + ", state=" + state
-				+ ", pinCode=" + pinCode + ", genre=" + genre + ", image=" + image + ", image=" + image + "]";
-	}
-	
-	
+				+ ", pinCode=" + pinCode + ", genre=" + genre + ", image=" + image + ", datetime=" + datetime + "]";
+	}	
 }

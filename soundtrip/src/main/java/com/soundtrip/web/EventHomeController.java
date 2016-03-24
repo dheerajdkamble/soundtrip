@@ -1,5 +1,7 @@
 package com.soundtrip.web;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +25,8 @@ import com.soundtrip.service.EventService;
 @Controller
 public class EventHomeController {
 
+	private final DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+	
 	@Inject
 	EventHomeService eventHomeService;
 	@Inject
@@ -50,26 +54,11 @@ public class EventHomeController {
 			eventDTOs.add(new EventDTO(event.getId(), event.getName(), event.getDescription(), event.getAddressLine1(),
 					event.getAddressLine2(), event.getArea(),
 					new CityDTO(event.getCity().getId(), event.getCity().getName()), event.getState(),
-					event.getPinCode(), event.getGenre(), event.getImage(), new Date(), null));
+					event.getPinCode(), event.getGenre(), event.getImage(), formatter.format(new Date())));
 		}
 
 		List<Event> eventsList = new ArrayList<Event>(events.size());
 		for (Event event : events) {
-
-			// ByteArrayOutputStream baos=new ByteArrayOutputStream(1000);
-			// try {
-			// BufferedImage img=ImageIO.read(new File(event.getImage()));
-			// ImageIO.write(img, "jpg", baos);
-			// baos.flush();
-			//
-			// @SuppressWarnings("restriction")
-			// String base64String =
-			// com.sun.org.apache.xerces.internal.impl.dv.util.Base64.encode(baos.toByteArray());
-			// event.setImage(base64String);
-			// baos.close();
-			// } catch (IOException e) {
-			// e.printStackTrace();
-			// }
 			eventsList.add(event);
 		}
 

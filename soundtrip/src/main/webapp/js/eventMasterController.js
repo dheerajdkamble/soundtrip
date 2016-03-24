@@ -2,15 +2,23 @@
 	var as = angular.module('angularspring');
 
 	as.controller('EventMasterController', function($scope, $http, i18n, $rootScope) {    	
-    	//alert("in EventMasterController");
+	    
     	$scope.stepsModel = [];
     	$scope.cityOption;
+    	$scope.genreOption;
+    	$scope.genreOptions = [];
     	$scope.eventDate;
+    	$scope.datetimepickerval='';
     	document.getElementById("homeHeader").style.display = 'none';
 
     	$scope.updateEventDate = function (date){
-// $scope.eventDate = date;
+    		// $scope.eventDate = date;
     	};
+    	
+    	getGenreOptions = function() {
+       		$scope.genreOptions = $scope.$parent.genrelist;
+    	};
+    	getGenreOptions();
     	
     	$scope.imageUpload = function(element){
     	    var reader = new FileReader();
@@ -27,7 +35,6 @@
     		
     	var actionUrlEvents = 'action/eventmaster/',
         loadEvents = function () {
-    		alert("hi")
             $http.get(actionUrlEvents).success(function (data) {
                 $scope.eventmasters = data;
             });
@@ -45,19 +52,26 @@
 	    };
 	    
 	    $scope.save = function () {
-	    	console.log("event date : " + $scope.neweventmaster.date);
 	    	if($scope.stepsModel[0] != null) {
 	    		$scope.neweventmaster['image'] =  $scope.stepsModel[0];
 	    	}
+	    	$scope.neweventmaster.datetime = +$scope.datetimepickerval.getFullYear()+"-"+($scope.datetimepickerval.getMonth()+1)+"-"+$scope.datetimepickerval.getDate()+" "+$scope.datetimepickerval.getHours()+":"+$scope.datetimepickerval.getMinutes()+":"+$scope.datetimepickerval.getSeconds();
 	        $http.post(actionUrlEvents, $scope.neweventmaster).success(function () {
 	        	loadEvents();
 	        	$scope.neweventmaster = {};
 	        	$scope.eventDate = '';
+	        	$scope.cityOption = '';
+	        	$scope.genreOption = '';
+	        	$scope.stepsModel = [];
 	        });
 	    };
 	
 	    $scope.citySelectedForEventMaster = function() {
 	    	$scope.neweventmaster.city = $scope.cityOption;
+	    };
+	    
+	    $scope.genreSelectedForEventMaster = function() {
+	    	$scope.neweventmaster.genre = $scope.genreOption;
 	    };
 	    
 	    $scope.order = '+name';
@@ -69,5 +83,6 @@
 	    $scope.orderIcon = function (property) {
 	        return property === $scope.order.substring(1) ? $scope.order[0] === '+' ? 'icon-chevron-up' : 'icon-chevron-down' : '';
 	    };
+	    
     });
 }());
