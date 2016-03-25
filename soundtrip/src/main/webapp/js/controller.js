@@ -48,6 +48,10 @@
         $scope.citySelected = function() {
         	$rootScope.$broadcast('eventListFiltered');
     	};
+    	
+    	$scope.searchClicked = function() {
+        	$rootScope.$broadcast('eventListSearch');
+    	};
     });
 
     as.controller('AdminController', function ($scope, $http) {

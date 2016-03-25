@@ -135,6 +135,45 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         	}
         });
         
-       
+        $scope.$on('eventListSearch', function() {
+        	var stringToSearch = $scope.$parent.selectedGenre.toLowerCase();
+        	$scope.allEventsListHome = [];
+        	var searchStrings = stringToSearch.split(" ");
+        	var indexArr = [];
+        	for (var index in $scope.allEventsListHomeBackup) {
+        		for(var indexVar in searchStrings) {
+        		   if(stringMatching($scope.allEventsListHomeBackup[index], searchStrings[indexVar])) {
+        			   if(indexArr.indexOf(index) > -1) {
+        				   break;
+        			   }
+        			   indexArr.push(index);
+        		   }
+        		}
+        	}
+        	
+        	for(var indx in indexArr) {
+        		$scope.allEventsListHome.push($scope.allEventsListHomeBackup[indexArr[indx]]);
+        	}
+        	
+        	if($scope.allEventsListHome.length === 0) {
+        		$scope.allEventsListHome = $scope.allEventsListHomeBackup;
+        	}
+        });
+        
+        function stringMatching(obj, val) {
+        	var found = false;
+            for (var i in obj) {
+                if (!obj.hasOwnProperty(i)) continue;
+                var property = obj[i];
+                if (typeof property == 'object') {
+                	if(stringMatching(obj[i], val)) {
+                		return true;
+                	}
+                } else if ((property.toString()).toLowerCase().indexOf(val) > -1) {
+                    return true;
+                }
+            }
+            return found;
+        }
     });
 }());
