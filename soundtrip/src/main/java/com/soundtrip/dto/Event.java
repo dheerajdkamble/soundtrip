@@ -8,11 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Event")
+@NamedQueries(value={
+		@NamedQuery(name="allEventsSortedByEventDate", query="from Event order by datetime desc")
+})
 public class Event {
 
 	@Id

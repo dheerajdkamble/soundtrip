@@ -40,7 +40,7 @@ public class EventDaoImpl implements EventDao, Serializable {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Event> getAllEvents() {
-		return (List<Event>) sessionFactory.getCurrentSession().createCriteria(Event.class).list();
+		return (List<Event>) sessionFactory.getCurrentSession().getNamedQuery("allEventsSortedByEventDate").list();
 	}
 
 	@Override
