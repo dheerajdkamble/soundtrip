@@ -174,6 +174,31 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
                 }
             }
             return found;
-        }
+        };
+        
+        $scope.$on('searchEventOnSelectedGenre', function() {
+        	
+        	console.log("selected city:::"+$scope.$parent.selectedHomeCity+"::and selected genre:::"+$scope.$parent.selectedGenre);
+        	
+        	if ($scope.$parent.selectedHomeCity == undefined && $scope.$parent.selectedGenre != undefined) {
+        		$scope.allEventsListHome = [];
+        		for (var i = 0; i < $scope.allEventsListHomeBackup.length; i++) {
+        			if ($scope.allEventsListHomeBackup[i].genre == $scope.$parent.selectedGenre) {
+        				$scope.allEventsListHome.push($scope.allEventsListHomeBackup[i]);
+        			}
+        		}
+        	}else if ($scope.$parent.selectedHomeCity != undefined && $scope.$parent.selectedGenre != undefined) {
+        		$scope.allEventsListHome = [];
+        		for (var i = 0; i < $scope.allEventsListHomeBackup.length; i++) {
+        			if ($scope.allEventsListHomeBackup[i].genre == $scope.$parent.selectedGenre && $scope.allEventsListHomeBackup[i].city.name == $scope.$parent.selectedHomeCity) {
+        				$scope.allEventsListHome.push($scope.allEventsListHomeBackup[i]);
+        			}
+        		}
+        	}
+        	if($scope.allEventsListHome.length === 0){
+        		$scope.allEventsListHome = $scope.allEventsListHomeBackup;
+        	}
+        	
+        });
     });
 }());

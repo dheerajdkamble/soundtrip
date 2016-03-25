@@ -204,7 +204,7 @@
 <div class="eventList" ng-repeat="eventsList in allEventsListHome">
 	<div class="thumbnail">
 		<a href="#"> <img
-				ng-src="http://localhost:8081/project/images/{{eventsList.image}}" alt="Generic placeholder thumbnail" style="width: 80%;">
+				ng-src="http://localhost:8080/project/images/{{eventsList.image}}" alt="Generic placeholder thumbnail" style="width: 80%;">
 		</a>
 	</div>
 	<div class="caption">
@@ -352,17 +352,26 @@
 		//responsive code end
 	});
 
-	function searchActive(event) {
+	function searchActive(){
+		var scope = angular.element(document.getElementById("searchEventDiv")).scope();
+	    scope.$apply(function () {
+	    scope.searchActive();
+	    });
+	}
+	
+	/* function searchActive(event) {
 		//alert("here:::"+event);
 		if (event == 'focus') {
+			document.getElementById("genreList").style.display = 'block';
 			document.getElementById("cityList").style.width = '0%';
 			document.getElementById("searchEvent").style.width = '100%';
 			document.getElementById("init-group").style.width = '93%';
 		} else if (event == 'blur') {
+			//document.getElementById("genreList").style.display = 'none';
 			document.getElementById("cityList").style.width = '48%';
 			document.getElementById("searchEvent").style.width = '50%';
 			document.getElementById("init-group").style.width = '90%';
 		}
-	}
+	} */
 </script>
 

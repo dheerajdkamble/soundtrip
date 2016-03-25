@@ -17,6 +17,7 @@
     	$routeProvider.when('/eventhome', { controller: 'EventHomeController', templateUrl: 'eventhome.html'}).
     	when('/eventmaster', { controller: 'EventMasterController', templateUrl: 'eventmaster.html'}).
         when('/admin', { controller: 'AdminController', templateUrl: 'admin/admin.html'}).
+        when('/eventdetails', { controller: 'EventDetailsController', templateUrl: 'eventdetails.html'}).
         otherwise({redirectTo: '/eventhome'});
 
         //configure $http to catch message responses and show them

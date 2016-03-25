@@ -21,15 +21,19 @@
     	getGenreOptions();
     	
     	$scope.imageUpload = function(element){
+    		console.log('inside image uploader');
     	    var reader = new FileReader();
     	    reader.onload = $scope.imageIsLoaded;
     	    reader.readAsDataURL(element.files[0]);
     	}
 
     	$scope.imageIsLoaded = function(e){
+    		console.log('inside imageIsLoaded');
     	    $scope.$apply(function() {
+    	    	console.log('inside apply');
     	    	$scope.stepsModel = [];
     	        $scope.stepsModel.push(e.target.result);
+    	        console.log('stepsModel' + $scope.stepsModel);
     	    });
     	}
     		
@@ -56,6 +60,7 @@
 	    		$scope.neweventmaster['image'] =  $scope.stepsModel[0];
 	    	}
 	    	$scope.neweventmaster.datetime = +$scope.datetimepickerval.getFullYear()+"-"+($scope.datetimepickerval.getMonth()+1)+"-"+$scope.datetimepickerval.getDate()+" "+$scope.datetimepickerval.getHours()+":"+$scope.datetimepickerval.getMinutes()+":"+$scope.datetimepickerval.getSeconds();
+	    	console.log('before saving new event master' + $scope.neweventmaster);
 	        $http.post(actionUrlEvents, $scope.neweventmaster).success(function () {
 	        	loadEvents();
 	        	$scope.neweventmaster = {};

@@ -70,7 +70,7 @@
 					<!-- <input type="text" ng-model="neweventmaster.city" /> -->
 					<div style="width: 50%; display: inline-block;">
 						<select name="genreSelect" id="genreSelect" ng-model="genreOption" ng-change="genreSelectedForEventMaster()">
-							<option ng-repeat="option in genreOptions">{{option}}</option>
+							<option ng-repeat="option in genreOptions">{{option.name}}</option>
 						</select>
 					</div>
 				</td>
@@ -127,7 +127,7 @@
 		<td>{{eventmaster.pinCode}}</td>
 		<td>{{eventmaster.genre}}</td>
 		<td><img
-			ng-src="http://localhost:8081/project/images/{{eventmaster.image}}"
+			ng-src="http://localhost:8080/project/images/{{eventmaster.image}}"
 			alt="Generic placeholder thumbnail" height="100px" width="100px"></td>
 		<td>{{eventmaster.datetime | date:'MM/dd/yyyy HH:mm:ss'}}</td>
 		<td><a ng-click="edit($index)"><i class="glyphicon-edit"></i></a></td>
