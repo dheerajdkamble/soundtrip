@@ -3,13 +3,10 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"
-	media="screen">
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <!-- <link href="bootstrap/css/datepicker.css" rel="stylesheet" media="screen"> -->
-<link href="bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet"
-	media="screen">
-<link href="bootstrap/css/awesomplete.css" rel="stylesheet"
-	media="screen">
+<link href="bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet" media="screen">
+<link href="bootstrap/css/awesomplete.css" rel="stylesheet" media="screen">
 </head>
 
 <body ng-controller="MainController">
@@ -44,7 +41,7 @@ div.awesomplete {
 	display: inline-table;
 }
 
-.input-group .form-control, .input-group-addon, .input-group-btn{
+.input-group .form-control, .input-group-addon, .input-group-btn {
 	display: inline-block;
 }
 </style>
@@ -65,8 +62,7 @@ div.awesomplete {
 		</div>
 	</div> -->
 	<div>
-		<nav class="navbar navbar-inverse" role="navigation"
-			style="border-radius: 0px;">
+		<nav class="navbar navbar-inverse" role="navigation" style="border-radius: 0px;">
 
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">Events</a>
@@ -74,35 +70,35 @@ div.awesomplete {
 		</nav>
 		<form>
 			<div class="homeHeader" id="homeHeader">
-				<div style="width: 48%; display: inline-block; margin-left: 4%;"
-					id="cityList">
-					<select name="repeatSelect" id="repeatSelect"
-						style="width: 100%; height: 33px;" ng-model="selectedHomeCity"
+				<div style="width: 48%; display: inline-block; margin-left: 4%;" id="cityList">
+					<select name="repeatSelect" id="repeatSelect" style="width: 100%; height: 33px;" ng-model="selectedHomeCity"
 						ng-change="citySelected()">
 						<option>All Cities</option>
 						<option ng-repeat="option in cityOptions">{{option.name}}</option>
 					</select>
 				</div>
-				<div
-					style="width: 50%; display: inline-block; position: absolute; margin-top: -1px;"
-					id="searchEvent">
+				<div style="width: 50%; display: inline-block; position: absolute; margin-top: -1px;" id="searchEvent">
 					<div class="input-group" style="display: inline-flex; width: 90%;" id="init-group">
 						<!-- <input type="text" class="form-control" placeholder="Search for..." style="width: 87%;"
 							onfocus="searchActive('focus')" onblur="searchActive('blur')">  -->
 						<!-- <input	id="myinput" ng-model="selectedGenre" ng-change="getSelectedGenre()"
 							class="dropdown-input" placeholder="Search for..."
 							style="width: 100%; height: 34px" onfocus="searchActive('focus')" onblur="searchActive('blur')" />  -->
-						<div style="width: 100%; z-index: 100;" id="searchEventDiv">
+						<div style="width: 100%; z-index: 10;" id="searchEventDiv">
 							<div style="width: 100%;">
-								<input type="text" class="form-control" ng-model="selectedGenre" ng-change="getSelectedGenre()" placeholder="Search for..." id="genreInput"
-									style="width: 87%;" class="dropdown-input" onfocus="searchActive()" /><span
-									class="input-group-btn">
+								<input type="text" class="form-control" ng-model="selectedGenre" ng-change="getSelectedGenre()"
+									placeholder="Search for..." id="genreInput"
+									style="width: 92%; border-radius: 0px; height: 33px; margin-top: 1px;" class="dropdown-input"
+									onfocus="searchActive()" /> <span class="input-group-btn" style="margin-left: 1px;">
 									<button class="btn btn-default" type="button" style="margin-top: 0px;" ng-click="searchClicked()">Go!</button>
+								</span> <span class="input-group-btn" style="margin-left: 45px;">
+									<button class="btn btn-default" type="button" style="margin-top: 0px; border-radius: 4px; display: none;"
+										id="hideSearchBtn" onclick="hideSearchEvent()">X</button>
 								</span>
 							</div>
 							<div style="width: 100%;">
-								<ul id="genreList" 
-									style="list-style: none; background-color: #FFFFFF; width: 87%; margin-top: 0px; display: none; border: 1px solid red;padding-left: 15px;">
+								<ul id="genreList"
+									style="list-style: none; background-color: #FFFFFF; width: 92%; margin-top: 0px; display: none; border: 1px solid red; padding-left: 15px;">
 									<li ng-repeat="genre in genrelist" ng-click="genreListClick(genre.name)" style="cursor: pointer;">{{genre.name}}</li>
 								</ul>
 							</div>
@@ -129,8 +125,7 @@ div.awesomplete {
 				<h3>Login</h3>
 			</div>
 			<div class="modal-body">
-				<label>See applicationContext.xml for valid
-					username/password.</label>
+				<label>See applicationContext.xml for valid username/password.</label>
 				<div class="control-group">
 					<label class="control-label" for="username">Username</label>
 
@@ -147,8 +142,7 @@ div.awesomplete {
 				</div>
 			</div>
 			<div class="modal-footer">
-				<a ng-click="login()" class="btn btn-primary">Login</a> <a
-					data-dismiss="modal" class="btn">Cancel</a>
+				<a ng-click="login()" class="btn btn-primary">Login</a> <a data-dismiss="modal" class="btn">Cancel</a>
 			</div>
 		</div>
 
@@ -161,15 +155,11 @@ div.awesomplete {
 		</div>
 	</nav>
 
-	<script type="text/javascript"
-		src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 	<script src="jquery/jquery.min.js"></script>
-	<script type="text/javascript"
-		src="js/jquery.i18n.properties-min-1.0.9.js"></script>
-	<script type="text/javascript"
-		src="js/external/angular-1.0.2/angular.js"></script>
-	<script type="text/javascript"
-		src="js/external/angular-1.0.2/angular-route.js"></script>
+	<script type="text/javascript" src="js/jquery.i18n.properties-min-1.0.9.js"></script>
+	<script type="text/javascript" src="js/external/angular-1.0.2/angular.js"></script>
+	<script type="text/javascript" src="js/external/angular-1.0.2/angular-route.js"></script>
 	<script type="text/javascript" src="js/init.js"></script>
 	<script type="text/javascript" src="js/controller.js"></script>
 	<script type="text/javascript" src="js/eventHomeController.js"></script>
@@ -179,15 +169,15 @@ div.awesomplete {
 	<script type="text/javascript" src="js/base64.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 	<!-- <script type="text/javascript" src="js/external/bootstrap-datepicker.js"></script> -->
-	<script type="text/javascript"
-		src="js/external/bootstrap-datetimepicker.js"></script>
-	
+	<script type="text/javascript" src="js/external/bootstrap-datetimepicker.js"></script>
+
 	<script type="text/javascript" src="js/external/awesomplete.js"></script>
 	<script>
 		var comboplete = new Awesomplete(Awesomplete.$('input.dropdown-input'),
 				{
 					minChars : 0,
-					list: ["Pop","Jazz","Blues","Classic Rock","Indian Classical"],
+					list : [ "Pop", "Jazz", "Blues", "Classic Rock",
+							"Indian Classical" ],
 				});
 		Awesomplete.$('.dropdown-input').addEventListener("focus", function() {
 			if (comboplete.ul.childNodes.length === 0) {
@@ -199,12 +189,12 @@ div.awesomplete {
 				comboplete.close();
 			}
 		});
-		
+
 		$("#genreUl li").click(function() {
-		   // alert(this.id); // id of clicked li by directly accessing DOMElement property
-		    //alert($(this).attr('id')); // jQuery's .attr() method, same but more verbose
-		    //alert($(this).html()); // gets innerHTML of clicked li
-		    alert($(this).text()); // gets text contents of clicked li
+			// alert(this.id); // id of clicked li by directly accessing DOMElement property
+			//alert($(this).attr('id')); // jQuery's .attr() method, same but more verbose
+			//alert($(this).html()); // gets innerHTML of clicked li
+			alert($(this).text()); // gets text contents of clicked li
 		});
 	</script>
 </body>

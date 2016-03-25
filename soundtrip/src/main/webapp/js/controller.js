@@ -2,7 +2,7 @@
     var as = angular.module('angularspring');
 
     as.controller('MainController', function ($scope, $rootScope, $http, i18n, $location) {
-    	$scope.selectedHomeCity;
+    	$scope.selectedHomeCity = "All Cities";
     	$scope.selectedHomeCityId;
     	$scope.cityOptions = [{"id":"1","name":"Mumbai"},{"id":"2","name":"Pune"}];
     	$scope.genrelistBackup = [{"name":"Pop"},{"name":"Jazz"},{"name":"Blues"},{"name":"Classic Rock"},{"name":"Indian Classical"}];
@@ -22,10 +22,11 @@
     	$scope.searchActive = function(){
     		console.log("on focus work");
     		document.getElementById("genreList").style.display = 'block';
+    		document.getElementById("hideSearchBtn").style.display = 'block';
 			document.getElementById("cityList").style.width = '0%';
 			document.getElementById("searchEvent").style.width = '100%';
 			document.getElementById("init-group").style.width = '93%';
-    		
+			document.getElementById("genreInput").style.width = '92%';    		
     	}
     	
     	
@@ -83,4 +84,5 @@
     as.controller('AdminController', function ($scope, $http) {
         $http.get('action/user');
     });
+    
 }());
