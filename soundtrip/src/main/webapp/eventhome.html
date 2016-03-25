@@ -2,6 +2,15 @@
 .thumbnail {
 	display: inline-block;
 	width: 200px;
+	position:relative;
+}
+
+#imgText {
+	margin-left: 25px;
+    margin-top: -20px;
+    position: absolute;
+    z-index: 100;
+    color:white;
 }
 
 .caption {
@@ -226,9 +235,9 @@
 
 <div class="eventList" ng-repeat="eventsList in allEventsListHome">
 	<div class="thumbnail">
-		<a href="#"> <img ng-src="http://localhost:8080/project/images/{{eventsList.image}}"
+		<img ng-src="http://localhost:8081/project/images/{{eventsList.image}}"
 			alt="Generic placeholder thumbnail" style="width: 80%;">
-		</a>
+		<p id="imgText" ng-bind="eventsList.datetime"></p>
 	</div>
 	<div class="caption">
 		<h4 class="media-heading">{{eventsList.name}}</h4>

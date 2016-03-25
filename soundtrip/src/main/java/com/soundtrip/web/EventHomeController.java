@@ -25,7 +25,7 @@ import com.soundtrip.service.EventService;
 @Controller
 public class EventHomeController {
 
-	private final DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+	private final DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
 	
 	@Inject
 	EventHomeService eventHomeService;
@@ -54,7 +54,7 @@ public class EventHomeController {
 			eventDTOs.add(new EventDTO(event.getId(), event.getName(), event.getDescription(), event.getAddressLine1(),
 					event.getAddressLine2(), event.getArea(),
 					new CityDTO(event.getCity().getId(), event.getCity().getName()), event.getState(),
-					event.getPinCode(), event.getGenre(), event.getImage(), formatter.format(new Date())));
+					event.getPinCode(), event.getGenre(), event.getImage(), formatter.format(event.getDatetime())));
 		}
 
 		List<Event> eventsList = new ArrayList<Event>(events.size());
