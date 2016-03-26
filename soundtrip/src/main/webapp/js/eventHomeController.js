@@ -12,10 +12,21 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
     	loadAllEvents = function () {
         	$http.get(actionUrlEventList).success(function (data) {
         		$scope.allEventsListHomeBackup = data;
-        		$scope.allEventsListHome = data;
+        		//$scope.allEventsListHome = data;
+        		$scope.allEventsListHome = [];
+        		for (var i = 0; i < $scope.allEventsListHomeBackup.length; i++) {
+					if($scope.allEventsListHomeBackup[i].city.name == $scope.$parent.selectedHomeCity){
+						console.log("adding item to home list");
+						$scope.allEventsListHome.push($scope.allEventsListHomeBackup[i]);
+					}
+				}
+        		
+        		if ($scope.allEventsListHome.length === 0) {
+        			$scope.allEventsListHome = $scope.allEventsListHomeBackup;
+				}
             });
         };
-        loadAllEvents();
+        //loadAllEvents();
     	
     	loadGeolocationCity = function() {
     		/* Geolocation code starts */
@@ -47,37 +58,38 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         						function(results, status) {
         							/* alert("status : " + status); */
         							if (status == google.maps.GeocoderStatus.OK) {
-        								console.log("view geo json:::"+JSON.stringify(results,null,4))
+        								//console.log("view geo json:::"+JSON.stringify(results,null,4))
         								 alert("city : " +  results[0].address_components[4].short_name);
         								
         								if(results[0].address_components[4].short_name.indexOf("Thane") > -1 || results[0].address_components[4].short_name.indexOf("Mumbai") > -1 ||
         								   results[0].address_components[5].short_name.indexOf("Thane") > -1 || results[0].address_components[5].short_name.indexOf("Mumbai") > -1 ||
         								   results[0].address_components[6].short_name.indexOf("Thane") > -1 || results[0].address_components[6].short_name.indexOf("Mumbai") > -1){
-        									console.log("city Thane or Mumbai::::: " + $scope.allEventsListHomeBackup.length);
+        									//console.log("city Thane or Mumbai::::: ");
         									$scope.$parent.selectedHomeCity = 'Mumbai';
         									$scope.$parent.selectedHomeCityId = '1';
-        									$scope.allEventsListHome = [];
-        					        		for (var i = 0; i < $scope.allEventsListHomeBackup.length; i++) {
-        										if($scope.allEventsListHomeBackup[i].city.name == $scope.$parent.selectedHomeCity){
-        											console.log("adding item to home list");
-        											$scope.allEventsListHome.push($scope.allEventsListHomeBackup[i]);
-        										}
-        									}
+        									console.log("after set city:::"+$scope.$parent.selectedHomeCity);
+        									$scope.$apply();
+        									loadAllEvents();
+        									
         								}else if (results[0].address_components[4].short_name.indexOf("Pune") > -1) {
         									$scope.$parent.selectedHomeCity = 'Pune';
         									$scope.$parent.selectedHomeCityId = '2';
-        									$scope.allEventsListHome = [];
-        					        		for (var i = 0; i < $scope.allEventsListHomeBackup.length; i++) {
-        										if($scope.allEventsListHomeBackup[i].city.name == $scope.$parent.selectedHomeCity){
-        											$scope.allEventsListHome.push($scope.allEventsListHomeBackup[i]);
-        										}
-        									}
+        									$scope.$apply();
+        									loadAllEvents();
+//        									$scope.allEventsListHome = [];
+//        					        		for (var i = 0; i < $scope.allEventsListHomeBackup.length; i++) {
+//        										if($scope.allEventsListHomeBackup[i].city.name == $scope.$parent.selectedHomeCity){
+//        											$scope.allEventsListHome.push($scope.allEventsListHomeBackup[i]);
+//        										}
+//        									}
 										}
         								else{
         									
-        									$scope.$parent.selectedHomeCity = undefined;
+        									$scope.$parent.selectedHomeCity = "All Cities";
         									$scope.$parent.selectedHomeCityId = undefined;
-        									$scope.allEventsListHome = $scope.allEventsListHomeBackup;
+        									//$scope.allEventsListHome = $scope.allEventsListHomeBackup;
+        									$scope.$apply();
+        									loadAllEvents();
         									
         								}
         								if (results[1]) {
@@ -101,7 +113,12 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         /* Geolocation code ends */
         		
     	};
-    	loadGeolocationCity();
+    	if ($scope.$parent.selectedHomeCity == "All Cities" || $scope.$parent.selectedHomeCity == undefined ) {
+    		loadGeolocationCity();
+		}else {
+			loadAllEvents();
+		}
+    	
     	
         loadRollingImages = function () {
         	$http.get(actionUrl).success(function (data) {
