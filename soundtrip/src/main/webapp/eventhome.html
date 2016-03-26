@@ -2,15 +2,15 @@
 .thumbnail {
 	display: inline-block;
 	width: 200px;
-	position:relative;
+	position: relative;
 }
 
 #imgText {
 	margin-left: 25px;
-    margin-top: -20px;
-    position: absolute;
-    z-index: 100;
-    color:white;
+	margin-top: -20px;
+	position: absolute;
+	z-index: 100;
+	color: white;
 }
 
 .caption {
@@ -186,6 +186,10 @@
 		margin-top: 13.5%;
 	}
 }
+
+a {
+	color: #000000;
+}
 </style>
 
 <div id="myCarousel" class="carousel slide">
@@ -235,12 +239,14 @@
 
 <div class="eventList" ng-repeat="eventsList in allEventsListHome">
 	<div class="thumbnail">
-		<img ng-src="http://localhost:8081/project/images/{{eventsList.image}}"
-			alt="Generic placeholder thumbnail" style="width: 80%;">
+		<img ng-src="http://localhost:8080/project/images/{{eventsList.image}}" alt="Generic placeholder thumbnail"
+			style="width: 80%;">
 		<p id="imgText" ng-bind="eventsList.datetime"></p>
 	</div>
 	<div class="caption">
-		<h4 class="media-heading">{{eventsList.name}}</h4>
+		<h4 class="media-heading">
+			<a href="/soundtrip/#/eventdetails/{{eventsList.id}}-{{eventsList.name}}">{{eventsList.name}}</a>
+		</h4>
 
 		<p>{{eventsList.description}}</p>
 		<p>{{eventsList.addressLine1}}, {{eventsList.addressLine2}}, {{eventsList.area}} {{eventsList.city.name}},

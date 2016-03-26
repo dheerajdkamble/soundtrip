@@ -30,7 +30,7 @@
 }
 
 body {
-	color: #f94609;
+	color: #000000;
 }
 
 .awesomplete {
@@ -65,7 +65,7 @@ div.awesomplete {
 		<nav class="navbar navbar-inverse" role="navigation" style="border-radius: 0px;">
 
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Events</a>
+				<a class="navbar-brand" href="#">Soundtrip</a>
 			</div>
 		</nav>
 		<form>
@@ -77,7 +77,7 @@ div.awesomplete {
 						<option ng-repeat="option in cityOptions">{{option.name}}</option>
 					</select>
 				</div>
-				<div style="width: 50%; display: inline-block; position: absolute; margin-top: -1px;" id="searchEvent">
+				<div style="width: 48%; display: inline-block; position: absolute; margin-top: -1px;" id="searchEvent">
 					<div class="input-group" style="display: inline-flex; width: 90%;" id="init-group">
 						<!-- <input type="text" class="form-control" placeholder="Search for..." style="width: 87%;"
 							onfocus="searchActive('focus')" onblur="searchActive('blur')">  -->
@@ -90,7 +90,7 @@ div.awesomplete {
 									placeholder="Search for..." id="genreInput"
 									style="width: 92%; border-radius: 0px; height: 33px; margin-top: 1px;" class="dropdown-input"
 									onfocus="searchActive()" /> <span class="input-group-btn" style="margin-left: 1px;">
-									<button class="btn btn-default" type="button" style="margin-top: 0px;" ng-click="searchClicked()">Go!</button>
+									<button class="btn btn-default" type="button" style="margin-top: 0px;" ng-click="searchClicked()"><span class="glyphicon glyphicon-search"></span></button>
 								</span> <span class="input-group-btn" style="margin-left: 45px;">
 									<button class="btn btn-default" type="button" style="margin-top: 0px; border-radius: 4px; display: none;"
 										id="hideSearchBtn" onclick="hideSearchEvent()">X</button>
@@ -151,7 +151,7 @@ div.awesomplete {
 	<nav class="navbar navbar-inverse" role="navigation"
 		style="border-radius: 0px; position: absolute; margin-bottom: 0px;">
 		<div class="navbar-footer">
-			<a class="navbar-brand" href="#">Events</a>
+			<a class="navbar-brand" href="#">Soundtrip</a>
 		</div>
 	</nav>
 
@@ -171,8 +171,8 @@ div.awesomplete {
 	<!-- <script type="text/javascript" src="js/external/bootstrap-datepicker.js"></script> -->
 	<script type="text/javascript" src="js/external/bootstrap-datetimepicker.js"></script>
 
-	<script type="text/javascript" src="js/external/awesomplete.js"></script>
-	<script>
+	<!-- <script type="text/javascript" src="js/external/awesomplete.js"></script> -->
+	<!-- <script>
 		var comboplete = new Awesomplete(Awesomplete.$('input.dropdown-input'),
 				{
 					minChars : 0,
@@ -190,13 +190,8 @@ div.awesomplete {
 			}
 		});
 
-		$("#genreUl li").click(function() {
-			// alert(this.id); // id of clicked li by directly accessing DOMElement property
-			//alert($(this).attr('id')); // jQuery's .attr() method, same but more verbose
-			//alert($(this).html()); // gets innerHTML of clicked li
-			alert($(this).text()); // gets text contents of clicked li
-		});
-	</script>
+		
+	</script> -->
 </body>
 
 </html>
