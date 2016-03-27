@@ -10,6 +10,24 @@
 </head>
 
 <body ng-controller="MainController">
+	<script>
+		window.fbAsyncInit = function() {
+	    	FB.init({
+	      	appId      : '513342798874235',
+	      	xfbml      : true,
+	      	version    : 'v1.0'
+	    	});
+	  	};
+
+	  	(function(d, s, id){
+	     	var js, fjs = d.getElementsByTagName(s)[0];
+	     	if (d.getElementById(id)) {return;}
+	     	js = d.createElement(s); js.id = id;
+	     	js.src = "//connect.facebook.net/en_US/sdk.js";
+	     	fjs.parentNode.insertBefore(js, fjs);
+	   	}(document, 'script', 'facebook-jssdk'));
+	</script>
+
 	<style>
 .navbar-header, .navbar-brand {
 	text-align: center;
@@ -145,13 +163,21 @@ div.awesomplete {
 				<a ng-click="login()" class="btn btn-primary">Login</a> <a data-dismiss="modal" class="btn">Cancel</a>
 			</div>
 		</div>
-
 		<ng-view></ng-view>
 	</div>
 	<nav class="navbar navbar-inverse" role="navigation"
 		style="border-radius: 0px; position: absolute; margin-bottom: 0px;">
-		<div class="navbar-footer">
+		<div class="navbar-footer" style="margin-top:10px;">
 			<a class="navbar-brand" href="#">Soundtrip</a>
+			<div style="float: right; margin-right: 10px;">
+				<a target="_blank" title="Frequently Answered Questions" href="static/faq.html" style="padding-right:5px; color:white;">FAQ</a>
+				<a target="_blank" title="About Us" href="static/aboutus.html" style="padding-right:10px; color:white;">About Us</a>
+				<a target="_blank" title="follow me on facebook" href="http://www.facebook.com/MusicChartTestPageDheeraj"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0 style="padding-right: 5px;"></a>
+				<a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/PLACEHOLDER"><img alt="follow me on Twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter30x30.png" border=0 style="padding-right: 5px;"></a>
+				<a target="_blank" title="follow me on instagram" href="http://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0 style="padding-right: 5px;"></a>
+				<a target="_blank" title="follow me on google plus" href="https://plus.google.com/PLACEHOLDER"><img alt="follow me on google plus" src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0 style="padding-right: 5px;"></a>
+				<a target="_blank" title="follow me on pinterest" href="http://www.pinterest.com/PLACEHOLDER"><img alt="follow me on pinterest" src="https://c866088.ssl.cf3.rackcdn.com/assets/pinterest30x30.png" border=0></a>
+			</div>
 		</div>
 	</nav>
 
