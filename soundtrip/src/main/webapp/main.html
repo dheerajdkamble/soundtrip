@@ -26,6 +26,7 @@
 	     	js.src = "//connect.facebook.net/en_US/sdk.js";
 	     	fjs.parentNode.insertBefore(js, fjs);
 	   	}(document, 'script', 'facebook-jssdk'));
+	  	
 	</script>
 
 	<style>
@@ -62,6 +63,15 @@ div.awesomplete {
 .input-group .form-control, .input-group-addon, .input-group-btn {
 	display: inline-block;
 }
+
+.socialMediaImage {
+	 padding-right: 5px; 
+	 display: inherit !important;"
+}
+
+.socialMediaImageLast {
+	 display: inherit !important;"
+}
 </style>
 
 	<!-- <div class="navbar navbar-fixed">
@@ -79,6 +89,16 @@ div.awesomplete {
 				ng-show="user.name">Welcome {{user.name}}</p>
 		</div>
 	</div> -->
+	<!-- Load Facebook SDK for JavaScript -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
 	<div>
 		<nav class="navbar navbar-inverse" role="navigation" style="border-radius: 0px;">
 
@@ -172,11 +192,11 @@ div.awesomplete {
 			<div style="float: right; margin-right: 10px;">
 				<a target="_blank" title="Frequently Answered Questions" href="static/faq.html" style="padding-right:5px; color:white;">FAQ</a>
 				<a target="_blank" title="About Us" href="static/aboutus.html" style="padding-right:10px; color:white;">About Us</a>
-				<a target="_blank" title="follow me on facebook" href="http://www.facebook.com/MusicChartTestPageDheeraj"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0 style="padding-right: 5px;"></a>
-				<a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/PLACEHOLDER"><img alt="follow me on Twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter30x30.png" border=0 style="padding-right: 5px;"></a>
-				<a target="_blank" title="follow me on instagram" href="http://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0 style="padding-right: 5px;"></a>
-				<a target="_blank" title="follow me on google plus" href="https://plus.google.com/PLACEHOLDER"><img alt="follow me on google plus" src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0 style="padding-right: 5px;"></a>
-				<a target="_blank" title="follow me on pinterest" href="http://www.pinterest.com/PLACEHOLDER"><img alt="follow me on pinterest" src="https://c866088.ssl.cf3.rackcdn.com/assets/pinterest30x30.png" border=0></a>
+				<a target="_blank" title="follow me on facebook" href="http://www.facebook.com/MusicChartTestPageDheeraj"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0 class="socialMediaImage"></a>
+				<a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/PLACEHOLDER"><img alt="follow me on Twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter30x30.png" border=0 class="socialMediaImage"></a>
+				<a target="_blank" title="follow me on instagram" href="http://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0 class="socialMediaImage"></a>
+				<a target="_blank" title="follow me on google plus" href="https://plus.google.com/PLACEHOLDER"><img alt="follow me on google plus" src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0 class="socialMediaImage"></a>
+				<a target="_blank" title="follow me on pinterest" href="http://www.pinterest.com/PLACEHOLDER"><img alt="follow me on pinterest" src="https://c866088.ssl.cf3.rackcdn.com/assets/pinterest30x30.png" border=0 class="socialMediaImageLast"></a>
 			</div>
 		</div>
 	</nav>

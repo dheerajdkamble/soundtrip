@@ -44,8 +44,7 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         	}
 
         	function errorFunction() {
-        		alert("Geocoder failed");
-        		// TODO : here you need to select all cities as default
+        		loadAllEvents();
         	}
 
         	function codeLatLng(lat, lng) {
