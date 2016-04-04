@@ -236,6 +236,7 @@ public class EventDTO {
 	public String toString() {
 		return "EventDTO [id=" + id + ", name=" + name + ", description=" + description + ", addressLine1="
 				+ addressLine1 + ", addressLine2=" + addressLine2 + ", area=" + area + ", city=" + city + ", state="
-				+ state + ", pinCode=" + pinCode + ", genre=" + genre + ", image=" + image + ", datetime=" + datetime + ", time=" + time + "]";
+				+ state + ", pinCode=" + pinCode + ", genre=" + genre + ", image=" + image + ", datetime=" + datetime
+				+ ", time=" + time + "]";
 	}
 }

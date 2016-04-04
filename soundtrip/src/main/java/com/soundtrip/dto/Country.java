@@ -17,7 +17,7 @@ import javax.persistence.Table;
  *	Entity class for Country
  */
 @Entity
-@Table(name="COUNTRY")
+@Table(name="country")
 public class Country {
 	
 	@Id

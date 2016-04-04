@@ -3,6 +3,7 @@ package com.soundtrip.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.soundtrip.dto.City;
 import com.soundtrip.dto.Event;
+import com.soundtrip.service.impl.EventServiceImpl;
 
 /**
  * @author Dheeraj
@@ -18,7 +20,7 @@ import com.soundtrip.dto.Event;
 @Repository
 @Transactional
 public class EventDaoImpl implements EventDao, Serializable {
-
+	
 	/**
 	 * Generated Serial Id Version
 	 */
@@ -29,7 +31,8 @@ public class EventDaoImpl implements EventDao, Serializable {
 
 	@Override
 	public Event saveEvent(Event event) {
-		return (Event) sessionFactory.getCurrentSession().merge(event);
+		event = (Event) sessionFactory.getCurrentSession().merge(event);
+		return event;
 	}
 
 	/*
@@ -40,7 +43,7 @@ public class EventDaoImpl implements EventDao, Serializable {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Event> getAllEvents() {
-		return (List<Event>) sessionFactory.getCurrentSession().getNamedQuery("allEventsSortedByEventDate").list();
+		return (List<Event>) sessionFactory.getCurrentSession().getNamedQuery("allEventsSortedByEventDate").list();		
 	}
 
 	@Override

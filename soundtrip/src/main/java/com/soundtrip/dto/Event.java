@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Event")
+@Table(name = "event")
 @NamedQueries(value={
 		@NamedQuery(name="allEventsSortedByEventDate", query="from Event order by datetime desc")
 })
@@ -63,34 +63,6 @@ public class Event {
 	 */
 	public Event() {
 	}
-
-	/**
-	 * Parameterized constructor
-	 * 
-	 * @param id
-	 * @param name
-	 * @param description
-	 * @param addressLine1
-	 * @param addressLine2
-	 * @param area
-	 * @param city
-	 * @param state
-	 * @param pinCode
-	 * @param image
-	 */
-	public Event(int id, String name, String description, String addressLine1, String addressLine2, String area,
-			City city, String state, String pinCode, String genre, String image) {
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.addressLine1 = addressLine1;
-		this.addressLine2 = addressLine2;
-		this.area = area;
-		this.state = state;
-		this.pinCode = pinCode;
-		this.genre = genre;
-		this.image = image;
-	}
 	
 	/**
 	 * Parameterized constructor
@@ -119,7 +91,7 @@ public class Event {
 		this.pinCode = pinCode;
 		this.genre = genre;
 		this.image = image;
-		this.datetime = datetime;
+		this.datetime = (Date) datetime.clone();
 	}
 
 	/**
