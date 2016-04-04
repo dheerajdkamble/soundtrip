@@ -239,6 +239,10 @@ a {
 
 <div class="eventList" ng-repeat="eventsList in allEventsListHome">
 	<div class="thumbnail">
+		<!-- up -->
+		<!-- <img ng-src="http://103.35.123.84:8080/project/images/{{eventsList.image}}" alt="Generic placeholder thumbnail"
+			style="width: 80%;"> -->
+		<!-- down -->
 		<img ng-src="http://localhost:8080/project/images/{{eventsList.image}}" alt="Generic placeholder thumbnail"
 			style="width: 80%;">
 		<p id="imgText" ng-bind="eventsList.datetime"></p>

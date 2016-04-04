@@ -126,9 +126,17 @@
 		<td>{{eventmaster.state}}</td>
 		<td>{{eventmaster.pinCode}}</td>
 		<td>{{eventmaster.genre}}</td>
-		<td><img
+		<td>
+			<!-- up -->
+<!-- 			<img
+			ng-src="http://103.35.123.84:8080/project/images/{{eventmaster.image}}"
+			alt="Generic placeholder thumbnail" height="100px" width="100px"> -->
+			
+			<!-- down -->
+			<img
 			ng-src="http://localhost:8080/project/images/{{eventmaster.image}}"
-			alt="Generic placeholder thumbnail" height="100px" width="100px"></td>
+			alt="Generic placeholder thumbnail" height="100px" width="100px">
+		</td>
 		<td>{{eventmaster.datetime | date:'MM/dd/yyyy HH:mm:ss'}}</td>
 		<td><a ng-click="edit($index)"><i class="glyphicon glyphicon-edit"></i></a></td>
 		<td><a ng-click="delete(eventmaster)"><i class="glyphicon glyphicon-remove"></i></a></td>		
