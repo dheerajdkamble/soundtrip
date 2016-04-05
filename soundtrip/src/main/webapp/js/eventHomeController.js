@@ -7,7 +7,9 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
     	var actionUrl = 'action/eventhome/';
     	var actionUrlEventList = 'action/eventlisthome/';
     	
-    	document.getElementById("homeHeader").style.display = 'block';
+    	//document.getElementById("homeHeader").style.display = 'block';
+    	
+    	alert("sucessfully called EventHomeController");
 
     	loadAllEvents = function () {
         	$http.get(actionUrlEventList).success(function (data) {
@@ -112,8 +114,9 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         /* Geolocation code ends */
         		
     	};
+    	loadGeolocationCity();
     	if ($scope.$parent.selectedHomeCity == "All Cities" || $scope.$parent.selectedHomeCity == undefined ) {
-    		loadGeolocationCity();
+    		//loadGeolocationCity();
 		}else {
 			loadAllEvents();
 		}

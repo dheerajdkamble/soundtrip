@@ -23,10 +23,10 @@
     		console.log("on focus work");
     		document.getElementById("genreList").style.display = 'block';
     		document.getElementById("hideSearchBtn").style.display = 'block';
-			document.getElementById("cityList").style.width = '0%';
-			document.getElementById("searchEvent").style.width = '100%';
+			//document.getElementById("cityList").style.width = '0%';
+			//document.getElementById("searchEvent").style.width = '100%';
 			document.getElementById("init-group").style.width = '93%';
-			document.getElementById("genreInput").style.width = '92%';    		
+			document.getElementById("genreInput").style.width = '80%';    		
     	}
     	
     	
@@ -60,6 +60,14 @@
         $scope.path = function () {
             return $location.url();
         };
+        
+        $scope.hideSearchEvent= function(){
+        	document.getElementById("searchBtnGenere").style.display = 'none';
+    		document.getElementById("activeSearchBtn").style.display = 'block';
+    		document.getElementById("genreInput").style.display = 'none';
+    		document.getElementById("selectHeaderDiv").style.display = 'block';
+    		document.getElementById("headerLogoDiv").style.display = 'block';
+        }
 
         $scope.login = function () {
             $scope.$emit('event:loginRequest', $scope.username, $scope.password);
@@ -72,13 +80,25 @@
             $location.url('/person');
         };
         
-        $scope.citySelected = function() {
+        $scope.citySelected = function(selectedCity) {
+        	$scope.selectedHomeCity = selectedCity;
         	$rootScope.$broadcast('eventListFiltered');
     	};
     	
     	$scope.searchClicked = function() {
         	$rootScope.$broadcast('eventListSearch');
     	};
+    	
+    	$scope.getSearchActive = function(){
+    		//searchBtnGenere,activeSearchBtn,genreInput,selectHeaderDiv, headerLogoDiv
+    		document.getElementById("searchBtnGenere").style.display = 'block';
+    		document.getElementById("activeSearchBtn").style.display = 'none';
+    		document.getElementById("genreInput").style.display = 'block';
+    		document.getElementById("selectHeaderDiv").style.display = 'none';
+    		document.getElementById("headerLogoDiv").style.display = 'none';
+    		document.getElementById("genreInput").focus();
+    		$scope.searchActive();
+    	}
     });
 
     as.controller('AdminController', function ($scope, $http) {
