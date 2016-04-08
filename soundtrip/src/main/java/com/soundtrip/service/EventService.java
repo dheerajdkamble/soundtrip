@@ -11,6 +11,8 @@ import com.soundtrip.dto.Event;
 public interface EventService {
 
 	Event saveEvent(Event event);
+	
+	Event getEventById(int id);
 
 	List<Event> getAllEvents();
 

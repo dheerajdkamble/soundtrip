@@ -105,10 +105,26 @@ public class EventController {
 
 		City city = cityService.getCityForId(eventToSave.getCity().getId());
 
-		Event event = new Event(eventToSave.getName(), eventToSave.getDescription(), eventToSave.getAddressLine1(),
+		Event event = null;
+		if(eventToSave.getId() > 0) {
+			event = eventService.getEventById(eventToSave.getId());
+			event.setName(eventToSave.getName());
+			event.setDescription(eventToSave.getDescription());
+			event.setAddressLine1(eventToSave.getAddressLine1());
+			event.setAddressLine2(eventToSave.getAddressLine2());
+			event.setArea(eventToSave.getArea());
+			event.setCity(city);
+			event.setState(eventToSave.getState());
+			event.setPinCode(eventToSave.getPinCode());
+			event.setGenre(eventToSave.getGenre());
+			event.setImage(event.getImage());
+			event.setDatetime((Date) new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(eventToSave.getDatetime()));
+		} else {
+			event = new Event(eventToSave.getName(), eventToSave.getDescription(), eventToSave.getAddressLine1(),
 				eventToSave.getAddressLine2(), eventToSave.getArea(), city, eventToSave.getState(),
 				eventToSave.getPinCode(), eventToSave.getGenre(), eventToSave.getImage(),
 				(Date) new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(eventToSave.getDatetime()));
+		}
 
 		event = eventService.saveEvent(event);
 
@@ -148,7 +164,7 @@ public class EventController {
 		}
 
 		event.setImage(imageName.toString());
-
+		
 		eventService.saveEvent(event);
 
 		return new ResponseMessage(ResponseMessage.Type.success, "eventAdded");

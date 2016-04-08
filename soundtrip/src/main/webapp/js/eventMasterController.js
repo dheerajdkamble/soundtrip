@@ -53,14 +53,34 @@
 	
 	    $scope.edit = function (index) {
 	        $scope.neweventmaster = angular.copy($scope.eventmasters[index]);
+	        for(var i = 0 ; i < $scope.cityOptions.length; i++) {
+	        	if($scope.cityOptions[i].id == $scope.neweventmaster.city.id) {
+	        		$scope.cityOption = $scope.cityOptions[i];
+	        		break;
+	        	}
+	        }
+	        for(var i = 0 ; i < $scope.genreOptions.length; i++) {
+	        	if($scope.genreOptions[i].name == $scope.neweventmaster.genre) {
+	        		console.log("$scope.genreOptions[i] " + JSON.stringify($scope.genreOptions[i], null, 4));
+	        		$scope.genreOption = $scope.genreOptions[i].name;
+	        		break;
+	        	}
+	        }
+	        var img = new Image();
+	        img.src = "http://localhost:8080/project/images/" + $scope.neweventmaster.image;
+	        $scope.stepsModel[0]= img.src;
 	    };
 	    
 	    $scope.save = function () {
+	    	console.log("Before saving ::: " + JSON.stringify($scope.neweventmaster, null, 4));
 	    	if($scope.stepsModel[0] != null) {
 	    		$scope.neweventmaster['image'] =  $scope.stepsModel[0];
 	    	}
-	    	$scope.neweventmaster.datetime = +$scope.datetimepickerval.getFullYear()+"-"+($scope.datetimepickerval.getMonth()+1)+"-"+$scope.datetimepickerval.getDate()+" "+$scope.datetimepickerval.getHours()+":"+$scope.datetimepickerval.getMinutes()+":"+$scope.datetimepickerval.getSeconds();
-	    	console.log('before saving new event master' + $scope.neweventmaster);
+	    	
+	    	if(($scope.neweventmaster.datetime == null && $scope.neweventmaster.datetime == "") || ($scope.datetimepickerval != null && $scope.datetimepickerval != "")) {
+	    		$scope.neweventmaster.datetime = +$scope.datetimepickerval.getFullYear()+"-"+($scope.datetimepickerval.getMonth()+1)+"-"+$scope.datetimepickerval.getDate()+" "+$scope.datetimepickerval.getHours()+":"+$scope.datetimepickerval.getMinutes()+":"+$scope.datetimepickerval.getSeconds();
+	    	}
+	    	console.log('before saving new event master' + JSON.stringify($scope.neweventmaster, null, 4));
 	        $http.post(actionUrlEvents, $scope.neweventmaster).success(function () {
 	        	loadEvents();
 	        	$scope.neweventmaster = {};

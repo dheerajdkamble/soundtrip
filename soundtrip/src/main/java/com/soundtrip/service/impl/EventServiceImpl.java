@@ -23,6 +23,11 @@ public class EventServiceImpl implements EventService {
 	EventDao eventDao;
 
 	@Override
+	public Event getEventById(int id) {
+		return eventDao.getEventById(id);
+	}
+	
+	@Override
 	public Event saveEvent(Event event) {
 		return eventDao.saveEvent(event);
 	}
@@ -47,6 +52,4 @@ public class EventServiceImpl implements EventService {
 	public void setEventDao(EventDao eventDao) {
 		this.eventDao = eventDao;
 	}
-
-
 }

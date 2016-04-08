@@ -30,8 +30,17 @@ public class EventDaoImpl implements EventDao, Serializable {
 	SessionFactory sessionFactory;
 
 	@Override
+	public Event getEventById(int id) {
+		return (Event) sessionFactory.getCurrentSession().byId(Event.class).load(id);
+	}
+	
+	@Override
 	public Event saveEvent(Event event) {
-		event = (Event) sessionFactory.getCurrentSession().merge(event);
+		if(event.getId() == 0) {
+			event = (Event) sessionFactory.getCurrentSession().merge(event);
+		} else if(event.getId() > 0) {
+			sessionFactory.getCurrentSession().update(event);
+		}
 		return event;
 	}
 

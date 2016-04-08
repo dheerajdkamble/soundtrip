@@ -11,4 +11,6 @@ public interface EventDao {
 	List<Event> getAllEvents();
 
 	void deleteEvent(int id);
+
+	Event getEventById(int id);
 }
