@@ -14,34 +14,66 @@
 <body ng-controller="MainController">
 	<script>
 		window.fbAsyncInit = function() {
-	    	FB.init({
-	      	appId      : '513342798874235',
-	      	xfbml      : true,
-	      	version    : 'v1.0'
-	    	});
-	  	};
+			FB.init({
+				appId : '513342798874235',
+				xfbml : true,
+				version : 'v1.0'
+			});
+		};
 
-	  	(function(d, s, id){
-	     	var js, fjs = d.getElementsByTagName(s)[0];
-	     	if (d.getElementById(id)) {return;}
-	     	js = d.createElement(s); js.id = id;
-	     	js.src = "//connect.facebook.net/en_US/sdk.js";
-	     	fjs.parentNode.insertBefore(js, fjs);
-	   	}(document, 'script', 'facebook-jssdk'));
-	  	
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {
+				return;
+			}
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
 	</script>
 
 	<style>
-		@media screen and (max-width: 800px) and (min-width:300px)  {
-			.navbar {
-				position: fixed;
-				width: 75%;
-				z-index: 100;
-				background-color: #e60000;
-				border-color: #e60000;
-				}	
-		}
-	
+@media screen and (max-width: 800px) and (min-width:300px) {
+	.navbar {
+		position: fixed;
+		width: 75%;
+		z-index: 100;
+		background-color: #e60000;
+		border-color: #e60000;
+	}
+}
+
+@media ( max-width : 3600px) {
+	#activeSearchBtn {
+		margin-left: 240px;
+	}
+	#drpdwnbtn {
+		margin-left: 130px;
+	}
+	#genreList {
+		width: 80%;
+	}
+	#genreInput {
+		width: 80%;
+	}
+}
+
+@media ( max-width : 500px) {
+	#activeSearchBtn {
+		margin-left: 70px;
+	}
+	#drpdwnbtn {
+		margin-left: 5px;
+	}
+	#genreList {
+		width: 70%;
+	}
+	#genreInput {
+		width: 70%;
+	}
+}
+
 .navbar-header, .navbar-brand {
 	text-align: center;
 	float: none;
@@ -53,7 +85,13 @@
 	width: 100%;
 	z-index: 100;
 	background-color: #e60000;
-	border-color: #e60000;
+	background: linear-gradient(#e60000 60%, #ffffff);
+	border: none;
+}
+
+.navbar-bottom {
+	background: linear-gradient(#ffffff, #e60000 60%);
+	border: none;
 }
 
 .navbar-inverse .navbar-brand {
@@ -77,12 +115,14 @@ div.awesomplete {
 }
 
 .socialMediaImage {
-	 padding-right: 5px; 
-	 display: inherit !important;"
+	padding-right: 5px;
+	display: inherit !important;
+	"
 }
 
 .socialMediaImageLast {
-	 display: inherit !important;"
+	display: inherit !important;
+	"
 }
 </style>
 
@@ -103,22 +143,72 @@ div.awesomplete {
 	</div> -->
 	<!-- Load Facebook SDK for JavaScript -->
 	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
+	<script>
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id))
+				return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 
 	<div>
-		<nav class="navbar navbar-inverse" role="navigation" style="border-radius: 0px;">
-
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Soundtrip</a>
-			</div>
-		</nav>
 		<form>
+			<nav class="navbar navbar-inverse" role="navigation" style="border-radius: 0px; height: 80px;">
+				<div style="display: table; width: 100%; table-layout: fixed; margin-top: 2%;">
+					<div style="display: table; width: 100%; table-layout: fixed;" id="selectHeaderDiv">
+						<div class="btn-group">
+							<button type="button" class="form-control btn btn-default dropdown-toggle" data-toggle="dropdown"
+								style="width: 100px;" id="drpdwnbtn">
+								{{selectedHomeCity}} <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a ng-click="citySelected('All Cities')">All Cities</a></li>
+								<li ng-repeat="option in cityOptions"><a ng-click="citySelected(option.name)">{{option.name}}</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="navbar-header" style="display: table-cell;" id="headerLogoDiv">
+						<a class="navbar-brand" href="#">Soundtrip</a>
+					</div>
+					<div style="display: table-cell;">
+						<div class="input-group" style="display: inline-flex; width: 90%;" id="init-group">
+
+							<div style="width: 100%; z-index: 10;" id="searchEventDiv">
+								<div style="width: 100%; margin-left: 10%;">
+									<input type="text" class="form-control" ng-model="selectedGenre" ng-change="getSelectedGenre()"
+										placeholder="Search for..." id="genreInput"
+										style="border-radius: 0px; height: 33px; margin-top: 1px; display: none;" class="dropdown-input"
+										onfocus="searchActive()" /> <span class="input-group-btn" style="margin-left: 1px;">
+										<button class="btn btn-default" id="activeSearchBtn" type="button" style="margin-top: 0px;"
+											ng-click="getSearchActive()">
+											<span class="glyphicon glyphicon-search"></span>
+										</button>
+										<button class="btn btn-default" type="button" id="searchBtnGenere" style="margin-top: 0px; display: none;"
+											ng-click="searchClicked()">
+											<span class="glyphicon glyphicon-search"></span>
+										</button>
+									</span> <span class="input-group-btn" style="margin-left: 45px;">
+										<button class="btn btn-default" type="button" style="margin-top: 0px; border-radius: 4px; display: none;"
+											id="hideSearchBtn" ng-click="hideSearchEvent()">X</button>
+									</span>
+								</div>
+								<div style="width: 100%;">
+									<ul id="genreList"
+										style="list-style: none; background-color: grey; margin-top: 0px; display: none; border: 1px solid #000000; color: #FFFFFF; padding-left: 15px; margin-left: 10%;">
+										<li ng-repeat="genre in genrelist" ng-click="genreListClick(genre.name)" style="cursor: pointer;">{{genre.name}}</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</form>
+		<!-- <form>
 			<div class="homeHeader" id="homeHeader">
 				<div style="width: 48%; display: inline-block; margin-left: 4%;" id="cityList">
 					<select name="repeatSelect" id="repeatSelect" style="width: 100%; height: 33px;" ng-model="selectedHomeCity"
@@ -129,11 +219,6 @@ div.awesomplete {
 				</div>
 				<div style="width: 48%; display: inline-block; position: absolute; margin-top: -1px;" id="searchEvent">
 					<div class="input-group" style="display: inline-flex; width: 90%;" id="init-group">
-						<!-- <input type="text" class="form-control" placeholder="Search for..." style="width: 87%;"
-							onfocus="searchActive('focus')" onblur="searchActive('blur')">  -->
-						<!-- <input	id="myinput" ng-model="selectedGenre" ng-change="getSelectedGenre()"
-							class="dropdown-input" placeholder="Search for..."
-							style="width: 100%; height: 34px" onfocus="searchActive('focus')" onblur="searchActive('blur')" />  -->
 						<div style="width: 100%; z-index: 10;" id="searchEventDiv">
 							<div style="width: 100%;">
 								<input type="text" class="form-control" ng-model="selectedGenre" ng-change="getSelectedGenre()"
@@ -153,14 +238,10 @@ div.awesomplete {
 								</ul>
 							</div>
 						</div>
-
-
-
 					</div>
-
 				</div>
 			</div>
-		</form>
+		</form> -->
 	</div>
 	<div class="container" style="margin-bottom: 3%;">
 		<div ng-class="'alert alert-'+message().type" ng-show="message().show">
@@ -197,18 +278,26 @@ div.awesomplete {
 		</div>
 		<ng-view></ng-view>
 	</div>
-	<nav class="navbar navbar-inverse" role="navigation"
-		style="border-radius: 0px; position: absolute; margin-bottom: 0px;">
-		<div class="navbar-footer" style="margin-top:10px;">
+	<nav class="navbar navbar-inverse navbar-bottom" role="navigation"
+		style="border-radius: 0px; position: absolute; margin-bottom: 0px;height: 80px;">
+		<div class="navbar-footer" style="margin-top: 35px;">
 			<a class="navbar-brand" href="#">Soundtrip</a>
 			<div style="float: right; margin-right: 10px;">
-				<a target="_blank" title="Frequently Answered Questions" href="static/faq.html" style="padding-right:5px; color:white;">FAQ</a>
-				<a target="_blank" title="About Us" href="static/aboutus.html" style="padding-right:10px; color:white;">About Us</a>
-				<a target="_blank" title="follow me on facebook" href="http://www.facebook.com/MusicChartTestPageDheeraj"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0 class="socialMediaImage"></a>
-				<a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/PLACEHOLDER"><img alt="follow me on Twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter30x30.png" border=0 class="socialMediaImage"></a>
-				<a target="_blank" title="follow me on instagram" href="http://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0 class="socialMediaImage"></a>
-				<a target="_blank" title="follow me on google plus" href="https://plus.google.com/PLACEHOLDER"><img alt="follow me on google plus" src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0 class="socialMediaImage"></a>
-				<a target="_blank" title="follow me on pinterest" href="http://www.pinterest.com/PLACEHOLDER"><img alt="follow me on pinterest" src="https://c866088.ssl.cf3.rackcdn.com/assets/pinterest30x30.png" border=0 class="socialMediaImageLast"></a>
+				<a target="_blank" title="Frequently Answered Questions" href="static/faq.html"
+					style="padding-right: 5px; color: white;">FAQ</a> <a target="_blank" title="About Us" href="static/aboutus.html"
+					style="padding-right: 10px; color: white;">About Us</a> <a target="_blank" title="follow me on facebook"
+					href="http://www.facebook.com/MusicChartTestPageDheeraj"><img alt="follow me on facebook"
+					src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0 class="socialMediaImage"></a> <a
+					target="_blank" title="follow me on Twitter" href="http://www.twitter.com/PLACEHOLDER"><img
+					alt="follow me on Twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter30x30.png" border=0
+					class="socialMediaImage"></a> <a target="_blank" title="follow me on instagram"
+					href="http://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram"
+					src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0 class="socialMediaImage"></a> <a
+					target="_blank" title="follow me on google plus" href="https://plus.google.com/PLACEHOLDER"><img
+					alt="follow me on google plus" src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0
+					class="socialMediaImage"></a> <a target="_blank" title="follow me on pinterest"
+					href="http://www.pinterest.com/PLACEHOLDER"><img alt="follow me on pinterest"
+					src="https://c866088.ssl.cf3.rackcdn.com/assets/pinterest30x30.png" border=0 class="socialMediaImageLast"></a>
 			</div>
 		</div>
 	</nav>

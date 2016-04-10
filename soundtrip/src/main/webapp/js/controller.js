@@ -26,7 +26,7 @@
 			//document.getElementById("cityList").style.width = '0%';
 			//document.getElementById("searchEvent").style.width = '100%';
 			document.getElementById("init-group").style.width = '93%';
-			document.getElementById("genreInput").style.width = '80%';    		
+			//document.getElementById("genreInput").style.width = '80%';    		
     	}
     	
     	
@@ -65,8 +65,10 @@
         	document.getElementById("searchBtnGenere").style.display = 'none';
     		document.getElementById("activeSearchBtn").style.display = 'block';
     		document.getElementById("genreInput").style.display = 'none';
-    		document.getElementById("selectHeaderDiv").style.display = 'block';
-    		document.getElementById("headerLogoDiv").style.display = 'block';
+    		document.getElementById("genreList").style.display = 'none';
+    		document.getElementById("hideSearchBtn").style.display = 'none';
+    		document.getElementById("selectHeaderDiv").style.display = 'table';
+    		document.getElementById("headerLogoDiv").style.display = 'table-cell';
         }
 
         $scope.login = function () {
