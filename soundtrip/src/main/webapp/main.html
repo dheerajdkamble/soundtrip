@@ -48,6 +48,9 @@
 	#activeSearchBtn {
 		margin-left: 240px;
 	}
+	.dropdown-menu {
+		margin-left: 130px;
+	}
 	#drpdwnbtn {
 		margin-left: 130px;
 	}
@@ -57,13 +60,27 @@
 	#genreInput {
 		width: 80%;
 	}
+	.footdiv {
+		width: 50%;
+		display: inline;
+	}
+	.footdiv div {
+		float: right;
+		margin-right: 10px;
+	}
 }
 
 @media ( max-width : 500px) {
 	#activeSearchBtn {
-		margin-left: 70px;
+		margin-left: 50px;
+	}
+	.footdiv {
+		width: 100%;
 	}
 	#drpdwnbtn {
+		margin-left: 5px;
+	}
+	.dropdown-menu {
 		margin-left: 5px;
 	}
 	#genreList {
@@ -71,6 +88,13 @@
 	}
 	#genreInput {
 		width: 70%;
+	}
+	.footdiv div {
+		margin-left: 10px;
+		margin-right: 40px;
+	}
+	.eventList {
+		margin-bottom: 10%;
 	}
 }
 
@@ -117,12 +141,10 @@ div.awesomplete {
 .socialMediaImage {
 	padding-right: 5px;
 	display: inherit !important;
-	"
 }
 
 .socialMediaImageLast {
 	display: inherit !important;
-	"
 }
 </style>
 
@@ -279,27 +301,32 @@ div.awesomplete {
 		<ng-view></ng-view>
 	</div>
 	<nav class="navbar navbar-inverse navbar-bottom" role="navigation"
-		style="border-radius: 0px; position: absolute; margin-bottom: 0px;height: 80px;">
-		<div class="navbar-footer" style="margin-top: 35px;">
-			<a class="navbar-brand" href="#">Soundtrip</a>
-			<div style="float: right; margin-right: 10px;">
-				<a target="_blank" title="Frequently Answered Questions" href="static/faq.html"
-					style="padding-right: 5px; color: white;">FAQ</a> <a target="_blank" title="About Us" href="static/aboutus.html"
-					style="padding-right: 10px; color: white;">About Us</a> <a target="_blank" title="follow me on facebook"
-					href="http://www.facebook.com/MusicChartTestPageDheeraj"><img alt="follow me on facebook"
-					src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0 class="socialMediaImage"></a> <a
-					target="_blank" title="follow me on Twitter" href="http://www.twitter.com/PLACEHOLDER"><img
-					alt="follow me on Twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter30x30.png" border=0
-					class="socialMediaImage"></a> <a target="_blank" title="follow me on instagram"
-					href="http://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram"
-					src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0 class="socialMediaImage"></a> <a
-					target="_blank" title="follow me on google plus" href="https://plus.google.com/PLACEHOLDER"><img
-					alt="follow me on google plus" src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0
-					class="socialMediaImage"></a> <a target="_blank" title="follow me on pinterest"
-					href="http://www.pinterest.com/PLACEHOLDER"><img alt="follow me on pinterest"
-					src="https://c866088.ssl.cf3.rackcdn.com/assets/pinterest30x30.png" border=0 class="socialMediaImageLast"></a>
+		style="border-radius: 0px; position: absolute; margin-bottom: 0px; height: 80px;">
+		<div style="width: 100%; margin-top: 30px;">
+			<div class="navbar-footer footdiv" style="margin-top: 35px;">
+				<a class="navbar-brand" href="#">Soundtrip</a>
+			</div>
+			<div class="navbar-footer footdiv" style="margin-top: 35px;">
+				<div>
+					<a target="_blank" title="Frequently Answered Questions" href="static/faq.html"
+						style="padding-right: 5px; color: white;">FAQ</a> <a target="_blank" title="About Us" href="static/aboutus.html"
+						style="padding-right: 10px; color: white;">About Us</a> <a target="_blank" title="follow me on facebook"
+						href="http://www.facebook.com/MusicChartTestPageDheeraj"><img alt="follow me on facebook"
+						src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0 class="socialMediaImage"></a> <a
+						target="_blank" title="follow me on Twitter" href="http://www.twitter.com/PLACEHOLDER"><img
+						alt="follow me on Twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter30x30.png" border=0
+						class="socialMediaImage"></a> <a target="_blank" title="follow me on instagram"
+						href="http://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram"
+						src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0 class="socialMediaImage"></a> <a
+						target="_blank" title="follow me on google plus" href="https://plus.google.com/PLACEHOLDER"><img
+						alt="follow me on google plus" src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0
+						class="socialMediaImage"></a> <a target="_blank" title="follow me on pinterest"
+						href="http://www.pinterest.com/PLACEHOLDER"><img alt="follow me on pinterest"
+						src="https://c866088.ssl.cf3.rackcdn.com/assets/pinterest30x30.png" border=0 class="socialMediaImageLast"></a>
+				</div>
 			</div>
 		</div>
+
 	</nav>
 
 	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
