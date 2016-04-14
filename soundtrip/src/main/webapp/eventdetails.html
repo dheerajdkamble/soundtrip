@@ -22,17 +22,17 @@ p {
 
 <div>
 	<img src="images/02.jpg" alt="First slide" id="primaryDetailsImg" style="width: 100%;"> <img
-		src="images/kittens.jpg" alt="First slide" id="primaryDetailsImg" style="width: 200px; height: 200px;" class="small">
+		ng-src="http://localhost:8080/project/images/{{eventDetail.image}}" alt="First slide" id="primaryDetailsImg" style="width: 200px; height: 200px;" class="small">
 
 	<div>
-		<h1>Event Name</h1>
+		<h1>{{eventDetail.name}}</h1>
 	</div>
 	<div>
 		<div>
 			<table>
 				<tr>
 					<td><span class="glyphicon glyphicon-time"></span></td>
-					<td><p>Sunday,March 27,2015 at 11:30 AM</p></td>
+					<td><p>{{eventDetail.datetime}}</p></td>
 				</tr>
 			</table>
 		</div>
@@ -42,8 +42,8 @@ p {
 			<table>
 				<tr>
 					<td><span class="glyphicon glyphicon-map-marker"></span></td>
-					<td><p>Event Desription</p>
-						<p>Event addressLine1, Event addressLine2, Event area Mumbai, Maharashtra, India - , 400001</p></td>
+					<td><p>{{eventDetail.description}}</p>
+						<p>{{eventDetail.addressLine1}}, {{eventDetail.addressLine2}}, {{eventDetail.area}}, {{eventDetail.city.name}}, {{eventDetail.state}}, India - {{eventDetail.pinCode}}</p></td>
 				</tr>
 			</table>
 		</div>

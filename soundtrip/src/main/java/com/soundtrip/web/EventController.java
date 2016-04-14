@@ -177,6 +177,16 @@ public class EventController {
 		eventService.deleteEvent(id);
 		return new ResponseMessage(ResponseMessage.Type.success, "eventDeleted");
 	}
+	
+	@RequestMapping(value = "/eventdetails/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public EventDTO getEvent(@PathVariable int id) {
+		Event event = eventService.getEventById(id);
+		return new EventDTO(event.getId(), event.getName(), event.getDescription(), event.getAddressLine1(),
+				event.getAddressLine2(), event.getArea(), copyCity(event.getCity()), event.getState(),
+				event.getPinCode(), event.getGenre(), event.getImage(), (event.getDatetime() == null
+						? formatter.format(new Date()) : formatter.format(event.getDatetime())));
+	}
 
 	@RequestMapping(value = "/eventmaster/countries", method = RequestMethod.GET)
 	@ResponseBody

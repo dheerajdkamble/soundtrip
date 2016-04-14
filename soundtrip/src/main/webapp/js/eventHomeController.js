@@ -9,7 +9,7 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
     	
     	//document.getElementById("homeHeader").style.display = 'block';
     	
-    	alert("sucessfully called EventHomeController");
+    	
 
     	loadAllEvents = function () {
         	$http.get(actionUrlEventList).success(function (data) {
@@ -60,7 +60,7 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         							/* alert("status : " + status); */
         							if (status == google.maps.GeocoderStatus.OK) {
         								//console.log("view geo json:::"+JSON.stringify(results,null,4))
-        								 alert("city : " +  results[0].address_components[4].short_name);
+//        								 alert("city : " +  results[0].address_components[4].short_name);
         								
         								if(results[0].address_components[4].short_name.indexOf("Thane") > -1 || results[0].address_components[4].short_name.indexOf("Mumbai") > -1 ||
         								   results[0].address_components[5].short_name.indexOf("Thane") > -1 || results[0].address_components[5].short_name.indexOf("Mumbai") > -1 ||
@@ -116,7 +116,7 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
     	};
     	loadGeolocationCity();
     	if ($scope.$parent.selectedHomeCity == "All Cities" || $scope.$parent.selectedHomeCity == undefined ) {
-    		//loadGeolocationCity();
+    		loadAllEvents();
 		}else {
 			loadAllEvents();
 		}

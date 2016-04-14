@@ -9,7 +9,6 @@
     	$scope.genreOptions = [];
     	$scope.eventDate;
     	$scope.datetimepickerval='';
-    	document.getElementById("homeHeader").style.display = 'none';
 
     	$scope.updateEventDate = function (date){
     		// $scope.eventDate = date;
