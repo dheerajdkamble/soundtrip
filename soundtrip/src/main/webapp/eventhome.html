@@ -241,7 +241,7 @@ a {
 	<div class="thumbnail">
 		<!-- up -->
 		<!-- <img ng-src="http://103.35.123.84:8080/project/images/{{eventsList.image}}" alt="Generic placeholder thumbnail"
-			style="width: 80%;"> -->
+			  style="width: 80%;"> -->
 		<!-- down -->
 		<img ng-src="http://localhost:8080/project/images/{{eventsList.image}}" alt="Generic placeholder thumbnail"
 			style="width: 80%;">
@@ -253,75 +253,11 @@ a {
 		</h4>
 
 		<p>{{eventsList.description}}</p>
+		<p>{{eventsList.genre}} Event</p>
 		<p>{{eventsList.addressLine1}}, {{eventsList.addressLine2}}, {{eventsList.area}} {{eventsList.city.name}},
-			{{eventsList.state}}, India - , {{eventsList.pinCode}}</p>
+			{{eventsList.state}}, India - {{eventsList.pinCode}}</p>
 	</div>
 </div>
-<!-- <div class="row">
-	<div style="margin-left: 4%; margin-right: 2%; margin-top: 3%;"
-		ng-repeat="eventsList in allEventsListHome">
-		<div style="display: inline-block; width: 25%;">
-			<img
-				ng-src="http://localhost:8081/project/images/{{eventsList.image}}"
-				alt="Generic placeholder thumbnail" style="width: 80%;">
-		</div>
-		<div style="display: inline-block; width: 66%; position: absolute;">
-			<p>
-				<strong>{{eventsList.name}}</strong>
-			</p>
-			<p>Sat,Nov 14 at 10:30 PM</p>
-			<p>{{eventsList.addressLine1}}</p>
-
-		</div>
-	</div> -->
-
-<!-- <div style="margin-left: 4%; margin-right: 2%; margin-top: 3%;">
-		<div style="display: inline-block; width: 25%;">
-			<a href="#"> <img src="images/img_chania2.jpg"
-				alt="Generic placeholder thumbnail" style="width: 80%;">
-			</a>
-		</div>
-		<div style="display: inline-block; width: 66%; position: absolute;">
-			<p>
-				<strong>Strawberry Fields - A Tribu...</strong>
-			</p>
-			<p>Sat,Nov 14 at 10:30 PM</p>
-			<p>B.B.King Blues Club & Grill</p>
-
-		</div>
-	</div>
-
-	<div style="margin-left: 4%; margin-right: 2%; margin-top: 3%;">
-		<div style="display: inline-block; width: 25%;">
-			<a href="#"> <img src="images/img_flower.jpg"
-				alt="Generic placeholder thumbnail" style="width: 80%;">
-			</a>
-		</div>
-		<div style="display: inline-block; width: 66%; position: absolute;">
-			<p>
-				<strong>Strawberry Fields - A Tribu...</strong>
-			</p>
-			<p>Sat,Nov 14 at 10:30 PM</p>
-			<p>B.B.King Blues Club & Grill</p>
-
-		</div>
-	</div>
-
-	<div style="margin-left: 4%; margin-right: 2%; margin-top: 3%;">
-		<div style="display: inline-block; width: 25%;">
-			<a href="#"> <img src="images/img_flower2.jpg"
-				alt="Generic placeholder thumbnail" style="width: 80%;">
-			</a>
-		</div>
-		<div style="display: inline-block; width: 66%; position: absolute;">
-			<p>
-				<strong>Strawberry Fields - A Tribu...</strong>
-			</p>
-			<p>Sat,Nov 14 at 10:30 PM</p>
-			<p>B.B.King Blues Club & Grill</p>
-
-		</div>
-	</div> -->
 </div>
 
 <script src="js/external/docs.min.js"></script>

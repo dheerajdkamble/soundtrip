@@ -114,13 +114,19 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         /* Geolocation code ends */
         		
     	};
-    	loadGeolocationCity();
-    	if ($scope.$parent.selectedHomeCity == "All Cities" || $scope.$parent.selectedHomeCity == undefined ) {
+    	//loadGeolocationCity();
+    	if ($scope.$parent.selectedHomeCity == undefined ) {
+    		loadGeolocationCity();
     		loadAllEvents();
 		}else {
 			loadAllEvents();
 		}
     	
+    	if ($scope.$parent.selectedGenre == undefined ) {
+    		// don't call anything
+		}else if($scope.$parent.selectedGenre != '') {
+			filterEventsOnSearchBoxSearch();
+		}
     	
         loadRollingImages = function () {
         	$http.get(actionUrl).success(function (data) {
@@ -155,12 +161,17 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         });
         
         $scope.$on('eventListSearch', function() {
+        	filterEventsOnSearchBoxSearch();
+        });
+        
+        filterEventsOnSearchBoxSearch = function() {
         	var stringToSearch = $scope.$parent.selectedGenre.toLowerCase();
         	$scope.allEventsListHome = [];
         	var searchStrings = stringToSearch.split(" ");
         	var indexArr = [];
         	for (var index in $scope.allEventsListHomeBackup) {
         		for(var indexVar in searchStrings) {
+        			alert($scope.allEventsListHomeBackup[index]);
         		   if(stringMatching($scope.allEventsListHomeBackup[index], searchStrings[indexVar])) {
         			   if(indexArr.indexOf(index) > -1) {
         				   break;
@@ -177,7 +188,7 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         	if($scope.allEventsListHome.length === 0) {
         		$scope.allEventsListHome = $scope.allEventsListHomeBackup;
         	}
-        });
+        };
         
         function stringMatching(obj, val) {
         	var found = false;

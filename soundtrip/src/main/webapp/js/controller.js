@@ -1,8 +1,8 @@
 (function () {
     var as = angular.module('angularspring');
 
-    as.controller('MainController', function ($scope, $rootScope, $http, i18n, $location) {
-    	$scope.selectedHomeCity = "All Cities";
+    as.controller('MainController', function ($scope, $rootScope, $http, i18n, $location, $window) {
+    	$scope.selectedHomeCity = undefined;
     	$scope.selectedHomeCityId;
     	$scope.cityOptions = [{"id":"1","name":"Mumbai"},{"id":"2","name":"Pune"}];
     	$scope.genrelistBackup = [{"name":"Pop"},{"name":"Jazz"},{"name":"Blues"},{"name":"Classic Rock"},{"name":"Indian Classical"}];
@@ -83,12 +83,22 @@
         };
         
         $scope.citySelected = function(selectedCity) {
+        	var url = window.location.href;
         	$scope.selectedHomeCity = selectedCity;
-        	$rootScope.$broadcast('eventListFiltered');
+        	if (url.indexOf('eventdetails') > -1) {
+        		$window.location.href = '#/eventhome';
+			}else{
+				$rootScope.$broadcast('eventListFiltered');
+			}
     	};
     	
     	$scope.searchClicked = function() {
-        	$rootScope.$broadcast('eventListSearch');
+    		var url = window.location.href;
+    		if (url.indexOf('eventdetails') > -1) {
+    			$window.location.href = '#/eventhome';
+			}else{
+				$rootScope.$broadcast('eventListSearch');
+			}
     	};
     	
     	$scope.getSearchActive = function(){
