@@ -6,7 +6,8 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
 	
     	var actionUrl = 'action/eventhome/';
     	var actionUrlEventList = 'action/eventlisthome/';
-    	
+    	$scope.allEventsListHome = [];
+    	$scope.allEventsListHomeBackup = [];
     	//document.getElementById("homeHeader").style.display = 'block';
     	
     	
@@ -171,7 +172,6 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         	var indexArr = [];
         	for (var index in $scope.allEventsListHomeBackup) {
         		for(var indexVar in searchStrings) {
-        			alert($scope.allEventsListHomeBackup[index]);
         		   if(stringMatching($scope.allEventsListHomeBackup[index], searchStrings[indexVar])) {
         			   if(indexArr.indexOf(index) > -1) {
         				   break;
@@ -185,6 +185,45 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         		$scope.allEventsListHome.push($scope.allEventsListHomeBackup[indexArr[indx]]);
         	}
         	
+        	if($scope.allEventsListHome.length === 0) {
+        		$scope.allEventsListHome = $scope.allEventsListHomeBackup;
+        	}
+        };
+        
+        filterEventsOnSearchBoxSearchFromDetailsPage = function() {
+        	console.log("filterEventsOnSearchBoxSearchFromDetailsPage :::  "+ $scope.$parent.selectedGenreFromDetailsPage);
+        	if($scope.$parent.selectedGenreFromDetailsPage != undefined && $scope.$parent.selectedGenreFromDetailsPage != '') {
+        		console.log("filterEventsOnSearchBoxSearchFromDetailsPage ::: ");
+        		filterForSearchBox($scope.$parent.selectedGenreFromDetailsPage);
+        		$scope.$parent.selectedGenreFromDetailsPage = undefined;
+        	}
+        	
+        };
+        filterEventsOnSearchBoxSearchFromDetailsPage();
+        
+        function filterForSearchBox(argument) {
+        	console.log("filterForSearchBox : " + argument);
+        	console.log("city here : " + $scope.$parent.selectedHomeCity);
+        	if(argument != undefined && argument != '') {
+        		var stringToSearch = argument.toLowerCase();
+            	console.log("String to search : " + stringToSearch);
+            	$scope.allEventsListHome = [];
+            	var searchStrings = stringToSearch.split(" ");
+            	var indexArr = [];
+            	for (var index in $scope.allEventsListHomeBackup) {
+            		for(var indexVar in searchStrings) {
+            		   if(stringMatching($scope.allEventsListHomeBackup[index], searchStrings[indexVar]) && $scope.$parent.selectedHomeCity.toLowerCase() == $scope.allEventsListHomeBackup[index].city.name.toLowerCase()) {
+            			   if(indexArr.indexOf(index) > -1) {
+            				   break;
+            			   }
+            			   indexArr.push(index);
+            		   }
+            		}
+            	}
+            	for(var indx in indexArr) {
+            		$scope.allEventsListHome.push($scope.allEventsListHomeBackup[indexArr[indx]]);
+            	}
+        	}
         	if($scope.allEventsListHome.length === 0) {
         		$scope.allEventsListHome = $scope.allEventsListHomeBackup;
         	}
@@ -220,11 +259,14 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         	}else if ($scope.$parent.selectedHomeCity != undefined && $scope.$parent.selectedGenre != undefined) {
         		$scope.allEventsListHome = [];
         		for (var i = 0; i < $scope.allEventsListHomeBackup.length; i++) {
-        			if ($scope.allEventsListHomeBackup[i].genre == $scope.$parent.selectedGenre && $scope.allEventsListHomeBackup[i].city.name == $scope.$parent.selectedHomeCity) {
+        			console.log("$scope.allEventsListHomeBackup[i].genre:::"+$scope.allEventsListHomeBackup[i].genre);
+        			console.log("$scope.allEventsListHomeBackup[i].city.name:::"+$scope.allEventsListHomeBackup[i].city.name);
+        			if ($scope.allEventsListHomeBackup[i].genre == $scope.$parent.selectedGenre && ($scope.$parent.selectedHomeCity == 'All Cities' || $scope.allEventsListHomeBackup[i].city.name == $scope.$parent.selectedHomeCity)) {
         				$scope.allEventsListHome.push($scope.allEventsListHomeBackup[i]);
         			}
         		}
         	}
+        	console.log("$scope.allEventsListHome:::"+$scope.allEventsListHome.length);
         	if($scope.allEventsListHome.length === 0){
         		$scope.allEventsListHome = $scope.allEventsListHomeBackup;
         	}

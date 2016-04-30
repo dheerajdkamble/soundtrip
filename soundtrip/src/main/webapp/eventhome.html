@@ -3,13 +3,15 @@
 	display: inline-block;
 	width: 200px;
 	position: relative;
+	border: 0px none !important;
 }
 
 #imgText {
 	margin-left: 25px;
 	margin-top: -20px;
 	position: absolute;
-	z-index: 100;
+	/* commenting this because city and search box dropdown text overlapping
+	z-index: 100;*/
 	color: white;
 }
 
@@ -240,11 +242,11 @@ a {
 <div class="eventList" ng-repeat="eventsList in allEventsListHome">
 	<div class="thumbnail">
 		<!-- up -->
-		<!-- <img ng-src="http://103.35.123.84:8080/project/images/{{eventsList.image}}" alt="Generic placeholder thumbnail"
-			  style="width: 80%;"> -->
+		<img ng-src="http://103.35.123.84:8080/project/images/{{eventsList.image}}" alt="Generic placeholder thumbnail"
+			  style="width: 80%;">
 		<!-- down -->
-		<img ng-src="http://localhost:8080/project/images/{{eventsList.image}}" alt="Generic placeholder thumbnail"
-			style="width: 80%;">
+		<!-- <img ng-src="http://localhost:8080/project/images/{{eventsList.image}}" alt="Generic placeholder thumbnail"
+			style="width: 80%;"> -->
 		<p id="imgText" ng-bind="eventsList.datetime"></p>
 	</div>
 	<div class="caption">
@@ -254,7 +256,7 @@ a {
 
 		<p>{{eventsList.description}}</p>
 		<p>{{eventsList.genre}} Event</p>
-		<p>{{eventsList.addressLine1}}, {{eventsList.addressLine2}}, {{eventsList.area}} {{eventsList.city.name}},
+		<p style="font-size: small; width: 100%;">{{eventsList.addressLine1}}, {{eventsList.addressLine2}}, {{eventsList.area}} {{eventsList.city.name}},
 			{{eventsList.state}}, India - {{eventsList.pinCode}}</p>
 	</div>
 </div>

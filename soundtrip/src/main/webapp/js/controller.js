@@ -8,6 +8,7 @@
     	$scope.genrelistBackup = [{"name":"Pop"},{"name":"Jazz"},{"name":"Blues"},{"name":"Classic Rock"},{"name":"Indian Classical"}];
     	$scope.genrelist = [{"name":"Pop"},{"name":"Jazz"},{"name":"Blues"},{"name":"Classic Rock"},{"name":"Indian Classical"}];
     	$scope.selectedGenre = undefined;
+    	$scope.selectedGenreFromDetailsPage = undefined;
     	
     	$scope.getSelectedGenre = function(){
     		console.log("check selected genre:::"+$scope.selectedGenre);
@@ -31,7 +32,6 @@
     	
     	
     	getCityOptions = function() {
-    		alert('calling getcityOptions');
     		$http.get("action/getallcities").success(function (data) {
         		$scope.cityOptions = data;
         		console.log("check city json:::"+JSON.stringify($scope.cityOptions,null,4));
@@ -44,8 +44,15 @@
     		$scope.selectedGenre = selectedFrmList;
     		console.log("selected from list:::"+$scope.selectedGenre);
     		document.getElementById("genreList").style.display = 'none';
-    		$rootScope.$broadcast('searchEventOnSelectedGenre');
-    	}
+    		var url = window.location.href;
+    		if (url.indexOf('eventdetails') > -1) {
+    			$scope.selectedGenreFromDetailsPage = $scope.selectedGenre;
+        		$window.location.href = '#/eventhome';
+			} else {
+				$scope.selectedGenreFromDetailsPage = undefined;
+				$rootScope.$broadcast('searchEventOnSelectedGenre');
+			}
+    	};
     	
         $scope.language = function () {
             return i18n.language;
@@ -95,7 +102,7 @@
     	$scope.searchClicked = function() {
     		var url = window.location.href;
     		if (url.indexOf('eventdetails') > -1) {
-    			$window.location.href = '#/eventhome';
+    			$window.location.href = '#';
 			}else{
 				$rootScope.$broadcast('eventListSearch');
 			}
