@@ -8,6 +8,8 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
     	var actionUrlEventList = 'action/eventlisthome/';
     	$scope.allEventsListHome = [];
     	$scope.allEventsListHomeBackup = [];
+    	$scope.showMoreButtonVisible = false;
+    	$scope.listEventScrollCount = 1;
     	//document.getElementById("homeHeader").style.display = 'block';
     	
     	
@@ -28,9 +30,29 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         			$scope.allEventsListHome = $scope.allEventsListHomeBackup;
 				}
             });
+        	$scope.listEventScrollCount = 1;
+        	decideShowMoreButtonVisible();
         };
         //loadAllEvents();
     	
+        decideShowMoreButtonVisible = function() {
+        	if($scope.allEventsListHome.length > 2) {
+        		$scope.showMoreButtonVisible = true;
+        	} else {
+        		$scope.showMoreButtonVisible = false;
+        	}
+        };
+        
+        $scope.showMoreButtonClicked = function() {
+        	$scope.listEventScrollCount = $scope.listEventScrollCount + 1;
+        	console.log("showMoreButtonClicked : " + $scope.listEventScrollCount);
+        	if($scope.allEventsListHome.length > $scope.listEventScrollCount * 2) {
+        		$scope.showMoreButtonVisible = true;
+        	} else {
+        		$scope.showMoreButtonVisible = false;
+        	}
+        };
+        
     	loadGeolocationCity = function() {
     		/* Geolocation code starts */
             
@@ -159,6 +181,8 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         	if($scope.allEventsListHome.length === 0) {
         		$scope.allEventsListHome = $scope.allEventsListHomeBackup;
         	}
+        	$scope.listEventScrollCount = 1;
+        	decideShowMoreButtonVisible();
         });
         
         $scope.$on('eventListSearch', function() {
@@ -188,6 +212,8 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         	if($scope.allEventsListHome.length === 0) {
         		$scope.allEventsListHome = $scope.allEventsListHomeBackup;
         	}
+        	$scope.listEventScrollCount = 1;
+        	decideShowMoreButtonVisible();
         };
         
         filterEventsOnSearchBoxSearchFromDetailsPage = function() {
@@ -227,6 +253,8 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         	if($scope.allEventsListHome.length === 0) {
         		$scope.allEventsListHome = $scope.allEventsListHomeBackup;
         	}
+        	$scope.listEventScrollCount = 1;
+        	decideShowMoreButtonVisible();
         };
         
         function stringMatching(obj, val) {
@@ -270,7 +298,8 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         	if($scope.allEventsListHome.length === 0){
         		$scope.allEventsListHome = $scope.allEventsListHomeBackup;
         	}
-        	
+        	$scope.listEventScrollCount = 1;
+        	decideShowMoreButtonVisible();
         });
     });
 }());

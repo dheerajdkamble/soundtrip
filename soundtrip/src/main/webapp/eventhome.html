@@ -8,6 +8,11 @@
 	width: 900px;
 }
 
+.saperator {
+	border: 1px solid #f94609;
+	width: 95%;
+}
+
 @media screen and (max-width: 800px) and (min-width:300px) {
 	#jssor_1 {
 		margin: 0 auto;
@@ -28,6 +33,7 @@
 	width: 200px;
 	position: relative;
 	border: 0px none !important;
+	padding: 0px !important;
 }
 
 #imgText {
@@ -56,9 +62,18 @@
 }
 
 .eventList {
-	margin-left: 2%;
-	margin-right: 2%;
-	margin-top: 2%;
+	padding-left: 2%;
+	padding-right: 2%;
+	padding-top: 2%;
+	border-bottom:1px solid gray;
+}
+
+.eventList:HOVER {
+	padding-left: 2%;
+	padding-right: 2%;
+	padding-top: 2%;
+	border-bottom:1px solid gray;
+	background: #f5f5f5 !important;
 }
 
 .carousel-control {
@@ -258,6 +273,7 @@ a {
 
 </div>
 <br>
+<hr class="saperator" />
 <br>
 <div id="jssor_1" style="position: relative; top: 0px; left: 0px; height: 250px; overflow: hidden; visibility: hidden;">
 	<!-- Loading Screen -->
@@ -284,60 +300,6 @@ a {
 		<div style="display: none;">
 			<img data-u="image" src="images/slider/014.jpg" />
 		</div>
-		<div style="display: none;">
-			<img data-u="image" src="images/slider/019.jpg" />
-		</div>
-		<div style="display: none;">
-			<img data-u="image" src="images/slider/020.jpg" />
-		</div>
-		<div style="display: none;">
-			<img data-u="image" src="images/slider/021.jpg" />
-		</div>
-		<div style="display: none;">
-			<img data-u="image" src="images/slider/022.jpg" />
-		</div>
-		<div style="display: none;">
-			<img data-u="image" src="images/slider/024.jpg" />
-		</div>
-		<div style="display: none;">
-			<img data-u="image" src="images/slider/025.jpg" />
-		</div>
-		<div style="display: none;">
-			<img data-u="image" src="images/slider/027.jpg" />
-		</div>
-		<div style="display: none;">
-			<img data-u="image" src="images/slider/029.jpg" />
-		</div>
-		<div style="display: none;">
-			<img data-u="image" src="images/slider/030.jpg" />
-		</div>
-		<div style="display: none;">
-			<img data-u="image" src="images/slider/031.jpg" />
-		</div>
-		<div style="display: none;">
-			<img data-u="image" src="images/slider/030.jpg" />
-		</div>
-		<div style="display: none;">
-			<img data-u="image" src="images/slider/034.jpg" />
-		</div>
-		<div style="display: none;">
-			<img data-u="image" src="images/slider/038.jpg" />
-		</div>
-		<div style="display: none;">
-			<img data-u="image" src="images/slider/039.jpg" />
-		</div>
-		<div style="display: none;">
-			<img data-u="image" src="images/slider/043.jpg" />
-		</div>
-		<div style="display: none;">
-			<img data-u="image" src="images/slider/044.jpg" />
-		</div>
-		<div style="display: none;">
-			<img data-u="image" src="images/slider/047.jpg" />
-		</div>
-		<div style="display: none;">
-			<img data-u="image" src="images/slider/050.jpg" />
-		</div>
 	</div>
 	<!-- Arrow Navigator -->
 	<span data-u="arrowleft" class="jssora03l" style="top: 0px; left: 8px; width: 55px; height: 55px;" data-autocenter="2"></span>
@@ -346,31 +308,31 @@ a {
 </div>
 <br>
 <br>
-<div style="margin-left: 2%; margin-right: 2%; margin-top: 3%; border-bottom: 1px solid #e60000;">
+<div style="padding-left: 2%; padding-right: 2%; padding-top: 3%; border-bottom: 1px solid #e60000;">
 	<p>Upcoming Events</p>
 </div>
-
-<div class="eventList" ng-repeat="eventsList in allEventsListHome">
+<div class="eventList" ng-repeat="event in allEventsListHome" ng-show="$index < (listEventScrollCount * 2)">
 	<div class="thumbnail">
 		<!-- up -->
-		<img ng-src="http://103.35.123.84:8080/project/images/{{eventsList.image}}" alt="Generic placeholder thumbnail"
+		<img ng-src="http://103.35.123.84:8080/project/images/{{event.image}}" alt="Generic placeholder thumbnail"
 			style="width: 80%;">
 		<!-- down -->
-		<img ng-src="http://localhost:8080/project/images/{{eventsList.image}}" alt="Generic placeholder thumbnail"
-			style="width: 80%;">
-		<p id="imgText" ng-bind="eventsList.datetime"></p>
+		<!-- <img ng-src="http://localhost:8080/project/images/{{event.image}}" alt="Generic placeholder thumbnail"
+			style="width: 100%;"> -->
+		<p id="imgText" ng-bind="event.datetime"></p>
 	</div>
 	<div class="caption">
 		<h4 class="media-heading">
-			<a href="/soundtrip/#/eventdetails/{{eventsList.id}}-{{eventsList.name}}" ng-click="goToEventDetails(eventsList.id)">{{eventsList.name}}</a>
+			<a href="/soundtrip/#/eventdetails/{{event.id}}-{{event.name}}" ng-click="goToEventDetails(event.id)">{{event.name}}</a>
 		</h4>
-
-		<p>{{eventsList.description}}</p>
-		<p>{{eventsList.genre}} Event</p>
-		<p style="font-size: small; width: 100%;">{{eventsList.addressLine1}}, {{eventsList.addressLine2}},
-			{{eventsList.area}} {{eventsList.city.name}}, {{eventsList.state}}, India - {{eventsList.pinCode}}</p>
+	
+		<p>{{event.description}}</p>
+		<p>{{event.genre}} Event</p>
+		<p style="font-size: small; width: 100%;">{{event.addressLine1}}, {{event.addressLine2}},
+			{{event.area}} {{event.city.name}}, {{event.state}}, India - {{event.pinCode}}</p>
 	</div>
 </div>
+<button ng-show="showMoreButtonVisible"  ng-click="showMoreButtonClicked()">Show More</button>
 
 <script src="js/external/docs.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
