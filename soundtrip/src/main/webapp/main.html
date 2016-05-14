@@ -43,6 +43,20 @@
 		background-color: #e60000;
 		border-color: #e60000;
 	}
+	#example-navbar-collapse {
+		text-align: left !important;
+	}
+	#example-navbar-collapse>ul {
+		display: inline-block !important;
+		float: unset !important;
+		width: 83%;
+	}
+	#example-navbar-collapse>ul>li {
+		width: 100% !important;
+		/* text-align:center !important; */
+		float: left;
+		background-color: #e60000;
+	}
 }
 
 @media ( max-width : 3600px) {
@@ -72,22 +86,23 @@
 	/*
 		Added for Menu
 	*/
-	#example-navbar-collapse {
-		text-align:center !important;
-	}
-	
-	#example-navbar-collapse > ul {
-		display: inline-block !important;
-    	float: unset !important;
-    	width: 83%;
-	}
-	
-	#example-navbar-collapse > ul > li {
-    	width: 20% !important;
-    	text-align:center !important;
-    	float:left;
-    	background-color: #e60000;
-    }
+}
+
+#example-navbar-collapse {
+	text-align: center !important;
+}
+
+#example-navbar-collapse>ul {
+	display: inline-block !important;
+	float: unset !important;
+	width: 83%;
+}
+
+#example-navbar-collapse>ul>li {
+	width: 20% !important;
+	/* text-align:center !important; */
+	float: left;
+	background-color: #e60000;
 }
 
 @media ( max-width : 500px) {
@@ -115,6 +130,25 @@
 	}
 	.eventList {
 		margin-bottom: 10%;
+	}
+	
+	#example-navbar-collapse {
+		text-align: left !important;
+		border: none;
+		width: 100%;
+		
+	}
+	#example-navbar-collapse>ul {
+		display: inline-block !important;
+		float: unset !important;
+		width: 100%;
+		margin: 0 auto;
+	}
+	#example-navbar-collapse>ul>li {
+		width: 100% !important;
+		/* text-align:center !important; */
+		float: left;
+		background-color: #e60000;
 	}
 }
 
@@ -379,7 +413,7 @@ div.awesomplete {
 	<script type="text/javascript" src="js/external/bootstrap-datetimepicker.js"></script>
 	<script type="text/javascript" src="js/external/imgslider/jssor.slider.min.js"></script>
 	<script type="text/javascript" src="js/external/imgslider/img_slider.js"></script>
-	
+
 	<!-- <script type="text/javascript" src="js/external/awesomplete.js"></script> -->
 	<!-- <script>
 		var comboplete = new Awesomplete(Awesomplete.$('input.dropdown-input'),
