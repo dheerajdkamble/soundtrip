@@ -49,7 +49,18 @@
         .jssora03l.jssora03ldn      (mousedown)
         .jssora03r.jssora03rdn      (mousedown)
         */
-.jssora03l, .jssora03r {
+.jssora03l {
+	display: block;
+	position: absolute;
+	/* size of arrow element */
+	width: 55px;
+	height: 55px;
+	cursor: pointer;
+	background: url('../images/slider/a03.png') no-repeat;
+	overflow: hidden;
+}
+
+.jssora03r {
 	display: block;
 	position: absolute;
 	/* size of arrow element */

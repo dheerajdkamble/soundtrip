@@ -1,30 +1,82 @@
 <style>
+.sliderRight1 {
+	height: 0px;
+}
+
+.sliderRight {
+	right: 50px;
+	top: -80px;
+}
+
+.sliderLeft {
+	left: 50px !important;
+	top: -80px;
+}
+
+.sliderLeft1 {
+	height: 0px;
+}
+
+.jssora03l {
+	top: 0px;
+	left: 8px;
+	width: 55px;
+	height: 55px;
+}
+
+.jssora03r {
+	top: 0px;
+	right: 9px;
+	width: 55px;
+	height: 55px;
+}
+
 #jssor_1 {
 	margin: 0 auto;
-	width: 900px;
+	width: 1000px;
 }
 
 #jssor_2 {
-	width: 900px;
-}
-
-.saperator {
-	border: 1px solid #f94609;
-	width: 95%;
+	width: 850px;
+	height: 270px;
+	left: 80px;
 }
 
 @media screen and (max-width: 800px) and (min-width:300px) {
 	#jssor_1 {
 		margin: 0 auto;
-		width: 300px!important;
+		width: 300px !important;
 	}
-	
-	#jssor_1 div{
-		width: 300px!important;
+	#jssor_1 div {
+		width: 250px !important;
 	}
 	
 	#jssor_2 {
-		width: 300px;
+		width: 250px;
+		height: 200px;
+		left: 22px;
+	}
+	.jssora03l {
+		left: 0px;
+		top: 74.5px !important;
+	}
+	.jssora03r {
+		right: -115px;
+		top: 74.5px !important;
+	}
+	.sliderRight {
+		top: 17px;
+		right: -38px
+	}
+	.sliderRight1 {
+		height: 0px;
+	}
+	.sliderLeft {
+		top: 17px;
+		left: 7px !important;
+	}
+	.sliderLeft1 {
+		height: 0px;
 	}
 }
 
@@ -56,9 +108,10 @@
 }
 
 .carousel {
-	margin-left: 2%;
+	margin-left: 10%;
 	margin-right: 2%;
 	margin-top: 10%;
+	width: 80%;
 }
 
 .eventList {
@@ -83,19 +136,19 @@
 
 #rightArrow {
 	padding-left: 55% !important;
-	padding-top: 180px !important;
+	padding-top: 150px !important;
 	position: absolute !important;
 }
 
 #leftArrow {
 	padding-right: 55% !important;
-	padding-top: 180px !important;
+	padding-top: 150px !important;
 	position: absolute !important;
-	left: -20px !important;
+	left: -20px;
 }
 
 .carousel-inner {
-	height: 450px;
+	height: 360px;
 }
 
 .homeHeader {
@@ -214,8 +267,13 @@
 	.carousel {
 		margin-top: 28%;
 	}
-	#rightArrow, #leftArrow {
-		padding-top: 80px !important;
+	#rightArrow {
+		padding-top: 62px !important;
+	}
+	
+	#leftArrow {
+		padding-top: 62px !important;
+		padding-left:5px !important;
 	}
 	.carousel-inner {
 		height: auto;
@@ -275,7 +333,7 @@ a {
 <br>
 <hr class="saperator" />
 <br>
-<div id="jssor_1" style="position: relative; top: 0px; left: 0px; height: 250px; overflow: hidden; visibility: hidden;">
+<div id="jssor_1" style="position: relative; top: 0px; left: 0px; height: 270px; overflow: hidden; visibility: hidden;">
 	<!-- Loading Screen -->
 	<div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
 		<div
@@ -283,8 +341,7 @@ a {
 		<div
 			style="position: absolute; display: block; background: url('images/slider/loading.gif') no-repeat center center; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
 	</div>
-	<div data-u="slides" id="jssor_2"
-		style="cursor: default; position: relative; top: 0px; left: 0px; height: 250px; overflow: hidden;">
+	<div data-u="slides" id="jssor_2" style="cursor: default; position: relative; top: 0px; overflow: hidden;">
 		<div style="display: none;">
 			<img data-u="image" src="images/slider/005.jpg" />
 		</div>
@@ -302,9 +359,14 @@ a {
 		</div>
 	</div>
 	<!-- Arrow Navigator -->
-	<span data-u="arrowleft" class="jssora03l" style="top: 0px; left: 8px; width: 55px; height: 55px;" data-autocenter="2"></span>
-	<span data-u="arrowright" class="jssora03r" style="top: 0px; right: 8px; width: 55px; height: 55px;"
-		data-autocenter="2"></span>
+	<!-- <span data-u="arrowleft" class="jssora03l" data-autocenter="2"></span> <span data-u="arrowright" class="jssora03r"
+		data-autocenter="2"></span> -->
+
+	<a class="carousel-control left sliderLeft1" href="#myCarousel" data-slide="prev"><span data-u="arrowleft"
+		data-autocenter="2" id="leftArrow" class="sliderLeft">&lsaquo;</span></a> <a class="carousel-control right sliderRight1"
+		href="#myCarousel" data-slide="next"><span data-u="arrowright" data-autocenter="2" id="rightArrow"
+		class="sliderRight">&rsaquo;</span></a>
+
 </div>
 <br>
 <br>
@@ -314,11 +376,11 @@ a {
 <div class="eventList" ng-repeat="event in allEventsListHome" ng-show="$index < (listEventScrollCount * 2)">
 	<div class="thumbnail">
 		<!-- up -->
-		<img ng-src="http://103.35.123.84:8080/project/images/{{event.image}}" alt="Generic placeholder thumbnail"
-			style="width: 80%;">
+		<!-- <img ng-src="http://103.35.123.84:8080/project/images/{{event.image}}" alt="Generic placeholder thumbnail"
+			style="width: 80%;"> -->
 		<!-- down -->
-		<!-- <img ng-src="http://localhost:8080/project/images/{{event.image}}" alt="Generic placeholder thumbnail"
-			style="width: 100%;"> -->
+		<img ng-src="http://localhost:8080/project/images/{{event.image}}" alt="Generic placeholder thumbnail"
+			style="width: 100%;">
 		<p id="imgText" ng-bind="event.datetime"></p>
 	</div>
 	<div class="caption">

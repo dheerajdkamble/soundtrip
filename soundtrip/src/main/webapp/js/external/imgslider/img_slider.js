@@ -4,8 +4,8 @@ jssor_1_slider_init = function() {
 		$AutoPlay : true,
 		$AutoPlaySteps : 1,
 		$SlideDuration : 160,
-		$SlideWidth : 300,
-		$SlideSpacing : 3,
+		$SlideWidth : 270,
+		$SlideSpacing : 15,
 		$Cols : 4,
 		$ArrowNavigatorOptions : {
 			$Class : $JssorArrowNavigator$,
@@ -26,7 +26,7 @@ jssor_1_slider_init = function() {
 	function ScaleSlider() {
 		var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
 		if (refSize) {
-			refSize = Math.min(refSize, 900);
+			refSize = Math.min(refSize, 1000);
 			jssor_1_slider.$ScaleWidth(refSize);
 		} else {
 			window.setTimeout(ScaleSlider, 30);

@@ -35,6 +35,10 @@
 	</script>
 
 	<style>
+.navbar-inverse .navbar-nav>li>a {
+	color: black;
+}
+
 @media screen and (max-width: 800px) and (min-width:300px) {
 	.navbar {
 		position: fixed;
@@ -57,6 +61,11 @@
 		float: left;
 		background-color: #e60000;
 	}
+}
+
+.navbar-nav>li>a {
+	padding-top: 0px;
+	padding-bottom: 0px;
 }
 
 @media ( max-width : 3600px) {
@@ -90,19 +99,24 @@
 
 #example-navbar-collapse {
 	text-align: center !important;
+	margin-top: 15px;
 }
 
 #example-navbar-collapse>ul {
 	display: inline-block !important;
 	float: unset !important;
 	width: 83%;
+	border-top: 1px solid #323c4d;
+	border-bottom: 1px solid #323c4d;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 #example-navbar-collapse>ul>li {
 	width: 20% !important;
 	/* text-align:center !important; */
 	float: left;
-	background-color: #e60000;
+	background-color: transparent;
 }
 
 @media ( max-width : 500px) {
@@ -233,7 +247,7 @@ div.awesomplete {
 
 	<div>
 		<form>
-			<nav class="navbar navbar-inverse" role="navigation" style="border-radius: 0px; height: 80px;">
+			<nav class="navbar navbar-inverse" role="navigation" style="border-radius: 0px; height: 120px;">
 				<div style="display: table; width: 100%; table-layout: fixed; margin-top: 2%;">
 					<div style="display: table; width: 100%; table-layout: fixed;" id="selectHeaderDiv">
 						<div class="btn-group">
@@ -333,10 +347,10 @@ div.awesomplete {
 		</form> -->
 	</div>
 	<div class="container" style="margin-bottom: 3%;">
-		<div ng-class="'alert alert-'+message().type" ng-show="message().show">
+		<!-- <div ng-class="'alert alert-'+message().type" ng-show="message().show">
 			<button type="button" class="close" ng-click="message().show=false">×</button>
 			<msg key-expr="message().text"></msg>
-		</div>
+		</div> -->
 
 		<div class="modal" style="display: none" id="login">
 			<div class="modal-header">
