@@ -9,6 +9,7 @@
     	$scope.genreOptions = [];
     	$scope.eventDate;
     	$scope.datetimepickerval='';
+    	$scope.neweventmasterfbrecord = {};
 
     	$scope.updateEventDate = function (date){
     		// $scope.eventDate = date;
@@ -82,11 +83,19 @@
 	    	console.log('before saving new event master' + JSON.stringify($scope.neweventmaster, null, 4));
 	        $http.post(actionUrlEvents, $scope.neweventmaster).success(function () {
 	        	loadEvents();
+	        	$scope.neweventmasterfbrecord = $scope.neweventmaster;
 	        	$scope.neweventmaster = {};
 	        	$scope.eventDate = '';
 	        	$scope.cityOption = '';
 	        	$scope.genreOption = '';
 	        	$scope.stepsModel = [];
+	        });
+	    };
+	    
+	    $scope.createFBEvent = function () {
+	    	console.log("Before saving ::: " + JSON.stringify($scope.neweventmasterfbrecord, null, 4));
+	        $http.post("action/eventmaster/fbEvent/", $scope.neweventmasterfbrecord).success(function () {
+	        	$scope.neweventmasterfbrecord = {};
 	        });
 	    };
 	

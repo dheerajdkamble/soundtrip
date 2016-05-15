@@ -17,5 +17,6 @@ public interface EventService {
 	List<Event> getAllEvents();
 
 	void deleteEvent(int id);
-
+	
+	void createFBEvent(Event event);
 }

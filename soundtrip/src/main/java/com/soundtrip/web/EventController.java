@@ -169,6 +169,23 @@ public class EventController {
 
 		return new ResponseMessage(ResponseMessage.Type.success, "eventAdded");
 	}
+	
+	@RequestMapping(value = "/eventmaster/fbEvent", method = RequestMethod.POST)
+	@ResponseBody
+	@Transactional(propagation = Propagation.REQUIRED)
+	public ResponseMessage addFBEvent(@RequestBody String eventJson) throws ParseException {
+		System.out.println("Here... " + eventJson);
+		gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+		EventDTO eventToSave = gson.fromJson(eventJson, EventDTO.class);
+
+		Event event = null;
+		if(eventToSave.getId() > 0) {
+			event = eventService.getEventById(eventToSave.getId());
+		}		
+		eventService.createFBEvent(event);
+
+		return new ResponseMessage(ResponseMessage.Type.success, "eventAdded");
+	}
 
 	@RequestMapping(value = "/eventmaster/{id}", method = RequestMethod.DELETE)
 	@ResponseBody

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.soundtrip.dao.EventDao;
 import com.soundtrip.dto.Event;
 import com.soundtrip.service.EventService;
+import com.soundtrip.service.FacebookEvent;
 
 /**
  * @author Dheeraj
@@ -21,6 +22,9 @@ public class EventServiceImpl implements EventService {
 
 	@Autowired
 	EventDao eventDao;
+	
+	@Autowired
+	FacebookEvent facebookEvent;
 
 	@Override
 	public Event getEventById(int id) {
@@ -51,5 +55,14 @@ public class EventServiceImpl implements EventService {
 	 */
 	public void setEventDao(EventDao eventDao) {
 		this.eventDao = eventDao;
+	}
+	
+	public void setFacebookEvent(FacebookEvent facebookEvent) {
+		this.facebookEvent = facebookEvent;
+	}
+
+	@Override
+	public void createFBEvent(Event event) {
+		facebookEvent.createFBEvent(event);
 	}
 }
