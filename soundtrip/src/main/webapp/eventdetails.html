@@ -1,4 +1,16 @@
 <style>
+@media ( max-width : 300px) {
+	#primaryDetailsImgCircle {
+		height: 100px !important;
+		width: 100px !important;
+	}
+}
+
+#primaryDetailsImgCircle {
+	height: 200px;
+	width: 200px;
+}
+
 #primaryDetailsImg {
 	height: 300px;
 }
@@ -22,11 +34,12 @@ p {
 
 <div>
 	<!-- Up -->
-	<img src="images/02.jpg" alt="First slide" id="primaryDetailsImg" style="width: 100%;"> <img
+	<img src="images/02.jpg" alt="First slide" id="primaryDetailsImg" style="width: 100%;"> 
+	
+	<img
 		ng-src="http://103.35.123.84:8080/project/images/{{eventDetail.image}}" alt="First slide" id="primaryDetailsImg" style="width: 200px; height: 200px;" class="small">
-	<!-- Down -->	
-	<!-- <img src="images/02.jpg" alt="First slide" id="primaryDetailsImg" style="width: 100%;"> <img
-		ng-src="http://localhost:8080/project/images/{{eventDetail.image}}" alt="First slide" id="primaryDetailsImg" style="width: 200px; height: 200px;" class="small"> -->	
+	<!-- Down -->
+	<!-- <img ng-src="http://localhost:8080/project/images/{{eventDetail.image}}" alt="First slide" id="primaryDetailsImgCircle" class="small"> -->
 
 	<div>
 		<h1>{{eventDetail.name}}</h1>
@@ -47,7 +60,9 @@ p {
 				<tr>
 					<td><span class="glyphicon glyphicon-map-marker"></span></td>
 					<td><p>{{eventDetail.description}}</p>
-						<p>{{eventDetail.addressLine1}}, {{eventDetail.addressLine2}}, {{eventDetail.area}}, {{eventDetail.city.name}}, {{eventDetail.state}}, India - {{eventDetail.pinCode}}</p></td>
+						<p>{{eventDetail.addressLine1}}, {{eventDetail.addressLine2}},
+							{{eventDetail.area}}, {{eventDetail.city.name}},
+							{{eventDetail.state}}, India - {{eventDetail.pinCode}}</p></td>
 				</tr>
 			</table>
 		</div>
