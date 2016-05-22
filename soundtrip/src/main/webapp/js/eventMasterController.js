@@ -53,6 +53,7 @@
 	
 	    $scope.edit = function (index) {
 	        $scope.neweventmaster = angular.copy($scope.eventmasters[index]);
+	        $scope.neweventmasterfbrecord = $scope.neweventmaster; 
 	        for(var i = 0 ; i < $scope.cityOptions.length; i++) {
 	        	if($scope.cityOptions[i].id == $scope.neweventmaster.city.id) {
 	        		$scope.cityOption = $scope.cityOptions[i];

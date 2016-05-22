@@ -1,45 +1,11 @@
-<style>
-@media ( max-width : 300px) {
-	#primaryDetailsImgCircle {
-		height: 100px !important;
-		width: 100px !important;
-	}
-}
-
-#primaryDetailsImgCircle {
-	height: 200px;
-	width: 200px;
-}
-
-#primaryDetailsImg {
-	height: 300px;
-}
-
-img {
-	display: block;
-}
-
-.small {
-	margin-top: -100px;
-	margin-left: 3%;
-	border-radius: 100px;
-	border: none;
-}
-
-p {
-	margin-bottom: 0px;
-	margin-left: 10px;
-}
-</style>
-
+<link href="css/eventdetails.css" rel="stylesheet" media="screen">
 <div>
 	<!-- Up -->
-	<img src="images/02.jpg" alt="First slide" id="primaryDetailsImg" style="width: 100%;"> 
-	
-	<img
-		ng-src="http://103.35.123.84:8080/project/images/{{eventDetail.image}}" alt="First slide" id="primaryDetailsImg" style="width: 200px; height: 200px;" class="small">
-	<!-- Down -->
-	<!-- <img ng-src="http://localhost:8080/project/images/{{eventDetail.image}}" alt="First slide" id="primaryDetailsImgCircle" class="small"> -->
+	<img src="images/02.jpg" alt="First slide" id="primaryDetailsImg" style="width: 100%;"> <img
+		ng-src="http://103.35.123.84:8080/project/images/{{eventDetail.image}}" alt="First slide" id="primaryDetailsImgCircle" class="small">
+	<!-- Down -->	
+	<!-- <img src="images/02.jpg" alt="First slide" id="primaryDetailsImg" style="width: 100%;"> <img
+		ng-src="http://localhost:8080/project/images/{{eventDetail.image}}" alt="First slide" id="primaryDetailsImgCircle" class="small"> -->	
 
 	<div>
 		<h1>{{eventDetail.name}}</h1>

@@ -1,0 +1,32 @@
+@media ( max-width : 500px) {
+	#primaryDetailsImgCircle {
+		height: 100px !important;
+		width: 100px !important;
+		margin-top: -60px;
+	}
+}
+
+#primaryDetailsImgCircle {
+	height: 200px;
+	width: 200px;
+}
+
+#primaryDetailsImg {
+	height: 300px;
+}
+
+img {
+	display: block;
+}
+
+.small {
+	margin-top: -100px;
+	margin-left: 3%;
+	border-radius: 100px;
+	border: none;
+}
+
+p {
+	margin-bottom: 0px;
+	margin-left: 10px;
+}
