@@ -28,6 +28,7 @@
 			//document.getElementById("searchEvent").style.width = '100%';
 			document.getElementById("init-group").style.width = '93%';
 			//document.getElementById("genreInput").style.width = '80%';    		
+			document.getElementById("menuNavHead").style.marginLeft ='60px';
     	}
     	
     	
@@ -76,6 +77,7 @@
     		document.getElementById("hideSearchBtn").style.display = 'none';
     		document.getElementById("selectHeaderDiv").style.display = 'table';
     		document.getElementById("headerLogoDiv").style.display = 'table-cell';
+    		document.getElementById("menuNavHead").style.marginLeft ='38px';
         }
 
         $scope.login = function () {

@@ -1,3 +1,12 @@
+.btn {
+	padding: 5px 10px;
+}
+
+.navbar-toggle {
+	padding: 7px 5px;
+	margin: 0px;
+}
+
 .navbar-inverse .navbar-nav>li>a {
 	color: black;
 }
@@ -83,23 +92,26 @@
 }
 
 @media ( max-width : 500px) {
+	#menuNavHead {
+		margin-left: 38px;
+	}
 	#activeSearchBtn {
-		margin-left: 50px;
+		margin-left: 5px;
 	}
 	.footdiv {
 		width: 100%;
 	}
 	#drpdwnbtn {
-		margin-left: 5px;
+		margin-left: 15px;
 	}
 	.dropdown-menu {
 		margin-left: 5px;
 	}
 	#genreList {
-		width: 70%;
+		width: 96%;
 	}
 	#genreInput {
-		width: 70%;
+		width: 59%;
 	}
 	.footdiv div {
 		margin-left: 10px;
@@ -116,7 +128,7 @@
 	#example-navbar-collapse>ul {
 		display: inline-block !important;
 		float: unset !important;
-		width: 100%;
+		width: 98%;
 		margin: 0 auto;
 	}
 	#example-navbar-collapse>ul>li {

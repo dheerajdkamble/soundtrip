@@ -71,7 +71,7 @@
 					<div style="display: table; width: 100%; table-layout: fixed;" id="selectHeaderDiv">
 						<div class="btn-group">
 							<button type="button" class="form-control btn btn-default dropdown-toggle" data-toggle="dropdown"
-								style="width: 100px;" id="drpdwnbtn">
+								style="width: 100px; height: 32px;" id="drpdwnbtn">
 								{{selectedHomeCity}} <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
@@ -87,11 +87,11 @@
 						<div class="input-group" style="display: inline-flex; width: 90%;" id="init-group">
 
 							<div style="width: 100%; z-index: 10;" id="searchEventDiv">
-								<div style="width: 100%; margin-left: 10%;">
+								<div style="width: 100%; margin-left: 5%;">
 									<input type="text" class="form-control" ng-model="selectedGenre" ng-change="getSelectedGenre()"
 										placeholder="Search for..." id="genreInput"
-										style="border-radius: 0px; height: 33px; margin-top: 1px; display: none;" class="dropdown-input"
-										onfocus="searchActive()" /> <span class="input-group-btn" style="margin-left: 1px;">
+										style="border-radius: 4px; height: 33px; display: none;" class="dropdown-input"
+										onfocus="searchActive()" /> <span class="input-group-btn" style="margin-left: 3px;">
 										<button class="btn btn-default" id="activeSearchBtn" type="button" style="margin-top: 0px;"
 											ng-click="getSearchActive()">
 											<span class="glyphicon glyphicon-search"></span>
@@ -100,14 +100,19 @@
 											ng-click="searchClicked()">
 											<span class="glyphicon glyphicon-search"></span>
 										</button>
-									</span> <span class="input-group-btn" style="margin-left: 45px;">
+									</span> <span class="input-group-btn" style="margin-left: 30px;">
 										<button class="btn btn-default" type="button" style="margin-top: 0px; border-radius: 4px; display: none;"
 											id="hideSearchBtn" ng-click="hideSearchEvent()">X</button>
+									</span> <span class="input-group-btn" id="menuNavHead">
+										<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+											<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+										</button>
 									</span>
 								</div>
-								<div style="width: 100%;">
+								<div style="width: 100%;margin-top: 1px;">
 									<ul id="genreList"
-										style="list-style: none; background-color: grey; margin-top: 0px; display: none; border: 1px solid #000000; color: #FFFFFF; padding-left: 15px; margin-left: 10%;">
+										style="list-style: none; background-color: grey; margin-top: 0px; display: none; border: 1px solid #000000; color: #FFFFFF; padding-left: 15px; margin-left: 5%;">
 										<li ng-repeat="genre in genrelist" ng-click="genreListClick(genre.name)" style="cursor: pointer;">{{genre.name}}</li>
 									</ul>
 								</div>
@@ -115,10 +120,6 @@
 						</div>
 					</div>
 				</div>
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
 				<div class="collapse navbar-collapse" id="example-navbar-collapse">
 					<ul class="nav navbar-nav">
 						<li><a href="#">Contact Us</a></li>
@@ -209,20 +210,21 @@
 			<div class="navbar-footer footdiv" style="margin-top: 35px;">
 				<div>
 					<a target="_blank" title="Frequently Answered Questions" href="static/faq.html"
-						style="padding-right: 5px; color: white;">FAQ</a> <a target="_blank" title="Privacy Policy" href="static/aboutus.html"
-						style="padding-right: 10px; color: white;">Privacy Policy</a> <a target="_blank" title="follow me on facebook"
-						href="http://www.facebook.com/MusicChartTestPageDheeraj"><img alt="follow me on facebook"
-						src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0 class="socialMediaImage"></a> <a
-						target="_blank" title="follow me on Twitter" href="http://www.twitter.com/PLACEHOLDER"><img
-						alt="follow me on Twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter30x30.png" border=0
-						class="socialMediaImage"></a> <a target="_blank" title="follow me on instagram"
-						href="http://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram"
-						src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0 class="socialMediaImage"></a> <a
-						target="_blank" title="follow me on google plus" href="https://plus.google.com/PLACEHOLDER"><img
-						alt="follow me on google plus" src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0
-						class="socialMediaImage"></a> <a target="_blank" title="follow me on pinterest"
-						href="http://www.pinterest.com/PLACEHOLDER"><img alt="follow me on pinterest"
-						src="https://c866088.ssl.cf3.rackcdn.com/assets/pinterest30x30.png" border=0 class="socialMediaImageLast"></a>
+						style="padding-right: 5px; color: white;">FAQ</a> <a target="_blank" title="Privacy Policy"
+						href="static/aboutus.html" style="padding-right: 10px; color: white;">Privacy Policy</a> <a target="_blank"
+						title="follow me on facebook" href="http://www.facebook.com/MusicChartTestPageDheeraj"><img
+						alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0
+						class="socialMediaImage"></a> <a target="_blank" title="follow me on Twitter"
+						href="http://www.twitter.com/PLACEHOLDER"><img alt="follow me on Twitter"
+						src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter30x30.png" border=0 class="socialMediaImage"></a> <a
+						target="_blank" title="follow me on instagram" href="http://www.instagram.com/PLACEHOLDER"><img
+						alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0
+						class="socialMediaImage"></a> <a target="_blank" title="follow me on google plus"
+						href="https://plus.google.com/PLACEHOLDER"><img alt="follow me on google plus"
+						src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0 class="socialMediaImage"></a> <a
+						target="_blank" title="follow me on pinterest" href="http://www.pinterest.com/PLACEHOLDER"><img
+						alt="follow me on pinterest" src="https://c866088.ssl.cf3.rackcdn.com/assets/pinterest30x30.png" border=0
+						class="socialMediaImageLast"></a>
 				</div>
 			</div>
 		</div>
