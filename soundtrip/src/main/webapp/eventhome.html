@@ -42,6 +42,15 @@
 	left: 80px;
 }
 
+.showMoreButton{
+	margin-left:46%;
+	margin-top:10px;
+	background-color: #f94609;
+	color: white;
+	font-weight: bold;
+	font-size: 13px;
+}
+
 @media screen and (max-width: 800px) and (min-width:300px) {
 	#jssor_1 {
 		margin: 0 auto;
@@ -110,7 +119,7 @@
 .carousel {
 	margin-left: 10%;
 	margin-right: 2%;
-	margin-top: 10%;
+	margin-top: 12%;
 	width: 80%;
 }
 
@@ -394,7 +403,7 @@ a {
 			{{event.area}} {{event.city.name}}, {{event.state}}, India - {{event.pinCode}}</p>
 	</div>
 </div>
-<button ng-show="showMoreButtonVisible"  ng-click="showMoreButtonClicked()">Show More</button>
+<button ng-show="showMoreButtonVisible"  ng-click="showMoreButtonClicked()" class="showMoreButton">Show More...</button>
 
 <script src="js/external/docs.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

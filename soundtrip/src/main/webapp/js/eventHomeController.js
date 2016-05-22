@@ -8,11 +8,8 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
     	var actionUrlEventList = 'action/eventlisthome/';
     	$scope.allEventsListHome = [];
     	$scope.allEventsListHomeBackup = [];
-    	$scope.showMoreButtonVisible = false;
     	$scope.listEventScrollCount = 1;
     	//document.getElementById("homeHeader").style.display = 'block';
-    	
-    	
 
     	loadAllEvents = function () {
         	$http.get(actionUrlEventList).success(function (data) {
@@ -31,21 +28,21 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
 				}
             });
         	$scope.listEventScrollCount = 1;
-        	decideShowMoreButtonVisible();
+        	setTimeout(100, decideShowMoreButtonVisible);
+        	
+//        	decideShowMoreButtonVisible();
         };
         //loadAllEvents();
     	
-        decideShowMoreButtonVisible = function() {
+        function decideShowMoreButtonVisible() {
+        	$scope.showMoreButtonVisible = false;
         	if($scope.allEventsListHome.length > 2) {
         		$scope.showMoreButtonVisible = true;
-        	} else {
-        		$scope.showMoreButtonVisible = false;
         	}
         };
         
         $scope.showMoreButtonClicked = function() {
         	$scope.listEventScrollCount = $scope.listEventScrollCount + 1;
-        	console.log("showMoreButtonClicked : " + $scope.listEventScrollCount);
         	if($scope.allEventsListHome.length > $scope.listEventScrollCount * 2) {
         		$scope.showMoreButtonVisible = true;
         	} else {
@@ -182,7 +179,8 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         		$scope.allEventsListHome = $scope.allEventsListHomeBackup;
         	}
         	$scope.listEventScrollCount = 1;
-        	decideShowMoreButtonVisible();
+        	setTimeout(100, decideShowMoreButtonVisible);
+//        	decideShowMoreButtonVisible();
         });
         
         $scope.$on('eventListSearch', function() {
@@ -213,7 +211,8 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         		$scope.allEventsListHome = $scope.allEventsListHomeBackup;
         	}
         	$scope.listEventScrollCount = 1;
-        	decideShowMoreButtonVisible();
+        	setTimeout(100, decideShowMoreButtonVisible);
+//        	decideShowMoreButtonVisible();
         };
         
         filterEventsOnSearchBoxSearchFromDetailsPage = function() {
@@ -254,7 +253,8 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         		$scope.allEventsListHome = $scope.allEventsListHomeBackup;
         	}
         	$scope.listEventScrollCount = 1;
-        	decideShowMoreButtonVisible();
+        	setTimeout(100, decideShowMoreButtonVisible);
+//        	decideShowMoreButtonVisible();
         };
         
         function stringMatching(obj, val) {
@@ -299,7 +299,8 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         		$scope.allEventsListHome = $scope.allEventsListHomeBackup;
         	}
         	$scope.listEventScrollCount = 1;
-        	decideShowMoreButtonVisible();
+        	setTimeout(100, decideShowMoreButtonVisible);
+//        	decideShowMoreButtonVisible();
         });
     });
 }());
