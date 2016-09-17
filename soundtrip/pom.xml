@@ -131,6 +131,13 @@
 			<artifactId>selenium-java</artifactId>
 			<version>2.53.0</version>
 		</dependency>
+
+		<!--  facebook  -->
+		<dependency>
+			<groupId>com.restfb</groupId>
+			<artifactId>restfb</artifactId>
+			<version>1.24.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

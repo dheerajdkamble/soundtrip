@@ -43,12 +43,12 @@
 <br>
 <div id="jssor_1" style="position: relative; top: 0px; left: 0px; height: 270px; overflow: hidden; visibility: hidden;">
 	<!-- Loading Screen -->
-	<div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+	<!-- <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
 		<div
 			style="filter: alpha(opacity = 70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
 		<div
 			style="position: absolute; display: block; background: url('images/slider/loading.gif') no-repeat center center; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-	</div>
+	</div> -->
 	<div data-u="slides" id="jssor_2" style="cursor: default; position: relative; top: 0px; overflow: hidden;">
 		<div style="display: none;">
 			<img data-u="image" src="images/slider/005.jpg" />
@@ -70,9 +70,9 @@
 	<!-- <span data-u="arrowleft" class="jssora03l" data-autocenter="2"></span> <span data-u="arrowright" class="jssora03r"
 		data-autocenter="2"></span> -->
 
-	<a class="carousel-control left sliderLeft1" href="#myCarousel" data-slide="prev"><span data-u="arrowleft"
+	<a class="carousel-control left sliderLeft1" href="#jssor_1" data-slide="prev"><span data-u="arrowleft"
 		data-autocenter="2" id="leftArrow" class="sliderLeft">&lsaquo;</span></a> <a class="carousel-control right sliderRight1"
-		href="#myCarousel" data-slide="next"><span data-u="arrowright" data-autocenter="2" id="rightArrow"
+		href="#jssor_1" data-slide="next"><span data-u="arrowright" data-autocenter="2" id="rightArrow"
 		class="sliderRight">&rsaquo;</span></a>
 
 </div>
@@ -84,11 +84,11 @@
 <div class="eventList" ng-repeat="event in allEventsListHome" ng-show="$index < (listEventScrollCount * 2)">
 	<div class="thumbnail">
 		<!-- up -->
-		<!-- <img ng-src="http://103.35.123.84:8080/project/images/{{event.image}}" alt="Generic placeholder thumbnail"
-			style="width: 80%;"> -->
+		<img ng-src="http://103.35.123.84:8080/project/images/{{event.image}}" alt="Generic placeholder thumbnail"
+			style="width: 80%;">
 		<!-- down -->
-		<img ng-src="http://localhost:8080/project/images/{{event.image}}" alt="Generic placeholder thumbnail"
-			style="width: 100%;">
+		<!-- <img ng-src="http://localhost:8080/project/images/{{event.image}}" alt="Generic placeholder thumbnail"
+			style="width: 100%;"> -->
 		<p id="imgText" ng-bind="event.datetime"></p>
 	</div>
 	<div class="caption">
@@ -157,7 +157,7 @@
 			}
 		};
 
-		var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+		var jssor_slider1 = new $JssorSlider$("jssor_1", options);
 
 		//responsive code begin
 		//you can remove responsive code if you don't want the slider scales while window resizing

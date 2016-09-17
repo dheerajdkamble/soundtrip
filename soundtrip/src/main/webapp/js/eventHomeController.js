@@ -18,26 +18,33 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         		$scope.allEventsListHome = [];
         		for (var i = 0; i < $scope.allEventsListHomeBackup.length; i++) {
 					if($scope.allEventsListHomeBackup[i].city.name == $scope.$parent.selectedHomeCity){
-						console.log("adding item to home list");
 						$scope.allEventsListHome.push($scope.allEventsListHomeBackup[i]);
 					}
 				}
         		
+        		console.log("inside loadAllEvents $scope.allEventsListHome.length " + $scope.allEventsListHome.length);
         		if ($scope.allEventsListHome.length === 0) {
         			$scope.allEventsListHome = $scope.allEventsListHomeBackup;
 				}
+        		$scope.listEventScrollCount = 1;
+        		if($scope.$parent.selectedHomeCity != undefined) {
+        			$scope.showMoreButtonVisible = false;
+        			if($scope.allEventsListHome.length > 2) {
+        				$scope.showMoreButtonVisible = true;
+        			}
+        		}
             });
-        	$scope.listEventScrollCount = 1;
-        	setTimeout(100, decideShowMoreButtonVisible);
         	
-//        	decideShowMoreButtonVisible();
         };
         //loadAllEvents();
     	
         function decideShowMoreButtonVisible() {
-        	$scope.showMoreButtonVisible = false;
-        	if($scope.allEventsListHome.length > 2) {
-        		$scope.showMoreButtonVisible = true;
+        	console.log("$scope.allEventsListHome size : " +$scope.allEventsListHome.length);
+        	if($scope.$parent.selectedHomeCity != undefined) {
+        		$scope.showMoreButtonVisible = false;
+        		if($scope.allEventsListHome.length > 2) {
+        			$scope.showMoreButtonVisible = true;
+        		}
         	}
         };
         
@@ -51,6 +58,7 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         };
         
     	loadGeolocationCity = function() {
+    		console.log("Inside load geolocation city:::");
     		/* Geolocation code starts */
             
         	var geocoder = new google.maps.Geocoder();
@@ -60,16 +68,23 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         	}
         	// Get the latitude and the longitude;
         	function successFunction(position) {
+        		console.log("Inside load geolocation city successfunction:::");
         		var lat = position.coords.latitude;
         		var lng = position.coords.longitude;
+        		console.log("latitude : " + lat);
+        		console.log("longitude : " + lng);
         		codeLatLng(lat, lng)
         	}
 
         	function errorFunction() {
+        		console.log("Inside load geolocation city errorFunction:::");
         		loadAllEvents();
         	}
 
         	function codeLatLng(lat, lng) {
+        		console.log("Inside load geolocation city codeLatLng:::");
+        		$scope.$parent.selectedHomeCity = "All Cities";
+        		$scope.$parent.selectedHomeCityId = undefined;
         		var latlng = new google.maps.LatLng(lat, lng);
         		geocoder
         				.geocode(
@@ -78,21 +93,21 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         						},
         						function(results, status) {
         							/* alert("status : " + status); */
+        							console.log("Inside load geolocation city status : " + status);
         							if (status == google.maps.GeocoderStatus.OK) {
-        								//console.log("view geo json:::"+JSON.stringify(results,null,4))
 //        								 alert("city : " +  results[0].address_components[4].short_name);
         								
         								if(results[0].address_components[4].short_name.indexOf("Thane") > -1 || results[0].address_components[4].short_name.indexOf("Mumbai") > -1 ||
         								   results[0].address_components[5].short_name.indexOf("Thane") > -1 || results[0].address_components[5].short_name.indexOf("Mumbai") > -1 ||
         								   results[0].address_components[6].short_name.indexOf("Thane") > -1 || results[0].address_components[6].short_name.indexOf("Mumbai") > -1){
-        									//console.log("city Thane or Mumbai::::: ");
+        									console.log("city Thane or Mumbai::::: ");
         									$scope.$parent.selectedHomeCity = 'Mumbai';
         									$scope.$parent.selectedHomeCityId = '1';
-        									console.log("after set city:::"+$scope.$parent.selectedHomeCity);
         									$scope.$apply();
         									loadAllEvents();
         									
         								}else if (results[0].address_components[4].short_name.indexOf("Pune") > -1) {
+        									console.log("pune::::: ");
         									$scope.$parent.selectedHomeCity = 'Pune';
         									$scope.$parent.selectedHomeCityId = '2';
         									$scope.$apply();
@@ -105,7 +120,7 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
 //        									}
 										}
         								else{
-        									
+        									console.log("no city setting All Cities ::::: ");
         									$scope.$parent.selectedHomeCity = "All Cities";
         									$scope.$parent.selectedHomeCityId = undefined;
         									//$scope.allEventsListHome = $scope.allEventsListHomeBackup;
@@ -124,10 +139,16 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         									}
         									return city.long_name;
         								} else {
-        									
+        									$scope.$parent.selectedHomeCity = "All Cities";
+        									$scope.$parent.selectedHomeCityId = undefined;
+        									$scope.$apply();
+        									loadAllEvents();
         								}
         							} else {
-        								
+        								$scope.$parent.selectedHomeCity = "All Cities";
+    									$scope.$parent.selectedHomeCityId = undefined;
+    									$scope.$apply();
+    									loadAllEvents();
         							}
         						});
         	}
@@ -179,8 +200,15 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         		$scope.allEventsListHome = $scope.allEventsListHomeBackup;
         	}
         	$scope.listEventScrollCount = 1;
-        	setTimeout(100, decideShowMoreButtonVisible);
+//        	setTimeout(1000, decideShowMoreButtonVisible);
 //        	decideShowMoreButtonVisible();
+        	console.log("$scope.allEventsListHome size : " +$scope.allEventsListHome.length);
+        	if($scope.$parent.selectedHomeCity != undefined) {
+        		$scope.showMoreButtonVisible = false;
+        		if($scope.allEventsListHome.length > 2) {
+        			$scope.showMoreButtonVisible = true;
+        		}
+        	}
         });
         
         $scope.$on('eventListSearch', function() {
@@ -216,9 +244,7 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         };
         
         filterEventsOnSearchBoxSearchFromDetailsPage = function() {
-        	console.log("filterEventsOnSearchBoxSearchFromDetailsPage :::  "+ $scope.$parent.selectedGenreFromDetailsPage);
         	if($scope.$parent.selectedGenreFromDetailsPage != undefined && $scope.$parent.selectedGenreFromDetailsPage != '') {
-        		console.log("filterEventsOnSearchBoxSearchFromDetailsPage ::: ");
         		filterForSearchBox($scope.$parent.selectedGenreFromDetailsPage);
         		$scope.$parent.selectedGenreFromDetailsPage = undefined;
         	}
@@ -227,11 +253,8 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         filterEventsOnSearchBoxSearchFromDetailsPage();
         
         function filterForSearchBox(argument) {
-        	console.log("filterForSearchBox : " + argument);
-        	console.log("city here : " + $scope.$parent.selectedHomeCity);
         	if(argument != undefined && argument != '') {
         		var stringToSearch = argument.toLowerCase();
-            	console.log("String to search : " + stringToSearch);
             	$scope.allEventsListHome = [];
             	var searchStrings = stringToSearch.split(" ");
             	var indexArr = [];
@@ -274,9 +297,6 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         };
         
         $scope.$on('searchEventOnSelectedGenre', function() {
-        	
-        	console.log("selected city:::"+$scope.$parent.selectedHomeCity+"::and selected genre:::"+$scope.$parent.selectedGenre);
-        	
         	if ($scope.$parent.selectedHomeCity == undefined && $scope.$parent.selectedGenre != undefined) {
         		$scope.allEventsListHome = [];
         		for (var i = 0; i < $scope.allEventsListHomeBackup.length; i++) {
@@ -287,14 +307,11 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         	}else if ($scope.$parent.selectedHomeCity != undefined && $scope.$parent.selectedGenre != undefined) {
         		$scope.allEventsListHome = [];
         		for (var i = 0; i < $scope.allEventsListHomeBackup.length; i++) {
-        			console.log("$scope.allEventsListHomeBackup[i].genre:::"+$scope.allEventsListHomeBackup[i].genre);
-        			console.log("$scope.allEventsListHomeBackup[i].city.name:::"+$scope.allEventsListHomeBackup[i].city.name);
         			if ($scope.allEventsListHomeBackup[i].genre == $scope.$parent.selectedGenre && ($scope.$parent.selectedHomeCity == 'All Cities' || $scope.allEventsListHomeBackup[i].city.name == $scope.$parent.selectedHomeCity)) {
         				$scope.allEventsListHome.push($scope.allEventsListHomeBackup[i]);
         			}
         		}
         	}
-        	console.log("$scope.allEventsListHome:::"+$scope.allEventsListHome.length);
         	if($scope.allEventsListHome.length === 0){
         		$scope.allEventsListHome = $scope.allEventsListHomeBackup;
         	}
