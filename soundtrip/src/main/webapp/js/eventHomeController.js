@@ -59,6 +59,7 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
         
     	loadGeolocationCity = function() {
     		console.log("Inside load geolocation city:::");
+    		$scope.$parent.selectedHomeCity = "All Cities";
     		/* Geolocation code starts */
             
         	var geocoder = new google.maps.Geocoder();
