@@ -30,20 +30,25 @@
 <script type="text/javascript" src="js/external/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="js/external/imgslider/jssor.slider.min.js"></script>
 <script type="text/javascript" src="js/external/imgslider/img_slider.js"></script>
+<style>
+.footdiv Div a img{
+	height: 20px;
+}
+</style>
 </head>
 
 <body ng-controller="MainController" ng-cloak>
 	<script>
-	//paste this code under the head tag or in a separate js file.
-	// Wait for window load
-	(function($) {
-		$(window).load(function() {
-			// Animate loader off screen
-			$(".se-pre-con").fadeOut("slow");
-		});
-	})(jQuery);
+		//paste this code under the head tag or in a separate js file.
+		// Wait for window load
+		(function($) {
+			$(window).load(function() {
+				// Animate loader off screen
+				$(".se-pre-con").fadeOut("slow");
+			});
+		})(jQuery);
 	</script>
-<div class="se-pre-con"></div>
+	<div class="se-pre-con"></div>
 	<script>
 		window.fbAsyncInit = function() {
 			FB.init({
@@ -119,9 +124,8 @@
 							<div style="width: 100%; z-index: 10;" id="searchEventDiv">
 								<div style="width: 100%; margin-left: 5%;">
 									<input type="text" class="form-control" ng-model="selectedGenre" ng-change="getSelectedGenre()"
-										placeholder="Search for..." id="genreInput"
-										style="border-radius: 4px; height: 33px; display: none;" class="dropdown-input"
-										onfocus="searchActive()" /> <span class="input-group-btn" style="margin-left: 3px;">
+										placeholder="Search for..." id="genreInput" style="border-radius: 4px; height: 33px; display: none;"
+										class="dropdown-input" onfocus="searchActive()" /> <span class="input-group-btn" style="margin-left: 3px;">
 										<button class="btn btn-default" id="activeSearchBtn" type="button" style="margin-top: 0px;"
 											ng-click="getSearchActive()">
 											<span class="glyphicon glyphicon-search"></span>
@@ -140,7 +144,7 @@
 										</button>
 									</span>
 								</div>
-								<div style="width: 100%;margin-top: 1px;">
+								<div style="width: 100%; margin-top: 1px;">
 									<ul id="genreList"
 										style="list-style: none; background-color: grey; margin-top: 0px; display: none; border: 1px solid #000000; color: #FFFFFF; padding-left: 15px; margin-left: 5%;">
 										<li ng-repeat="genre in genrelist" ng-click="genreListClick(genre.name)" style="cursor: pointer;">{{genre.name}}</li>
@@ -204,23 +208,19 @@
 			<div class="navbar-footer footdiv" style="margin-top: 35px;">
 				<div>
 					<a target="_blank" title="Frequently Answered Questions" href="static/faq.html"
-						style="padding-right: 5px; color: white;">FAQ</a> 
-					<a target="_blank" title="Privacy Policy"
-						href="static/aboutus.html" style="padding-right: 10px; color: white;">Privacy Policy</a> 
-					<a target="_blank"
+						style="padding-right: 5px; color: white;">FAQ</a> <a target="_blank" title="Privacy Policy"
+						href="static/aboutus.html" style="padding-right: 10px; color: white;">Privacy Policy</a> <a target="_blank"
 						title="follow me on facebook" href="http://www.facebook.com/MusicChartTestPageDheeraj"><img
 						alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0
-						class="socialMediaImage"></a> 
-					<a target="_blank" title="follow me on Twitter"
+						class="socialMediaImage"></a> <a target="_blank" title="follow me on Twitter"
 						href="http://www.twitter.com/PLACEHOLDER"><img alt="follow me on Twitter"
-						src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter30x30.png" border=0 class="socialMediaImage"></a> 
-					<a target="_blank" title="follow me on instagram" href="http://www.instagram.com/PLACEHOLDER"><img
+						src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter30x30.png" border=0 class="socialMediaImage"></a> <a
+						target="_blank" title="follow me on instagram" href="http://www.instagram.com/PLACEHOLDER"><img
 						alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0
-						class="socialMediaImage"></a> 
-					<a target="_blank" title="follow me on google plus"
+						class="socialMediaImage"></a> <a target="_blank" title="follow me on google plus"
 						href="https://plus.google.com/PLACEHOLDER"><img alt="follow me on google plus"
-						src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0 class="socialMediaImage"></a> 
-					<a target="_blank" title="follow me on pinterest" href="http://www.pinterest.com/PLACEHOLDER"><img
+						src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0 class="socialMediaImage"></a> <a
+						target="_blank" title="follow me on pinterest" href="http://www.pinterest.com/PLACEHOLDER"><img
 						alt="follow me on pinterest" src="https://c866088.ssl.cf3.rackcdn.com/assets/pinterest30x30.png" border=0
 						class="socialMediaImageLast"></a>
 				</div>
