@@ -3,10 +3,6 @@
 <link href="js/external/4/thumbnail-slider.css" rel="stylesheet" />
 <script src="js/external/4/thumbnail-slider.js" type="text/javascript"></script>
 <style>
-body {
-	color: #ddd;
-}
-
 header {
 	display: block;
 	font-size: 1.2em;
@@ -132,7 +128,7 @@ header span {
 <div style="padding-left: 2%; padding-right: 2%; padding-top: 3%; border-bottom: 1px solid #e60000;">
 	<p>Upcoming Events</p>
 </div>
-<div class="eventList" ng-repeat="event in allEventsListHome" ng-show="$index < (listEventScrollCount * 2)">
+<div class="eventList" ng-repeat="event in allEventsListHome" ng-show="$index < (listEventScrollCount * 2)" style="height: 230px;">
 	<div class="thumbnail">
 		<!-- up -->
 		<img ng-src="http://103.35.123.84:8080/project/images/{{event.image}}" alt="Generic placeholder thumbnail"
@@ -225,7 +221,7 @@ header span {
 		$(window).bind("resize", ScaleSlider);
 		$(window).bind("orientationchange", ScaleSlider); */
 		//responsive code end
-	});
+	//});
 
 	function searchActive() {
 		var scope = angular.element(document.getElementById("searchEventDiv"))
