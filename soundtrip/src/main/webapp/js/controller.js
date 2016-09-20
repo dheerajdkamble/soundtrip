@@ -20,6 +20,31 @@
 			}
     	}
     	
+    	$scope.enableDisableMenu = function(){
+    		if(window.innerWidth > 767){
+    			//alert("HI"+window.innerWidth);
+    			var li = document.getElementById('example-navbar-collapse');
+        		console.log(li.className);
+        		clsName = li.className;
+        		var n = clsName.indexOf("navbar-collapse");
+        		//collapse navbar-collapse
+        		if(Number(n) >= 0){
+        			//console.log("here1:::"+n);
+        			document.getElementById("example-navbar-collapse").className = "collapse";
+        			document.getElementById("example-navbar-collapse").style.setProperty("display", "none", "important");
+        			
+        		}else {
+        			//console.log("here2::"+n);
+        			document.getElementById("example-navbar-collapse").className = "navbar-collapse collapse";
+        			document.getElementById("example-navbar-collapse").style.setProperty("display", "block", "important");
+    			}
+    		}
+    		else {
+    			document.getElementById("example-navbar-collapse").style.display='';
+			}
+    		
+    	}
+    	
     	$scope.searchActive = function(){
     		console.log("on focus work");
     		document.getElementById("genreList").style.display = 'block';

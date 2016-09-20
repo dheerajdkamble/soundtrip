@@ -31,8 +31,18 @@
 <script type="text/javascript" src="js/external/imgslider/jssor.slider.min.js"></script>
 <script type="text/javascript" src="js/external/imgslider/img_slider.js"></script>
 <style>
+.navbar-toggle:hover, .navbar-toggle:focus{
+	background-color: grey !important;
+}
 .footdiv Div a img{
 	height: 20px;
+}
+
+@media (min-width: 768px){
+	.navbar-toggle {
+    	display: block;
+    	left: 270px;
+	}
 }
 </style>
 </head>
@@ -138,7 +148,7 @@
 										<button class="btn btn-default" type="button" style="margin-top: 0px; border-radius: 4px; display: none;"
 											id="hideSearchBtn" ng-click="hideSearchEvent()">X</button>
 									</span> <span class="input-group-btn" id="menuNavHead">
-										<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+										<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse" ng-click="enableDisableMenu()">
 											<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 											<span class="icon-bar"></span>
 										</button>
