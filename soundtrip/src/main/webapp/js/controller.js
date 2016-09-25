@@ -32,11 +32,15 @@
         			//console.log("here1:::"+n);
         			document.getElementById("example-navbar-collapse").className = "collapse";
         			document.getElementById("example-navbar-collapse").style.setProperty("display", "none", "important");
+        			document.getElementById("menuLarge").style.setProperty("height", "90px", "important");//myCarousel
+        			//document.getElementById("myCarousel").style.setProperty("marginTop", "10%","important");
         			
         		}else {
         			//console.log("here2::"+n);
         			document.getElementById("example-navbar-collapse").className = "navbar-collapse collapse";
         			document.getElementById("example-navbar-collapse").style.setProperty("display", "block", "important");
+        			document.getElementById("menuLarge").style.setProperty("height", "120px", "important");
+        			//document.getElementById("myCarousel").style.setProperty("marginTop", "12%", "important");
     			}
     		}
     		else {
