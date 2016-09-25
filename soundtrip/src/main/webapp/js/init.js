@@ -18,6 +18,9 @@
     	when('/eventmaster', { controller: 'EventMasterController', templateUrl: 'eventmaster.html'}).
         when('/admin', { controller: 'AdminController', templateUrl: 'admin/admin.html'}).
         when('/eventdetails/:eventName', { controller: 'EventDetailsController', templateUrl: 'eventdetails.html'}).
+        when('/aboutus', { controller: 'EventHomeController', templateUrl: 'aboutUs.html'}).
+        when('/contactus', { controller: 'EventHomeController', templateUrl: 'contactUs.html'}).
+        when('/blog', { controller: 'EventHomeController', templateUrl: 'blog.html'}).
         otherwise({redirectTo: '/eventhome'});
 
         //configure $http to catch message responses and show them
