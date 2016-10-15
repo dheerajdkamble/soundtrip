@@ -68,8 +68,8 @@
 	        	}
 	        }
 	        var img = new Image();
-//	        img.src = "http://localhost:8080/project/images/" + $scope.neweventmaster.image;
-	        img.src = "http://103.35.123.84:8080/project/images/" + $scope.neweventmaster.image;
+	        img.src = "http://"+$scope.$parent.hostname+":8080/project/images/" + $scope.neweventmaster.image;
+	        //img.src = "http://103.35.123.84:8080/project/images/" + $scope.neweventmaster.image;
 	        $scope.stepsModel[0]= img.src;
 	    };
 	    

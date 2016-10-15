@@ -5,9 +5,12 @@
 		margin-top: -60px;
 	}
 	
+	#viewApp{
+		margin-top: 37px !important;
+	}
+	
 	#primaryDetailsImg {
 		height: 264px !important;
-		margin-top: 37px !important;
 	}
 }
 
@@ -16,9 +19,13 @@
 	width: 200px;
 }
 
+#viewApp{
+		margin-top: 12%;
+	}
+
 #primaryDetailsImg {
 	height: 364px;
-	margin-top: 137px;
+	
 }
 
 img {

@@ -61,7 +61,7 @@ header span {
 
 	<!-- Carousel nav -->
 	<a class="carousel-control left" href="#myCarousel" data-slide="prev"><span id="leftArrow">&lsaquo;</span></a> <a
-		class="carousel-control right" href="#myCarousel" data-slide="next"><span id="rightArrow">&rsaquo;</span></a>
+		class="carousel-control right" href="#myCarousel" data-slide="next" id="sliderRightArrow"><span id="rightArrow">&rsaquo;</span></a>
 
 </div>
 <br>
@@ -131,11 +131,11 @@ header span {
 <div class="eventList" ng-repeat="event in allEventsListHome" ng-show="$index < (listEventScrollCount * 2)" style="height: 230px;">
 	<div class="thumbnail">
 		<!-- up -->
-		<img ng-src="http://103.35.123.84:8080/project/images/{{event.image}}" alt="Generic placeholder thumbnail"
-			style="width: 80%;">
+		<!-- <img ng-src="http://103.35.123.84:8080/project/images/{{event.image}}" alt="Generic placeholder thumbnail"
+			style="width: 80%;"> -->
 		<!-- down -->
-		<!-- <img ng-src="http://localhost:8080/project/images/{{event.image}}" alt="Generic placeholder thumbnail"
-			style="width: 100%;"> -->
+		<img ng-src="http://{{hostname}}:8080/project/images/{{event.image}}" alt="Generic placeholder thumbnail"
+			style="width: 100%;">
 		<p id="imgText" ng-bind="event.datetime"></p>
 	</div>
 	<div class="caption">
@@ -230,7 +230,18 @@ header span {
 			scope.searchActive();
 		});
 	}
+	
+	window.onload = setTimeout(startSlider,5000);
+	function startSlider(){
+		//alert('Hi:::'+location.hostname);
+		document.querySelector('#sliderRightArrow').click();
+	}
 
+	function minislider(){
+	document.querySelector('#thumbnail-slider-next').click();
+	}
+	setInterval(startSlider,3000);
+	setInterval(minislider,3000);
 	function hideSearchEvent() {
 		document.getElementById("genreList").style.display = 'none';
 		document.getElementById("cityList").style.width = '48%';
