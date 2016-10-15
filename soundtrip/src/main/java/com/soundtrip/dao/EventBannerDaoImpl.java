@@ -3,6 +3,7 @@ package com.soundtrip.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -33,10 +34,23 @@ public class EventBannerDaoImpl implements EventBannerDao, Serializable {
 	
 	@Override
 	public EventBanner saveEventBanner(EventBanner eventBanner) {
-		if(eventBanner.getId() == 0) {
-			eventBanner = (EventBanner) sessionFactory.getCurrentSession().merge(eventBanner);
-		} else if(eventBanner.getId() > 0) {
-			sessionFactory.getCurrentSession().update(eventBanner);
+		String index = eventBanner.getName();
+		
+		Query query = sessionFactory.getCurrentSession().getNamedQuery("eventWithName");
+		query.setParameter("name", index);
+		List<?> results = query.list();
+		if(results != null && !results.isEmpty() && results.get(0) != null && ((EventBanner) results.get(0)).getId() > 0) {
+			EventBanner eventBannerExisting = (EventBanner) results.get(0);
+			eventBannerExisting.setName(eventBanner.getName());
+			eventBannerExisting.setUrl(eventBanner.getUrl());
+			eventBannerExisting.setImage(eventBanner.getImage());
+			sessionFactory.getCurrentSession().update(eventBannerExisting);
+		} else {		
+			if(eventBanner.getId() == 0) {
+				eventBanner = (EventBanner) sessionFactory.getCurrentSession().merge(eventBanner);
+			} else if(eventBanner.getId() > 0) {
+				sessionFactory.getCurrentSession().update(eventBanner);
+			}
 		}
 		return eventBanner;
 	}

@@ -78,8 +78,6 @@ public class EventBannerMasterController {
 		eventBanner = eventBannerService.saveEventBanner(eventBanner);
 
 		StringBuffer imageName = new StringBuffer();
-		imageName.append(eventBanner.getId());
-		imageName.append("_");
 		imageName.append(eventBanner.getName().trim());
 		imageName.append(".jpg");
 

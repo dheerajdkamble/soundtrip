@@ -12,7 +12,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "eventbanner")
 @NamedQueries(value={
-		@NamedQuery(name="allEventBanners", query="from EventBanner order by name asc")
+		@NamedQuery(name="allEventBanners", query="from EventBanner order by name asc"),
+		@NamedQuery(name="eventWithName", query="from EventBanner eb where eb.name = :name")
 })
 public class EventBanner {
 		@Id

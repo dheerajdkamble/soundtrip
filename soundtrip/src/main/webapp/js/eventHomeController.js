@@ -6,11 +6,36 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
 	
     	var actionUrl = 'action/eventhome/';
     	var actionUrlEventList = 'action/eventlisthome/';
+    	var actionUrlBannerList = 'action/eventbannermaster/';
     	$scope.allEventsListHome = [];
     	$scope.allEventsListHomeBackup = [];
     	$scope.listEventScrollCount = 1;
+    	$scope.listBanners1 = [];
+    	$scope.listBanners2 = [];
     	//document.getElementById("homeHeader").style.display = 'block';
 
+    	loadAllBanners = function() {
+    		$http.get(actionUrlBannerList).success(function(data) {
+    			$scope.allBanners = data;
+    			console.log("here..... " + $scope.allBanners);
+    			for (var i = 0; i < $scope.allBanners.length; i++) {
+    				if(i < 5) {
+    					console.log("asdgadsg : " + JSON.stringify($scope.allBanners[i]));
+    					$scope.listBanners1.push($scope.allBanners[i]);
+    				} else {
+    					console.log("asdgadsg : " + $scope.allBanners[i]);
+    					$scope.listBanners2.push($scope.allBanners[i]);
+    				}
+    			}
+    		}); 
+    	};
+    	loadAllBanners();
+    	
+    	$scope.banner1Click = function(indx) {
+    		alert('click');
+    		$window.location.href = '#/eventdetails/'+$scope.listBanners1[indx].url;
+        }
+    	
     	loadAllEvents = function () {
         	$http.get(actionUrlEventList).success(function (data) {
         		$scope.allEventsListHomeBackup = data;
