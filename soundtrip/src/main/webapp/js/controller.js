@@ -2,6 +2,7 @@
     var as = angular.module('angularspring');
 
     as.controller('MainController', function ($scope, $rootScope, $http, i18n, $location, $window) {
+    	alert(window.innerWidth);
     	$scope.hostname = location.hostname;
     	$scope.selectedHomeCity = undefined;
     	$scope.selectedHomeCityId;
@@ -62,7 +63,12 @@
 			//document.getElementById("searchEvent").style.width = '100%';
 			document.getElementById("init-group").style.width = '93%';
 			//document.getElementById("genreInput").style.width = '80%';    		
-			document.getElementById("menuNavHead").style.marginLeft ='60px';
+			if (window.innerWidth == 800) {
+    			document.getElementById("menuNavHead").style.marginLeft = '-40%';
+			}else if (window.innerWidth > 800) {
+				document.getElementById("menuNavHead").style.marginLeft ='60px';
+			}
+			
     	}
     	
     	
@@ -111,7 +117,11 @@
     		document.getElementById("hideSearchBtn").style.display = 'none';
     		document.getElementById("selectHeaderDiv").style.display = 'table';
     		document.getElementById("headerLogoDiv").style.display = 'table-cell';
-    		document.getElementById("menuNavHead").style.marginLeft ='38px';
+    		if (window.innerWidth > 767) {
+				document.getElementById("menuNavHead").style.marginLeft = '1px';
+			}else{
+				document.getElementById("menuNavHead").style.marginLeft = '38px';
+			}
         }
 
         $scope.login = function () {
@@ -152,6 +162,8 @@
     		document.getElementById("selectHeaderDiv").style.display = 'none';
     		document.getElementById("headerLogoDiv").style.display = 'none';
     		document.getElementById("genreInput").focus();
+    		
+    		
     		$scope.searchActive();
     	}
     });

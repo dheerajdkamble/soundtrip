@@ -1,5 +1,9 @@
-.ng-cloak { 
-	display:none; 
+#menuLarge {
+	height: 120px;
+}
+
+.ng-cloak {
+	display: none;
 }
 
 .btn {
@@ -45,6 +49,12 @@
 }
 
 @media ( max-width : 3600px) {
+	#searchEventDiv2 {
+		margin-top: 1px;
+	}
+	#menuLargediv {
+		width: 100%;
+	}
 	#activeSearchBtn {
 		margin-left: 240px;
 	}
@@ -95,13 +105,46 @@
 	background-color: transparent;
 }
 
-@media ( max-width : 500px) {
-	#menuNavHead {
-		margin-left: 38px;
+@media ( max-width : 800px) {
+	/* #menuNavHead {
+		margin-left: -40%;
+	} */
+	#searchEventDiv2 {
+		margin-top: -29px;
+	}
+	#drpdwnbtn {
+		margin-left: 80px;
+	}
+	#menuLargediv {
+		width: 70%;
+	}
+	#headerLogoDiv a {
+		margin-left: 85%;
+	}
+}
+
+@media ( max-width : 480px) {
+	#menuLarge {
+		height: 75px;
+	}
+	#menuLargediv {
+		width: 100%;
+	}
+	#headerLogoDiv a {
+		margin-left: 1%;
 	}
 	#activeSearchBtn {
-		margin-left: 5px;
+		margin-left: 45px;
 	}
+	#menuNavHead {
+		margin-left: 80px!important;
+	}
+	#genreList {
+		width: 59%;
+	}
+}
+
+@media ( max-width : 500px) {
 	.footdiv {
 		width: 100%;
 	}
@@ -110,9 +153,6 @@
 	}
 	.dropdown-menu {
 		margin-left: 5px;
-	}
-	#genreList {
-		width: 96%;
 	}
 	#genreInput {
 		width: 59%;
@@ -195,8 +235,17 @@ div.awesomplete {
 /* Paste this css to your style sheet file or under head tag */
 /* This only works with JavaScript, 
 if it's not present, don't show loader */
-.no-js #loader { display: none;  }
-.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.no-js #loader {
+	display: none;
+}
+
+.js #loader {
+	display: block;
+	position: absolute;
+	left: 100px;
+	top: 0;
+}
+
 .se-pre-con {
 	position: fixed;
 	left: 0px;

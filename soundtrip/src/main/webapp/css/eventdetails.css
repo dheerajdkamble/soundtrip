@@ -1,14 +1,18 @@
+@media ( max-width : 800px) {
+	#viewApp {
+		margin-top: 130px !important;
+	}
+}
+
 @media screen and (max-width: 800px) and (min-width:300px) {
 	#primaryDetailsImgCircle {
 		height: 100px !important;
 		width: 100px !important;
 		margin-top: -60px;
 	}
-	
-	#viewApp{
+	/* #viewApp {
 		margin-top: 37px !important;
-	}
-	
+	} */
 	#primaryDetailsImg {
 		height: 264px !important;
 	}
@@ -19,13 +23,12 @@
 	width: 200px;
 }
 
-#viewApp{
-		margin-top: 12%;
-	}
+#viewApp {
+	margin-top: 12%;
+}
 
 #primaryDetailsImg {
 	height: 364px;
-	
 }
 
 img {
@@ -42,4 +45,10 @@ img {
 p {
 	margin-bottom: 0px;
 	margin-left: 10px;
+}
+
+@media ( max-width : 480px) {
+	#viewApp {
+		margin-top: 90px !important;
+	}
 }
