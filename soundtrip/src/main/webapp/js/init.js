@@ -16,6 +16,7 @@
         //configure the rounting of ng-view
     	$routeProvider.when('/eventhome', { controller: 'EventHomeController', templateUrl: 'eventhome.html'}).
     	when('/eventmaster', { controller: 'EventMasterController', templateUrl: 'eventmaster.html'}).
+    	when('/eventbannermaster', { controller: 'EventBannerMasterController', templateUrl: 'eventbannermaster.html'}).
         when('/admin', { controller: 'AdminController', templateUrl: 'admin/admin.html'}).
         when('/eventdetails/:eventName', { controller: 'EventDetailsController', templateUrl: 'eventdetails.html'}).
         when('/aboutus', { controller: 'EventHomeController', templateUrl: 'aboutUs.html'}).

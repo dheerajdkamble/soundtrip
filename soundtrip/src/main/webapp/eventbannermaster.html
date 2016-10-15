@@ -1,0 +1,68 @@
+<form id="newEventForm" style="margin-top: 15%;">
+	<div class="table-responsive">
+		<table class="table">
+			<caption style="font-weight: bold; font-size: 14px;">
+				<msg key="newBanner" />
+			</caption>
+			<tr>
+				<td><label> <msg key="bannerName"></msg></label></td>
+				<td><div style="width: 50%; display: inline-block;">
+						<select name="bannerImageIndexSelect" id="bannerImageIndexSelect" ng-model="newbannermaster.name" ng-change="bannerImageIndexSelected()">
+							<option ng-repeat="option in indexOptions">{{option}}</option>
+						</select>
+					</div></td>
+				<td style="text-align:right;"><label> <msg key="bannerUrl"></msg></label></td>
+				<td><input type="text" ng-model="newbannermaster.url" /></td>
+			</tr>
+			<tr>
+				<td><label> <msg key="bannerImage"></msg></label></td>
+				<td>
+					<div ng-repeat="step in stepsModel">
+						<img class="thumb" ng-src="{{step}}" width="100px" height="100px" />
+					</div> <input type='file' ng-model="newbannermaster.image"
+					onchange="angular.element(this).scope().imageUpload(this)" multiple />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td style="text-align: right; width:30%;"><button type="submit" class="btn"
+						ng-click="save()">
+						<msg key="saveButton"></msg>
+					</button></td>
+				<td><button type="submit" class="btn" ng-click="cancel()">
+						<msg key="cancelButton"></msg>
+					</button></td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
+</form>
+
+<table class="table table-stdriped" style="border: 1px solid gray">
+	<tr style="border: 1px solid gray">
+		<th><msg key="bannerName"></msg></th>
+		<th><msg key="bannerUrl"></msg></th>
+		<th><msg key="bannerImage"></msg></th>
+		<th><msg key="edit"></msg></th>
+		<th><msg key="delete"></msg></th>
+	</tr>
+	<tr ng-repeat="eventbannermaster in eventbannermasters" style="border: 1px solid gray">
+		<td>{{eventbannermaster.name}}</td>
+		<td>{{eventbannermaster.url}}</td>
+		<td>
+			<!-- up -->
+			<!-- <img
+			ng-src="http://103.35.123.84:8080/project/images/{{eventmaster.image}}"
+			alt="Generic placeholder thumbnail" height="100px" width="100px"> -->
+			
+			<!-- down -->
+			<img
+			ng-src="http://localhost:8080/project/images/{{eventbannermaster.image}}"
+			alt="Generic placeholder thumbnail" height="100px" width="100px">
+		</td>
+		<td><a ng-click="edit($index)"><i class="glyphicon glyphicon-edit"></i></a></td>
+		<td><a ng-click="delete(eventbannermaster)"><i class="glyphicon glyphicon-remove"></i></a></td>		
+	</tr>
+</table>
