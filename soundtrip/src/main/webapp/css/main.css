@@ -123,6 +123,50 @@
 	}
 }
 
+@media ( max-width : 767px) {
+	#drpdwnbtn {
+		margin-left: 15px;
+	}
+	#activeSearchBtn {
+		margin-left: 160px;
+	}
+	#searchEventDiv1 {
+		margin-left: 25% !important;
+	}
+	#genreInput {
+		width: 85%;
+	}
+	#genreList {
+		width: 85%;
+		margin-left: 25% !important;
+	}
+	#menuNavHead button {
+		left: 200px;
+	}
+}
+
+@media ( max-width : 600px) {
+	#drpdwnbtn {
+		margin-left: 15px;
+	}
+	#activeSearchBtn {
+		margin-left: 160px;
+	}
+	#searchEventDiv1 {
+		margin-left: 25% !important;
+	}
+	#genreInput {
+		width: 85%;
+	}
+	#genreList {
+		width: 85%;
+		margin-left: 25% !important;
+	}
+	#menuNavHead button {
+		left: 200px;
+	}
+}
+
 @media ( max-width : 480px) {
 	#menuLarge {
 		height: 75px;
@@ -137,7 +181,7 @@
 		margin-left: 45px;
 	}
 	#menuNavHead {
-		margin-left: 80px!important;
+		margin-left: 80px !important;
 	}
 	#genreList {
 		width: 59%;
@@ -254,4 +298,22 @@ if it's not present, don't show loader */
 	height: 100%;
 	z-index: 9999;
 	background: url(images/loader-64x/Preloader_2.gif) center no-repeat #fff;
+}
+
+@media ( max-width : 360px) {
+	#menuNavHead button {
+		left: 54px;
+	}
+	#menuNavHead {
+		margin-left: 0px !important;
+	}
+	#activeSearchBtn {
+		margin-left: 20px !important;
+	}
+	#searchEventDiv1 {
+		margin-left: 15% !important;
+	}
+	#genreList {
+		margin-left: 15% !important;
+	}
 }

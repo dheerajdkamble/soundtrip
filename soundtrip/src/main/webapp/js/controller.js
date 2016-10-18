@@ -50,9 +50,19 @@
     			}
     		}
     		else {
+    			console.log("inside else:::");
     			document.getElementById("example-navbar-collapse").style.display='';
 			}
     		
+    	}
+    	
+    	$scope.handleMenuForMobile = function(){
+    		if (window.innerWidth < 501) {
+				//document.getElementById("example-navbar-collapse").style.setProperty("display", "none", "important");
+    			document.getElementById("example-navbar-collapse").className = "navbar-collapse collapse";
+    			document.getElementById("example-navbar-collapse").style.height = '0px';
+    			document.getElementById("example-navbar-collapse").setAttribute("aria-expanded","flase");
+			}
     	}
     	
     	$scope.searchActive = function(){
@@ -119,6 +129,8 @@
     		document.getElementById("headerLogoDiv").style.display = 'table-cell';
     		if (window.innerWidth > 767) {
 				document.getElementById("menuNavHead").style.marginLeft = '1px';
+			}else if (window.innerWidth >= 592) {
+				document.getElementById("menuNavHead").style.marginLeft = '1px';
 			}else{
 				document.getElementById("menuNavHead").style.marginLeft = '38px';
 			}
@@ -137,8 +149,8 @@
         
         $scope.citySelected = function(selectedCity) {
         	var url = window.location.href;
-        	$scope.selectedHomeCity = selectedCity;
-        	if (url.indexOf('eventdetails') > -1) {
+        	$scope.selectedHomeCity = selectedCity; //
+        	if (url.indexOf('eventdetails') > -1 || url.indexOf('aboutus') > -1 || url.indexOf('contactus') > -1 || url.indexOf('blog') > -1) {
         		$window.location.href = '#/eventhome';
 			}else{
 				$rootScope.$broadcast('eventListFiltered');
