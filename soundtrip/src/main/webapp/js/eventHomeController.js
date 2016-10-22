@@ -2,7 +2,7 @@
     
 	var as = angular.module('angularspring');
 
-as.controller('EventHomeController', function ($scope, $http, i18n) {
+as.controller('EventHomeController', function ($scope, $http, i18n, $window) {
 	
     	var actionUrl = 'action/eventhome/';
     	var actionUrlEventList = 'action/eventlisthome/';
@@ -10,30 +10,22 @@ as.controller('EventHomeController', function ($scope, $http, i18n) {
     	$scope.allEventsListHome = [];
     	$scope.allEventsListHomeBackup = [];
     	$scope.listEventScrollCount = 1;
-    	$scope.listBanners1 = [];
-    	$scope.listBanners2 = [];
+    	$scope.listBanners = [];
     	//document.getElementById("homeHeader").style.display = 'block';
 
     	loadAllBanners = function() {
     		$http.get(actionUrlBannerList).success(function(data) {
     			$scope.allBanners = data;
-    			console.log("here..... " + $scope.allBanners);
     			for (var i = 0; i < $scope.allBanners.length; i++) {
-    				if(i < 5) {
-    					console.log("asdgadsg : " + JSON.stringify($scope.allBanners[i]));
-    					$scope.listBanners1.push($scope.allBanners[i]);
-    				} else {
-    					console.log("asdgadsg : " + $scope.allBanners[i]);
-    					$scope.listBanners2.push($scope.allBanners[i]);
-    				}
+   					$scope.listBanners.push($scope.allBanners[i]);
     			}
     		}); 
     	};
     	loadAllBanners();
     	
     	$scope.banner1Click = function(indx) {
-    		alert('click');
-    		$window.location.href = '#/eventdetails/'+$scope.listBanners1[indx].url;
+    		var url = window.location.href;
+    		$window.location.href = '#/eventdetails/'+$scope.listBanners[indx].url;
         }
     	
     	loadAllEvents = function () {

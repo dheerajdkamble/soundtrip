@@ -5,7 +5,7 @@
 		as.controller('EventBannerMasterController', function ($scope, $http, i18n, $rootScope) {
 	    var actionUrl = 'action/eventbannermaster/';
     	$scope.stepsModel = [];
-    	$scope.indexOptions = ["1","2","3","4","5"];
+    	$scope.indexOptions = ["1","2","3","4","5","6","7","8","9","10"];
 
     	var actionUrlEvents = 'action/eventbannermaster/',
         loadEventBanners = function () {

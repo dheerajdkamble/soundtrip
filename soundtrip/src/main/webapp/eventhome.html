@@ -77,7 +77,17 @@ header span {
 	<div id="thumbnail-slider">
 		<div class="inner">
 			<ul>
-				<li><a class="thumb" href="images/slider/1.jpg"></a></li>
+				<!-- <li><a class="thumb" href="images/slider/1.jpg"></a></li>
+				<li><a class="thumb" href="images/slider/2.jpg"></a></li>
+				<li><a class="thumb" href="images/slider/3.jpg"></a></li>
+				<li><a class="thumb" href="images/slider/4.jpg"></a></li>
+				<li><a class="thumb" href="images/slider/5.jpg"></a></li> -->
+				<li><a class="thumb" href="http://103.35.123.84:8080/project/images/6.jpg" ng-click="banner1Click(1)"></a></li>
+				<li><a class="thumb" href="http://103.35.123.84:8080/project/images/7.jpg" ng-click="banner1Click(2)"></a></li>
+				<li><a class="thumb" href="http://103.35.123.84:8080/project/images/8.jpg" ng-click="banner1Click(3)"></a></li>
+				<li><a class="thumb" href="http://103.35.123.84:8080/project/images/9.jpg" ng-click="banner1Click(4)"></a></li>
+				<li><a class="thumb" href="http://103.35.123.84:8080/project/images/10.jpg" ng-click="banner1Click(5)"></a></li>
+				<!-- <li><a class="thumb" href="images/slider/11.jpg"></a></li>
 				<li><a class="thumb" href="images/slider/2.jpg"></a></li>
 				<li><a class="thumb" href="images/slider/3.jpg"></a></li>
 				<li><a class="thumb" href="images/slider/4.jpg"></a></li>
@@ -87,17 +97,7 @@ header span {
 				<li><a class="thumb" href="images/slider/8.jpg"></a></li>
 				<li><a class="thumb" href="images/slider/9.jpg"></a></li>
 				<li><a class="thumb" href="images/slider/10.jpg"></a></li>
-				<li><a class="thumb" href="images/slider/11.jpg"></a></li>
-				<li><a class="thumb" href="images/slider/2.jpg"></a></li>
-				<li><a class="thumb" href="images/slider/3.jpg"></a></li>
-				<li><a class="thumb" href="images/slider/4.jpg"></a></li>
-				<li><a class="thumb" href="images/slider/5.jpg"></a></li>
-				<li><a class="thumb" href="images/slider/6.jpg"></a></li>
-				<li><a class="thumb" href="images/slider/7.jpg"></a></li>
-				<li><a class="thumb" href="images/slider/8.jpg"></a></li>
-				<li><a class="thumb" href="images/slider/9.jpg"></a></li>
-				<li><a class="thumb" href="images/slider/10.jpg"></a></li>
-				<li><a class="thumb" href="images/slider/11.jpg"></a></li>
+				<li><a class="thumb" href="images/slider/11.jpg"></a></li> -->
 			</ul>
 		</div>
 	</div>
@@ -238,7 +238,6 @@ header span {
 	
 	window.onload = setTimeout(startSlider,5000);
 	function startSlider(){
-		//alert('Hi:::'+location.hostname);
 		document.querySelector('#sliderRightArrow').click();
 	}
 
@@ -256,7 +255,6 @@ header span {
 
 	}
 	/* function searchActive(event) {
-		//alert("here:::"+event);
 		if (event == 'focus') {
 			document.getElementById("genreList").style.display = 'block';
 			document.getElementById("cityList").style.width = '0%';

@@ -2,7 +2,6 @@
     var as = angular.module('angularspring');
 
     as.controller('MainController', function ($scope, $rootScope, $http, i18n, $location, $window) {
-    	alert(window.innerWidth);
     	$scope.hostname = location.hostname;
     	$scope.selectedHomeCity = undefined;
     	$scope.selectedHomeCityId;
