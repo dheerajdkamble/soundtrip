@@ -83,6 +83,15 @@
 	*/
 }
 
+@media ( max-width : 1024px) {
+	#activeSearchBtn {
+		margin-left: 100px;
+	}
+	.navbar-toggle {
+		left: 135px;
+	}
+}
+
 #example-navbar-collapse {
 	text-align: center !important;
 	margin-top: 15px;
@@ -109,6 +118,9 @@
 	/* #menuNavHead {
 		margin-left: -40%;
 	} */
+	.dropdown-menu {
+		margin-left: 80px;
+	}
 	#searchEventDiv2 {
 		margin-top: -29px;
 	}
@@ -123,7 +135,16 @@
 	}
 }
 
-@media ( max-width : 767px) {
+@media ( min-width : 768px) {
+	.navbar-toggle {
+		display: block;
+	}
+}
+
+@media ( max-width : 768px) {
+	.dropdown-menu {
+		margin-left: 13px;
+	}
 	#drpdwnbtn {
 		margin-left: 15px;
 	}
@@ -196,7 +217,7 @@
 		margin-left: 15px;
 	}
 	.dropdown-menu {
-		margin-left: 5px;
+		margin-left: 13px;
 	}
 	#genreInput {
 		width: 59%;
@@ -315,5 +336,50 @@ if it's not present, don't show loader */
 	}
 	#genreList {
 		margin-left: 15% !important;
+	}
+}
+
+@media ( max-width : 400px) {
+	#menuNavHead button {
+		left: 54px;
+	}
+	#menuNavHead {
+		margin-left: 0px !important;
+	}
+	#activeSearchBtn {
+		margin-left: 20px !important;
+	}
+	#searchEventDiv1 {
+		margin-left: 15% !important;
+	}
+	#genreList {
+		margin-left: 15% !important;
+	}
+}
+
+@media ( max-width : 450px) {
+	#menuNavHead button {
+		left: 54px;
+	}
+	#menuNavHead {
+		margin-left: 0px !important;
+	}
+	#activeSearchBtn {
+		margin-left: 20px !important;
+	}
+	#searchEventDiv1 {
+		margin-left: 15% !important;
+	}
+	#genreList {
+		margin-left: 15% !important;
+	}
+}
+
+@media ( max-width : 450px) {
+	#activeSearchBtn {
+		margin-left: 0px !important;
+	}
+	#menuNavHead button {
+		left: 35px;
 	}
 }
