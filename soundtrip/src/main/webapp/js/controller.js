@@ -177,6 +177,8 @@
     		
     		$scope.searchActive();
     	}
+    	
+    	$scope.enableDisableMenu();
     });
 
     as.controller('AdminController', function ($scope, $http) {
