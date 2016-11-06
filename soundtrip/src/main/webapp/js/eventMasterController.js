@@ -10,6 +10,10 @@
     	$scope.eventDate;
     	$scope.datetimepickerval='';
     	$scope.neweventmasterfbrecord = {};
+    	$scope.userName = '';
+    	$scope.password = '';
+    	$scope.displayMaster = false;
+    	$scope.displayErrMsg = false;
 
     	$scope.updateEventDate = function (date){
     		// $scope.eventDate = date;
@@ -43,7 +47,35 @@
                 $scope.eventmasters = data;
             });
         };
-        loadEvents();
+        //loadEvents();
+        
+        
+        loginAsAdmin = function(){
+        	console.log("Open login pop up");
+        	$('#myModal').modal('show');
+        }
+        
+        loginAsAdmin();
+        
+        var loginUrl = 'action/validateUser';
+        $scope.validateUser = function(){
+        	console.log("inside method validateUser::::"+$scope.userName);
+        	var usrDetails = $scope.userName+"~"+ $scope.password;
+        	$http.post(loginUrl, usrDetails).success(function (data) {
+        		//console.log("After Successful Login:::"+JSON.stringify(data,null,4));
+        		if(data.type==="success" && data.text==="loginSuccess"){
+        			$scope.displayMaster = true;
+        			$scope.displayErrMsg = false;
+        			$('#myModal').modal('hide');
+        			loadEvents();
+        			
+        		}else{
+        			$scope.displayMaster = false;
+        			$scope.displayErrMsg = true;
+        			
+        		}
+        	});
+        }
 
 	    $scope.delete = function (eventmaster) {
 	        $http.delete(actionUrlEvents + eventmaster.id).success(function () {

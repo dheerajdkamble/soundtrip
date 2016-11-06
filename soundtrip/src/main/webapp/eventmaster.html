@@ -1,5 +1,36 @@
 <form id="newEventForm" style="margin-top: 15%;">
-	<div class="table-responsive">
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Login</h4>
+				</div>
+				<div class="modal-body">
+					<table>
+						<tr>
+							<td>UserName:</td>
+							<td><input type="text" ng-model="userName"></td>
+						</tr>
+						<tr>
+							<td>Password:</td>
+							<td><input type="password" ng-model="password"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" ng-click="validateUser()">Login</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<br/>
+					<p style="color: red;float: left;" ng-show="displayErrMsg"> Please enter valid user name and password</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="table-responsive" ng-show="displayMaster">
 		<table class="table">
 			<caption style="font-weight: bold; font-size: 14px;">
 				<msg key="newEvent" />
@@ -24,8 +55,7 @@
 				<td>
 					<!-- <input type="text" ng-model="neweventmaster.city" /> -->
 					<div style="width: 50%; display: inline-block;">
-						<select name="citySelect" id="citySelect"
-							ng-options="city as city.name for city in cityOptions"
+						<select name="citySelect" id="citySelect" ng-options="city as city.name for city in cityOptions"
 							ng-model="cityOption" ng-change="citySelectedForEventMaster()">
 							<!-- <option ng-repeat="option in cityOptions">{{option.name}}</option> -->
 						</select>
@@ -41,30 +71,32 @@
 			</tr>
 			<tr>
 				<td><label> <msg key="eventDate"></msg></label></td>
-				<td>
-					<input id="selectEventDate" type="datetime" placeholder="click to show datepicker" ng-model="neweventmaster.datetime" />
-	       				<script type="text/javascript">
-    						$('#selectEventDate').datetimepicker({
-        						//language:  'fr',
-        						weekStart: 1,
-        						todayBtn:  1,
-								autoclose: 1,
-								todayHighlight: 1,
-								startView: 2,
-								forceParse: 0,
-        						showMeridian: 1
-    						}).on('changeDate', function(ev){
-								$('#selectEventDate').datetimepicker('hide');
-								var element = angular.element($('#selectEventDate'));
-								var controller = element.controller();
-								var scope = element.scope();
-								scope.$apply(function(){
-								scope.datetimepickerval = ev.date;
-								// scope.neweventmaster.datetime = ev.date;
-							});
-						});
-						</script>
-				</td>
+				<td><input id="selectEventDate" type="datetime" placeholder="click to show datepicker"
+					ng-model="neweventmaster.datetime" /> <script type="text/javascript">
+						$('#selectEventDate').datetimepicker({
+							//language:  'fr',
+							weekStart : 1,
+							todayBtn : 1,
+							autoclose : 1,
+							todayHighlight : 1,
+							startView : 2,
+							forceParse : 0,
+							showMeridian : 1
+						}).on(
+								'changeDate',
+								function(ev) {
+									$('#selectEventDate')
+											.datetimepicker('hide');
+									var element = angular
+											.element($('#selectEventDate'));
+									var controller = element.controller();
+									var scope = element.scope();
+									scope.$apply(function() {
+										scope.datetimepickerval = ev.date;
+										// scope.neweventmaster.datetime = ev.date;
+									});
+								});
+					</script></td>
 				<td><label> <msg key="eventGenre"></msg></label></td>
 				<td>
 					<!-- <input type="text" ng-model="neweventmaster.city" /> -->
@@ -76,21 +108,19 @@
 				</td>
 			</tr>
 			<tr>
-				
+
 				<td colspan="2"><label> <msg key="eventImage"></msg></label></td>
 				<td>
 					<div ng-repeat="step in stepsModel">
 						<img class="thumb" ng-src="{{step}}" width="100px" height="100px" />
-					</div> <input type='file' ng-model="neweventmaster.image"
-					onchange="angular.element(this).scope().imageUpload(this)" multiple />
+					</div> <input type='file' ng-model="neweventmaster.image" onchange="angular.element(this).scope().imageUpload(this)"
+					multiple />
 				</td>
 			</tr>
 			<tr>
-				<td><button type="submit" class="btn"
-						ng-click="createFBEvent()">
+				<td><button type="submit" class="btn" ng-click="createFBEvent()">
 						<msg key="createFBEventButton"></td>
-				<td style="text-align: right"><button type="submit" class="btn"
-						ng-click="save()">
+				<td style="text-align: right"><button type="submit" class="btn" ng-click="save()">
 						<msg key="saveButton"></msg>
 					</button></td>
 				<td><button type="submit" class="btn" ng-click="cancel()">
@@ -102,7 +132,7 @@
 	</div>
 </form>
 
-<table class="table table-stdriped">
+<table class="table table-stdriped" ng-show="displayMaster">
 	<tr>
 		<th><msg key="eventName"></msg></th>
 		<th><msg key="eventDescription"></msg></th>
@@ -129,18 +159,14 @@
 		<td>{{eventmaster.pinCode}}</td>
 		<td>{{eventmaster.genre}}</td>
 		<td>
-			<!-- up -->
-			<!-- <img
+			<!-- up --> <!-- <img
 			ng-src="http://103.35.123.84:8080/project/images/{{eventmaster.image}}"
-			alt="Generic placeholder thumbnail" height="100px" width="100px"> -->
-			
-			<!-- down -->
-			<img
-			ng-src="http://{{hostname}}:8080/project/images/{{eventmaster.image}}"
-			alt="Generic placeholder thumbnail" height="100px" width="100px">
+			alt="Generic placeholder thumbnail" height="100px" width="100px"> --> <!-- down --> <img
+			ng-src="http://{{hostname}}:8080/project/images/{{eventmaster.image}}" alt="Generic placeholder thumbnail"
+			height="100px" width="100px">
 		</td>
 		<td>{{eventmaster.datetime | date:'MM/dd/yyyy HH:mm:ss'}}</td>
 		<td><a ng-click="edit($index)"><i class="glyphicon glyphicon-edit"></i></a></td>
-		<td><a ng-click="delete(eventmaster)"><i class="glyphicon glyphicon-remove"></i></a></td>		
+		<td><a ng-click="delete(eventmaster)"><i class="glyphicon glyphicon-remove"></i></a></td>
 	</tr>
 </table>

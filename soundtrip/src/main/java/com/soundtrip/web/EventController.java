@@ -210,5 +210,19 @@ public class EventController {
 	public List<Country> getCountries() {
 		return countryService.getAllCountries();
 	}
+	
+	@RequestMapping(value = "/validateUser", method = RequestMethod.POST)
+	@ResponseBody
+	@Transactional(propagation = Propagation.REQUIRED)
+	public ResponseMessage validateUser(@RequestBody String userName) throws ParseException {
+		System.out.println("Here... " + userName);
+		String[] list = userName.split("~");
+		if(list[0].equals("Admin") && list[1].equals("Admin@123")){
+			return new ResponseMessage(ResponseMessage.Type.success, "loginSuccess");
+		}else{
+			return new ResponseMessage(ResponseMessage.Type.error, "loginFail");
+		}
+		
+	}
 
 }
